@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Vad Säger Systemet?</string>
+    <string name="btn_beer">Öl</string>
+    <string name="btn_wine">Vin</string>
+    <string name="btn_liquor">Sprit</string>
+    <string name="btn_other">Annat</string>
+    <string name="home_title">Vad dricker du?</string>
+    <string name="home_how">Hur spelar man?</string>
+    <string name="btn_info">i</string>
+</resources>
