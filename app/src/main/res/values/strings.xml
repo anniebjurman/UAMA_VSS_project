@@ -7,4 +7,6 @@
     <string name="home_title">Vad dricker du?</string>
     <string name="home_how">Hur spelar man?</string>
     <string name="btn_info">i</string>
+    <string name="menu_played">Spelade drycker</string>
+    <string name="action_settings">settings</string>
 </resources>
