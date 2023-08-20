@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="560dp"
     android:background="@color/light_gray"
     android:paddingTop="20dp"
     android:paddingStart="20dp"
@@ -44,5 +44,7 @@
         android:textColorHint="@color/green"
         android:background="@color/white"
         android:padding="10dp"
-        android:autofillHints="autoFill" />
+        android:autofillHints="autoFill"
+        android:layout_marginBottom="50dp"/>
+
 </LinearLayout>
