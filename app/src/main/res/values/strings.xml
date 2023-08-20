@@ -1,4 +1,11 @@
 <resources>
+
+<!--    Other-->
+    <string name="menu_played">Spelade drycker</string>
+    <string name="action_settings">settings</string>
+    <string name="next_step">Nästa steg</string>
+
+<!--    HomeFragment-->
     <string name="app_name">Vad Säger Systemet?</string>
     <string name="btn_beer">Öl</string>
     <string name="btn_wine">Vin</string>
@@ -7,8 +14,10 @@
     <string name="home_title">Vad dricker du?</string>
     <string name="home_how">Hur spelar man?</string>
     <string name="btn_info">i</string>
-    <string name="menu_played">Spelade drycker</string>
-    <string name="action_settings">settings</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+<!--    BeerNameFragment-->
+    <string name="first_state">1 / 4</string>
+    <string name="which_beer">Vilken öl?</string>
+    <string name="name_beer">Vad heter ölen?</string>
+    <string name="img_beer">Lägg till en bil på ölen.</string>
 </resources>
