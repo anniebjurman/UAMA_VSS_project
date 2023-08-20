@@ -16,76 +16,10 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/home_title"
-        android:textSize="20sp"
-        android:layout_marginStart="45dp"
-        android:textColor="@color/green"
-        android:layout_marginBottom="20dp"/>
-
-    <LinearLayout
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
-
-        <Button
-            android:id="@+id/btn_beer"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:text="@string/btn_beer"
-            android:background="@color/white"
-            android:layout_marginEnd="10dp"/>
-
-        <Button
-            android:id="@+id/btn_wine"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:text="@string/btn_wine"
-            android:background="@color/white"
-            android:layout_marginStart="10dp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="30dp">
-
-        <Button
-            android:id="@+id/btn_liquor"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:text="@string/btn_liquor"
-            android:background="@color/white"
-            android:layout_marginEnd="10dp"/>
-
-        <Button
-            android:id="@+id/btn_other"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:text="@string/btn_other"
-            android:background="@color/white"
-            android:layout_marginStart="10dp"/>
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/home_how"
-        android:layout_marginStart="45dp"
-        android:textColor="@color/red"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="10dp"/>
-
-    <Button
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="75dp"
-        android:background="@color/red"
-        android:text="@string/btn_info"
-        android:textColor="@color/white"/>
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>

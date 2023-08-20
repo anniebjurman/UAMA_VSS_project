@@ -9,4 +9,6 @@
     <string name="btn_info">i</string>
     <string name="menu_played">Spelade drycker</string>
     <string name="action_settings">settings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
