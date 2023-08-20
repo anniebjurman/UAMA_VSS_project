@@ -1,11 +1,11 @@
 <resources>
 
-<!--    Other-->
+    <!--    Other-->
     <string name="menu_played">Spelade drycker</string>
     <string name="action_settings">settings</string>
     <string name="next_step">Nästa steg</string>
 
-<!--    HomeFragment-->
+    <!--    HomeFragment-->
     <string name="app_name">Vad Säger Systemet?</string>
     <string name="btn_beer">Öl</string>
     <string name="btn_wine">Vin</string>
@@ -15,9 +15,17 @@
     <string name="home_how">Hur spelar man?</string>
     <string name="btn_info">i</string>
 
-<!--    BeerNameFragment-->
+    <!--    BeerNameFragment-->
     <string name="first_state">1 / 4</string>
     <string name="which_beer">Vilken öl?</string>
     <string name="name_beer">Vad heter ölen?</string>
     <string name="img_beer">Lägg till en bil på ölen.</string>
+
+    <!-- FlavorFragment -->
+    <string name="second_state">2 / 4</string>
+    <string name="flavors">smaker</string>
+    <string name="beer_flavors">Ölens smaker?</string>
+    <string name="bitter">Beska</string>
+    <string name="fullness">Fyllighet</string>
+    <string name="sweetness">Sötma</string>
 </resources>

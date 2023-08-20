@@ -15,15 +15,6 @@ class HomeFragment : Fragment() {
     private lateinit var beerButton: Button
     private lateinit var beerNameFragment: Fragment
 
-    // Using the activityViewModels() Kotlin property delegate from the
-    // fragment-ktx artifact to retrieve the ViewModel in the activity scope.
-    private val viewModel: ItemViewModel by activityViewModels()
-    // Called when the item is clicked.
-    fun onItemClicked(item: ClipData.Item) {
-        // Set a new item.
-        viewModel.selectItem(item)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -39,11 +30,11 @@ class HomeFragment : Fragment() {
         beerNameFragment = BeerNameFragment()
 
         beerButton.setOnClickListener {
+            // display beerNameFragment
             val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
             transaction.replace(R.id.fragment_container_view, beerNameFragment)
             transaction.commit()
         }
-
         return view
     }
 }

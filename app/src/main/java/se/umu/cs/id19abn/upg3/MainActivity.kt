@@ -9,43 +9,43 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
-import androidx.lifecycle.Observer
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var nextButton: Button
     private lateinit var homeFragment: HomeFragment
-    private lateinit var beerNameFragment: Fragment
     private lateinit var fm: FragmentManager
-    private val viewModel: ItemViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.selectedItem.observe(this, Observer { item ->
-            // Perform an action with the latest item data.
-        })
+        val beerGameViewModel: BeerGameViewModel by viewModels()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                beerGameViewModel.beerGame.collect {
+                    // Update UI elements
+                }
+            }
+        }
 
         // fragment variables
         homeFragment = HomeFragment()
-        beerNameFragment = BeerNameFragment()
         fm = supportFragmentManager
 
+        // show homeFragment first when app starts
         if (savedInstanceState == null) {
             displayFragment(homeFragment)
         }
 
+        // set content view
         setContentView(R.layout.activity_main)
+        // setup action bar
         setSupportActionBar(findViewById(R.id.my_toolbar))
-        supportActionBar?.setIcon(R.drawable.logo);
-
-        nextButton = findViewById(R.id.btn_next_step)
-        nextButton.setOnClickListener { view: View ->
-            displayFragment(beerNameFragment)
-        }
+        supportActionBar?.setIcon(R.drawable.logo)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -56,18 +56,4 @@ class MainActivity : AppCompatActivity() {
     private fun displayFragment(frag: Fragment) {
         fm.beginTransaction().add(R.id.fragment_container_view, frag).commit()
     }
-
-//    private fun displayHomeFragment() {
-//        supportFragmentManager.commit {
-//            setReorderingAllowed(true)
-//            add<HomeFragment>(R.id.fragment_container_view)
-//        }
-//    }
-//
-//    private fun displayBeerNameFragment() {
-//        supportFragmentManager.commit {
-//            setReorderingAllowed(true)
-//            add<BeerNameFragment>(R.id.fragment_container_view)
-//        }
-//    }
 }

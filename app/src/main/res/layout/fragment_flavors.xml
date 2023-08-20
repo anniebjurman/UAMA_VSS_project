@@ -12,40 +12,32 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/first_state"
+        android:text="@string/second_state"
         android:textColor="@color/gray_text"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/which_beer"
+        android:text="@string/flavors"
         android:textSize="20sp"
         android:layout_marginBottom="50dp"
         android:textStyle="bold"
         android:textColor="@color/gray_text"/>
 
-    <Button
-        android:layout_width="250dp"
-        android:layout_height="300dp"
-        android:text="@string/img_beer"
-        android:textColor="@color/gray_text"
-        android:background="@color/dim_green"
-        android:layout_gravity="center"
-        android:layout_marginBottom="50dp"/>
-
-
-    <EditText
-        android:id="@+id/beer_name"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:inputType="text"
-        android:hint="@string/name_beer"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/beer_flavors"
         android:textColor="@color/green"
-        android:textColorHint="@color/green"
-        android:background="@color/white"
-        android:padding="10dp"
-        android:autofillHints="autoFill"
-        android:layout_marginBottom="50dp"/>
+        android:textStyle="bold"
+        android:textSize="20sp"/>
+
+    <com.google.android.material.slider.RangeSlider
+        android:valueFrom="0.0"
+        android:valueTo="100.0"
+        android:stepSize="10.0"
+        android:layout_height="20dp"
+        android:layout_width="300dp"/>
 
     <Button
         android:id="@+id/btn_next_step"

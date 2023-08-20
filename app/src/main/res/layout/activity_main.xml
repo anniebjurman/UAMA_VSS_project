@@ -20,16 +20,6 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_view"
         android:layout_width="match_parent"
-        android:layout_height="560dp" />
-
-    <Button
-        android:id="@+id/btn_next_step"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:layout_gravity="end"
-        android:background="@color/green"
-        android:text="@string/next_step"
-        android:textColor="@color/white"
-        android:layout_marginEnd="20dp"/>
+        android:layout_height="654dp" />
 
 </LinearLayout>
