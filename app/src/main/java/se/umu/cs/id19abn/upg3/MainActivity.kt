@@ -2,6 +2,7 @@ package se.umu.cs.id19abn.upg3
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.View
 import android.widget.Button
@@ -19,18 +20,31 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var homeFragment: HomeFragment
     private lateinit var fm: FragmentManager
+    private lateinit var beerGame: GameBeer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val beerGameViewModel: BeerGameViewModel by viewModels()
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                beerGameViewModel.beerGame.collect {
-                    // Update UI elements
+        // variables
+        beerGame = GameBeer()
+
+        // get data from fragments
+        supportFragmentManager
+            .setFragmentResultListener("requestBeerNameKey", this) { requestKey, bundle ->
+                val beerName = bundle.getString("bundleBeerNameKey")
+                if (beerName != null) {
+                    Log.d("RESULTS: beername", beerName)
+                    beerGame.beerName = beerName
                 }
             }
-        }
+
+        supportFragmentManager
+            .setFragmentResultListener("requestBitterKey", this) { requestKey, bundle ->
+                val bitter = bundle.getInt("bundleBitterKey")
+                Log.d("RESULTS: bitter", bitter.toString())
+                beerGame.bitter = bitter
+            }
+
 
         // fragment variables
         homeFragment = HomeFragment()

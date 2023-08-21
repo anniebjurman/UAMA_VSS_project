@@ -7,4 +7,9 @@
         <item name="android:textAllCaps">true</item>
 <!--        <item name="android:paddingStart">15dp</item>-->
     </style>
+
+    <style name="MyMaterialTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Add attributes here -->
+        <item name="colorPrimary">@color/green</item>
+    </style>
 </resources>

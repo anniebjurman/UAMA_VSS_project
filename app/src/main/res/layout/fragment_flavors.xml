@@ -20,24 +20,96 @@
         android:layout_height="wrap_content"
         android:text="@string/flavors"
         android:textSize="20sp"
-        android:layout_marginBottom="50dp"
         android:textStyle="bold"
         android:textColor="@color/gray_text"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/beer_flavors"
-        android:textColor="@color/green"
-        android:textStyle="bold"
-        android:textSize="20sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
 
-    <com.google.android.material.slider.RangeSlider
-        android:valueFrom="0.0"
-        android:valueTo="100.0"
-        android:stepSize="10.0"
-        android:layout_height="20dp"
-        android:layout_width="300dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/beer_flavors"
+            android:textColor="@color/green"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bitter"
+                android:layout_marginEnd="22dp"/>
+
+            <com.google.android.material.slider.RangeSlider
+                android:valueFrom="0.0"
+                android:valueTo="8.0"
+                android:stepSize="1.0"
+                android:layout_height="wrap_content"
+                android:layout_width="250dp"
+                android:theme="@style/MyMaterialTheme"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fullness"
+                android:layout_marginEnd="10dp"/>
+
+            <com.google.android.material.slider.RangeSlider
+                android:valueFrom="0.0"
+                android:valueTo="8.0"
+                android:stepSize="1.0"
+                android:layout_height="wrap_content"
+                android:layout_width="250dp"
+                android:theme="@style/MyMaterialTheme"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sweetness"
+                android:layout_marginEnd="22dp"/>
+
+            <com.google.android.material.slider.RangeSlider
+                android:valueFrom="0.0"
+                android:valueTo="8.0"
+                android:stepSize="1.0"
+                android:layout_height="wrap_content"
+                android:layout_width="250dp"
+                android:theme="@style/MyMaterialTheme"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
 
     <Button
         android:id="@+id/btn_next_step"
