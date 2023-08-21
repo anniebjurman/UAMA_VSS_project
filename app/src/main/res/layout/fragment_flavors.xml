@@ -48,7 +48,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/bitter"
-                android:layout_marginEnd="22dp"/>
+                android:layout_marginEnd="22dp"
+                android:textColor="@color/gray_text"/>
 
             <com.google.android.material.slider.RangeSlider
                 android:valueFrom="0.0"
@@ -71,7 +72,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/fullness"
-                android:layout_marginEnd="10dp"/>
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/gray_text"/>
 
             <com.google.android.material.slider.RangeSlider
                 android:valueFrom="0.0"
@@ -94,7 +96,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sweetness"
-                android:layout_marginEnd="22dp"/>
+                android:layout_marginEnd="22dp"
+                android:textColor="@color/gray_text"/>
 
             <com.google.android.material.slider.RangeSlider
                 android:valueFrom="0.0"
@@ -118,7 +121,6 @@
         android:layout_gravity="end"
         android:background="@color/green"
         android:text="@string/next_step"
-        android:textColor="@color/white"
-        android:layout_marginEnd="20dp"/>
+        android:textColor="@color/white"/>
 
 </LinearLayout>

@@ -20,32 +20,38 @@
         android:layout_height="wrap_content"
         android:text="@string/which_beer"
         android:textSize="20sp"
-        android:layout_marginBottom="50dp"
         android:textStyle="bold"
         android:textColor="@color/gray_text"/>
 
-    <Button
-        android:layout_width="250dp"
-        android:layout_height="300dp"
-        android:text="@string/img_beer"
-        android:textColor="@color/gray_text"
-        android:background="@color/dim_green"
-        android:layout_gravity="center"
-        android:layout_marginBottom="50dp"/>
-
-
-    <EditText
-        android:id="@+id/beer_name"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:inputType="text"
-        android:hint="@string/name_beer"
-        android:textColor="@color/green"
-        android:textColorHint="@color/green"
-        android:background="@color/white"
-        android:padding="10dp"
-        android:autofillHints="autoFill"
-        android:layout_marginBottom="50dp"/>
+        android:layout_height="500dp"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+        <Button
+            android:layout_width="220dp"
+            android:layout_height="250dp"
+            android:text="@string/img_beer"
+            android:textColor="@color/green"
+            android:background="@color/dim_green"
+            android:layout_gravity="center"
+            android:layout_marginBottom="50dp"/>
+
+
+        <EditText
+            android:id="@+id/beer_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:inputType="text"
+            android:hint="@string/name_beer"
+            android:textColor="@color/gray_text"
+            android:textSize="15sp"
+            android:textColorHint="@color/gray_text"
+            android:padding="10dp"
+            android:autofillHints="autoFill"
+            android:background="@drawable/edit_text_border"/>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_next_step"
@@ -54,7 +60,6 @@
         android:layout_gravity="end"
         android:background="@color/green"
         android:text="@string/next_step"
-        android:textColor="@color/white"
-        android:layout_marginEnd="20dp"/>
+        android:textColor="@color/white"/>
 
 </LinearLayout>
