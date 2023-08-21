@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="@string/home_title"
         android:textSize="20sp"
-        android:textColor="@color/green"
+        android:textColor="@color/gray_text"
         android:layout_marginBottom="40dp"
         android:textStyle="bold"/>
 
@@ -23,25 +23,61 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal">
 
-        <Button
+        <!--    beer btn-->
+        <LinearLayout
             android:id="@+id/btn_beer"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:text="@string/btn_beer"
             android:background="@drawable/drink_button"
-            android:layout_marginEnd="10dp"
-            style="?android:attr/buttonBarButtonStyle"
-            android:textColor="@color/gray_text"/>
+            android:clickable="true"
+            android:orientation="vertical"
+            android:focusable="true"
+            android:gravity="center">
 
-        <Button
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/beer"
+                android:contentDescription="@string/btn_beer"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/btn_beer"
+                android:textColor="@color/gray_text"/>
+        </LinearLayout>
+
+        <!--    wine btn-->
+        <LinearLayout
             android:id="@+id/btn_wine"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:text="@string/btn_wine"
             android:background="@drawable/drink_button"
-            android:layout_marginStart="10dp"
-            style="?android:attr/buttonBarButtonStyle"
-            android:textColor="@color/gray_text"/>
+            android:clickable="true"
+            android:orientation="vertical"
+            android:focusable="true"
+            android:gravity="center"
+            android:layout_marginStart="20dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/wine"
+                android:contentDescription="@string/btn_wine"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/btn_wine"
+                android:textColor="@color/gray_text"/>
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -50,25 +86,60 @@
         android:gravity="center_horizontal"
         android:layout_marginTop="30dp">
 
-        <Button
+        <!--    liquor btn-->
+        <LinearLayout
             android:id="@+id/btn_liquor"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:text="@string/btn_liquor"
             android:background="@drawable/drink_button"
-            android:layout_marginEnd="10dp"
-            style="?android:attr/buttonBarButtonStyle"
-            android:textColor="@color/gray_text"/>
+            android:clickable="true"
+            android:orientation="vertical"
+            android:focusable="true"
+            android:gravity="center">
 
-        <Button
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/liquor"
+                android:contentDescription="@string/btn_liquor"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/btn_liquor"
+                android:textColor="@color/gray_text"/>
+        </LinearLayout>
+
+        <!--    other btn-->
+        <LinearLayout
             android:id="@+id/btn_other"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:text="@string/btn_other"
             android:background="@drawable/drink_button"
-            android:layout_marginStart="10dp"
-            style="?android:attr/buttonBarButtonStyle"
-            android:textColor="@color/gray_text"/>
+            android:clickable="true"
+            android:orientation="vertical"
+            android:focusable="true"
+            android:gravity="center"
+            android:layout_marginStart="20dp">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/other"
+                android:contentDescription="@string/btn_other"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/btn_other"
+                android:textColor="@color/gray_text"/>
+        </LinearLayout>
     </LinearLayout>
 
     <TextView
@@ -85,6 +156,7 @@
         android:layout_marginStart="30dp"
         android:background="@drawable/information_circle"
         android:text="@string/btn_info"
+        android:textSize="20sp"
         android:textColor="@color/red"
         android:textAllCaps="false"/>
 

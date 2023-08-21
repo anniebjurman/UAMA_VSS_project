@@ -7,12 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
 
 class HomeFragment : Fragment() {
 
-    private lateinit var beerButton: Button
+    private lateinit var beerButton: LinearLayout
     private lateinit var beerNameFragment: Fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {

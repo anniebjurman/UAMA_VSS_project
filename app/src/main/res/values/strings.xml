@@ -23,7 +23,7 @@
 
     <!-- FlavorFragment -->
     <string name="second_state">2 / 4</string>
-    <string name="flavors">smaker</string>
+    <string name="flavors">Smaker</string>
     <string name="beer_flavors">Ölens smaker?</string>
     <string name="bitter">Beska</string>
     <string name="fullness">Fyllighet</string>
