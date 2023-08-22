@@ -29,7 +29,7 @@ class BeerNameFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_beer_name, container, false)
 
-        nextButton = view.findViewById(R.id.btn_next_step)
+        nextButton = view.findViewById(R.id.btn_next_beer_name)
         flavorsFragment = FlavorsFragment()
 
         nextButton.setOnClickListener {

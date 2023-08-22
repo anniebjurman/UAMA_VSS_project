@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="654dp"
+    android:background="@color/light_gray"
+    android:paddingTop="20dp"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/forth_state"
+        android:textColor="@color/gray_text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/description"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/gray_text"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/described_as"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/green"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/descr_1"
+                android:layout_marginEnd="22dp"
+                android:textColor="@color/gray_text"/>
+
+            <EditText
+                android:id="@+id/description_1"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:inputType="text"
+                android:hint="@string/descr_word_1"
+                android:textColor="@color/gray_text"
+                android:textSize="15sp"
+                android:textColorHint="@color/gray_text"
+                android:padding="10dp"
+                android:autofillHints="autoFill"
+                android:background="@drawable/edit_text_border"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/descr_2"
+                android:layout_marginEnd="22dp"
+                android:textColor="@color/gray_text"/>
+
+            <EditText
+                android:id="@+id/description_2"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:inputType="text"
+                android:hint="@string/descr_word_other"
+                android:textColor="@color/gray_text"
+                android:textSize="15sp"
+                android:textColorHint="@color/gray_text"
+                android:padding="10dp"
+                android:autofillHints="autoFill"
+                android:background="@drawable/edit_text_border"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/descr_3"
+                android:layout_marginEnd="22dp"
+                android:textColor="@color/gray_text"/>
+
+            <EditText
+                android:id="@+id/description_3"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:inputType="text"
+                android:hint="@string/descr_word_other"
+                android:textColor="@color/gray_text"
+                android:textSize="15sp"
+                android:textColorHint="@color/gray_text"
+                android:padding="10dp"
+                android:autofillHints="autoFill"
+                android:background="@drawable/edit_text_border"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/descr_4"
+                android:layout_marginEnd="22dp"
+                android:textColor="@color/gray_text"/>
+
+            <EditText
+                android:id="@+id/description_4"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:inputType="text"
+                android:hint="@string/descr_word_other"
+                android:textColor="@color/gray_text"
+                android:textSize="15sp"
+                android:textColorHint="@color/gray_text"
+                android:padding="10dp"
+                android:autofillHints="autoFill"
+                android:background="@drawable/edit_text_border"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/descr_5"
+                android:layout_marginEnd="22dp"
+                android:textColor="@color/gray_text"/>
+
+            <EditText
+                android:id="@+id/description_5"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:inputType="text"
+                android:hint="@string/descr_word_last"
+                android:textColor="@color/gray_text"
+                android:textSize="15sp"
+                android:textColorHint="@color/gray_text"
+                android:padding="10dp"
+                android:autofillHints="autoFill"
+                android:background="@drawable/edit_text_border"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_next_beer_name"
+        android:layout_width="140dp"
+        android:layout_height="45dp"
+        android:layout_gravity="end"
+        android:background="@drawable/default_btn"
+        android:text="@string/next_step"
+        android:textColor="@color/white"/>
+
+</LinearLayout>

@@ -28,4 +28,22 @@
     <string name="bitter">Beska</string>
     <string name="fullness">Fyllighet</string>
     <string name="sweetness">Sötma</string>
+
+    <!--    ServeFragment-->
+    <string name="third_state">3 / 4</string>
+    <string name="serve">Serveras</string>
+    <string name="serve_to">Serveras till?</string>
+
+    <!--    DescriptionFragment-->
+    <string name="forth_state">4 / 4</string>
+    <string name="description">Beskrivning</string>
+    <string name="described_as">Beskriven som?</string>
+    <string name="descr_word_1">Ett beskrivande ord</string>
+    <string name="descr_word_other">Ett annat beskrivande ord</string>
+    <string name="descr_word_last">Ett sista beskrivande ord</string>
+    <string name="descr_1">1.</string>
+    <string name="descr_2">2.</string>
+    <string name="descr_3">3.</string>
+    <string name="descr_4">4.</string>
+    <string name="descr_5">5.</string>
 </resources>

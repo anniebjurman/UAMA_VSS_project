@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.activityViewModels
 
-class FlavorsFragment : Fragment() {
+
+class ServeFragment : Fragment() {
 
     private lateinit var nextButton: Button
-    private lateinit var serveFragment: Fragment
+    private lateinit var descriptionFragment: Fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,15 +23,15 @@ class FlavorsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_flavors, container, false)
-        nextButton = view.findViewById(R.id.btn_next_flavors)
+        val view = inflater.inflate(R.layout.fragment_serve, container, false)
+        nextButton = view.findViewById(R.id.btn_next_serve)
 
-        serveFragment = ServeFragment()
+        descriptionFragment = DescriptionFragment()
 
         nextButton.setOnClickListener {
             // display beerNameFragment
             val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
-            transaction.replace(R.id.fragment_container_view, serveFragment)
+            transaction.replace(R.id.fragment_container_view, descriptionFragment)
             transaction.commit()
         }
         return view

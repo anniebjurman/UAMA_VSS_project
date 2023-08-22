@@ -112,7 +112,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_next_step"
+        android:id="@+id/btn_next_flavors"
         android:layout_width="140dp"
         android:layout_height="45dp"
         android:layout_gravity="end"
