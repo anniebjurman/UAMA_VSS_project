@@ -52,12 +52,14 @@
                 android:textColor="@color/gray_text"/>
 
             <com.google.android.material.slider.RangeSlider
+                android:id="@+id/bitter_slider"
                 android:valueFrom="0.0"
                 android:valueTo="8.0"
                 android:stepSize="1.0"
                 android:layout_height="wrap_content"
                 android:layout_width="250dp"
-                android:theme="@style/MyMaterialTheme"/>
+                android:theme="@style/MyMaterialTheme"
+                app:labelBehavior="visible"/>
 
         </LinearLayout>
 
@@ -76,12 +78,14 @@
                 android:textColor="@color/gray_text"/>
 
             <com.google.android.material.slider.RangeSlider
+                android:id="@+id/fullness_slider"
                 android:valueFrom="0.0"
                 android:valueTo="8.0"
                 android:stepSize="1.0"
                 android:layout_height="wrap_content"
                 android:layout_width="250dp"
-                android:theme="@style/MyMaterialTheme"/>
+                android:theme="@style/MyMaterialTheme"
+                app:labelBehavior="visible"/>
 
         </LinearLayout>
 
@@ -100,12 +104,14 @@
                 android:textColor="@color/gray_text"/>
 
             <com.google.android.material.slider.RangeSlider
+                android:id="@+id/sweetness_slider"
                 android:valueFrom="0.0"
                 android:valueTo="8.0"
                 android:stepSize="1.0"
                 android:layout_height="wrap_content"
                 android:layout_width="250dp"
-                android:theme="@style/MyMaterialTheme"/>
+                android:theme="@style/MyMaterialTheme"
+                app:labelBehavior="visible"/>
 
         </LinearLayout>
 

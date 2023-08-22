@@ -7,19 +7,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import androidx.activity.addCallback
 import androidx.activity.viewModels
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
+import com.google.android.material.textfield.TextInputLayout
 
 class BeerNameFragment : Fragment() {
 
     private lateinit var nextButton: Button
     private lateinit var flavorsFragment: Fragment
+    private lateinit var beerNameInput: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // This callback is only called when MyFragment is at least started
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+            // Handle the back button event
+        }
     }
 
     override fun onCreateView(
@@ -31,15 +40,13 @@ class BeerNameFragment : Fragment() {
 
         nextButton = view.findViewById(R.id.btn_next_beer_name)
         flavorsFragment = FlavorsFragment()
+        beerNameInput = view.findViewById(R.id.beer_name)
 
         nextButton.setOnClickListener {
             Log.d("BUTTON CLICK", "click")
 
-            val beerName = "A Ship Full Of IPA"
+            val beerName = beerNameInput.text.toString()
             setFragmentResult("requestBeerNameKey", bundleOf("bundleBeerNameKey" to beerName))
-
-            val bitter = 2
-            setFragmentResult("requestBitterKey", bundleOf("bundleBitterKey" to bitter))
 
             // display flavor fragment
             val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()

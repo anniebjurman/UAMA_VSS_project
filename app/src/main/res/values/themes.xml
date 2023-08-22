@@ -8,8 +8,30 @@
 <!--        <item name="android:paddingStart">15dp</item>-->
     </style>
 
+
+<!--    slider-->
     <style name="MyMaterialTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <!-- Add attributes here -->
         <item name="colorPrimary">@color/green</item>
+        <item name="sliderStyle">@style/Widget.App.Slider</item>
+    </style>
+
+    <style name="Widget.App.Slider" parent="Widget.MaterialComponents.Slider">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Slider</item>
+        <item name="labelStyle">@style/Widget.App.Tooltip</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Slider" parent="">
+        <item name="colorPrimary">@color/green</item>
+<!--        <item name="colorOnPrimary">@color/green_900</item>-->
+<!--        <item name="colorOnSurface">@color/green_200</item>-->
+    </style>
+
+    <style name="Widget.App.Tooltip" parent="Widget.MaterialComponents.Tooltip">
+        <item name="android:textAppearance">@style/TextAppearance.App.Tooltip</item>
+        <item name="backgroundTint">@color/dim_green</item>
+    </style>
+
+    <style name="TextAppearance.App.Tooltip" parent="TextAppearance.MaterialComponents.Tooltip">
+        <item name="android:textColor">@color/gray_text</item>
     </style>
 </resources>

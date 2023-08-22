@@ -39,10 +39,10 @@ class MainActivity : AppCompatActivity() {
             }
 
         supportFragmentManager
-            .setFragmentResultListener("requestBitterKey", this) { requestKey, bundle ->
-                val bitter = bundle.getInt("bundleBitterKey")
-                Log.d("RESULTS: bitter", bitter.toString())
-                beerGame.bitter = bitter
+            .setFragmentResultListener("requestFlavourKey", this) { requestKey, bundle ->
+                val flavours = bundle.getIntArray("bundleFlavourKey")?.toCollection(ArrayList())
+                Log.d("RESULTS: flavours", flavours.toString())
+                beerGame.flavours = flavours
             }
 
 
