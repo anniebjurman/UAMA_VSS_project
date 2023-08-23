@@ -4,16 +4,9 @@ package se.umu.cs.id19abn.upg3
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.view.View
-import android.widget.Button
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,9 +14,27 @@ class MainActivity : AppCompatActivity() {
     private lateinit var homeFragment: HomeFragment
     private lateinit var fm: FragmentManager
     private lateinit var beerGame: GameBeer
+    private lateinit var fragToDisplay: Fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // fragment variables
+        homeFragment = HomeFragment()
+        fm = supportFragmentManager
+
+        // load beer_name_frag if image has been taken
+        when (intent.extras?.getString("frgToLoad")) {
+            "beer_name_fragment" -> {
+                fragToDisplay = BeerNameFragment()
+            }
+        }
+
+        // get img route name
+        val imgPath = intent.extras?.getString("imgPath")
+        if (imgPath != null) {
+            Log.d("IMG-PATH", imgPath)
+        }
 
         // variables
         beerGame = GameBeer()
@@ -45,14 +56,11 @@ class MainActivity : AppCompatActivity() {
                 beerGame.flavours = flavours
             }
 
-
-        // fragment variables
-        homeFragment = HomeFragment()
-        fm = supportFragmentManager
-
-        // show homeFragment first when app starts
-        if (savedInstanceState == null) {
+        // show homeFragment first when app starts if fragToDisplay is not initialized
+        if (savedInstanceState == null && !this::fragToDisplay.isInitialized) {
             displayFragment(homeFragment)
+        } else {
+            displayFragment(fragToDisplay)
         }
 
         // set content view
