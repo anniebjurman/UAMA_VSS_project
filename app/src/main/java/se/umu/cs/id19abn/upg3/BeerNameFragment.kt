@@ -1,26 +1,25 @@
 package se.umu.cs.id19abn.upg3
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.activity.addCallback
-import androidx.activity.viewModels
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.setFragmentResult
-import androidx.fragment.app.viewModels
-import com.google.android.material.textfield.TextInputLayout
 
 class BeerNameFragment : Fragment() {
 
     private lateinit var nextButton: Button
     private lateinit var flavorsFragment: Fragment
     private lateinit var beerNameInput: EditText
+    private lateinit var imageButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +40,12 @@ class BeerNameFragment : Fragment() {
         nextButton = view.findViewById(R.id.btn_next_beer_name)
         flavorsFragment = FlavorsFragment()
         beerNameInput = view.findViewById(R.id.beer_name)
+        imageButton = view.findViewById(R.id.btn_open_camera)
+
+        imageButton.setOnClickListener {
+            val intent = Intent(activity, CameraActivity::class.java)
+            startActivity(intent)
+        }
 
         nextButton.setOnClickListener {
             Log.d("BUTTON CLICK", "click")

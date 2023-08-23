@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
+import androidx.activity.addCallback
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
 
@@ -18,6 +19,11 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // This callback is only called when MyFragment is at least started
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+            // Handle the back button event
+        }
     }
 
     override fun onCreateView(

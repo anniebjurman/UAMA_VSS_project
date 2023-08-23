@@ -48,17 +48,17 @@ class FlavorsFragment : Fragment() {
         fullnessSlider = view.findViewById(R.id.fullness_slider)
         sweetnessSlider = view.findViewById(R.id.sweetness_slider)
 
-        bitterSlider.addOnChangeListener { slider, value, fromUser ->
+        bitterSlider.addOnChangeListener { _, _, _ ->
                 bitterNum = bitterSlider.values[0].toInt()
                 Log.d("bitterNum", bitterNum.toString())
             }
 
-        fullnessSlider.addOnChangeListener { slider, value, fromUser ->
+        fullnessSlider.addOnChangeListener { _, _, _ ->
             fullnessNum = fullnessSlider.values[0].toInt()
             Log.d("fullnessNum", fullnessNum.toString())
         }
 
-        sweetnessSlider.addOnChangeListener { slider, value, fromUser ->
+        sweetnessSlider.addOnChangeListener { _, _, _ ->
             sweetnessNum = sweetnessSlider.values[0].toInt()
             Log.d("sweetnessNum", sweetnessNum.toString())
         }
