@@ -183,7 +183,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_next_beer_name"
+        android:id="@+id/btn_next_conclusion"
         android:layout_width="140dp"
         android:layout_height="45dp"
         android:layout_gravity="end"

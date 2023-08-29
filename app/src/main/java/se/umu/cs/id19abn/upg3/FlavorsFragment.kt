@@ -12,15 +12,13 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResult
+import androidx.navigation.findNavController
 import com.google.android.material.slider.RangeSlider
+import se.umu.cs.id19abn.upg3.databinding.FragmentFlavorsBinding
 
 class FlavorsFragment : Fragment() {
 
-    private lateinit var nextButton: Button
-    private lateinit var serveFragment: Fragment
-    private lateinit var bitterSlider: RangeSlider
-    private lateinit var fullnessSlider: RangeSlider
-    private lateinit var sweetnessSlider: RangeSlider
+    private lateinit var binding: FragmentFlavorsBinding
 
     private var bitterNum: Int = 0
     private var fullnessNum: Int = 0
@@ -28,50 +26,47 @@ class FlavorsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // This callback is only called when MyFragment is at least started
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
-            // Handle the back button event
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_flavors, container, false)
+        binding = FragmentFlavorsBinding.inflate(inflater)
 
-        nextButton = view.findViewById(R.id.btn_next_flavors)
-        serveFragment = ServeFragment()
-        bitterSlider = view.findViewById(R.id.bitter_slider)
-        fullnessSlider = view.findViewById(R.id.fullness_slider)
-        sweetnessSlider = view.findViewById(R.id.sweetness_slider)
-
-        bitterSlider.addOnChangeListener { _, _, _ ->
-                bitterNum = bitterSlider.values[0].toInt()
+        binding.bitterSlider.addOnChangeListener { _, _, _ ->
+                bitterNum = binding.bitterSlider.values[0].toInt()
                 Log.d("bitterNum", bitterNum.toString())
             }
 
-        fullnessSlider.addOnChangeListener { _, _, _ ->
-            fullnessNum = fullnessSlider.values[0].toInt()
+        binding.fullnessSlider.addOnChangeListener { _, _, _ ->
+            fullnessNum = binding.fullnessSlider.values[0].toInt()
             Log.d("fullnessNum", fullnessNum.toString())
         }
 
-        sweetnessSlider.addOnChangeListener { _, _, _ ->
-            sweetnessNum = sweetnessSlider.values[0].toInt()
+        binding.sweetnessSlider.addOnChangeListener { _, _, _ ->
+            sweetnessNum = binding.sweetnessSlider.values[0].toInt()
             Log.d("sweetnessNum", sweetnessNum.toString())
         }
 
-        nextButton.setOnClickListener {
+        binding.btnNextFlavors.setOnClickListener {
+            Log.d("BUTTON CLICK", "go to serve frag")
+            // send this as params
             val sliderValues = intArrayOf(bitterNum, fullnessNum, sweetnessNum)
-            setFragmentResult("requestFlavourKey", bundleOf("bundleFlavourKey" to sliderValues))
 
-            // display beerNameFragment
-            val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
-            transaction.replace(R.id.fragment_container_view, serveFragment)
-            transaction.commit()
+            val action = FlavorsFragmentDirections.actionFlavorsFragmentToServeFragment()
+            binding.root.findNavController().navigate(action)
         }
-        return view
+        return binding.root
+    }
+
+    companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         */
+        fun newInstance(): FlavorsFragment {
+            return FlavorsFragment()
+        }
     }
 }

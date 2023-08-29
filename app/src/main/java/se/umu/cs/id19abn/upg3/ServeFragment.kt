@@ -1,6 +1,7 @@
 package se.umu.cs.id19abn.upg3
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,38 +9,39 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.activity.addCallback
 import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.findNavController
+import se.umu.cs.id19abn.upg3.databinding.FragmentServeBinding
 
 
 class ServeFragment : Fragment() {
 
-    private lateinit var nextButton: Button
-    private lateinit var descriptionFragment: Fragment
+    private lateinit var binding: FragmentServeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // This callback is only called when MyFragment is at least started
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
-            // Handle the back button event
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_serve, container, false)
-        nextButton = view.findViewById(R.id.btn_next_serve)
+    ): View {
+        binding = FragmentServeBinding.inflate(inflater)
 
-        descriptionFragment = DescriptionFragment()
-
-        nextButton.setOnClickListener {
-            // display beerNameFragment
-            val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
-            transaction.replace(R.id.fragment_container_view, descriptionFragment)
-            transaction.commit()
+        binding.btnNextServe.setOnClickListener {
+            Log.d("BUTTON CLICK", "go to description frag")
+            val action = ServeFragmentDirections.actionServeFragmentToDescriptionFragment()
+            binding.root.findNavController().navigate(action)
         }
-        return view
+        return binding.root
+    }
+
+    companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         */
+        fun newInstance(): ServeFragment {
+            return ServeFragment()
+        }
     }
 }

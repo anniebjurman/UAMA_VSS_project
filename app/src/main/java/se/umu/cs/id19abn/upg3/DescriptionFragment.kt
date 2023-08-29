@@ -11,37 +11,36 @@ import androidx.activity.addCallback
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.setFragmentResult
+import se.umu.cs.id19abn.upg3.databinding.FragmentDescriptionBinding
 
 class DescriptionFragment : Fragment() {
 
-    private lateinit var nextButton: Button
+    private lateinit var binding: FragmentDescriptionBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // This callback is only called when MyFragment is at least started
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
-            // Handle the back button event
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_description, container, false)
+        binding = FragmentDescriptionBinding.inflate(inflater)
 
-        nextButton = view.findViewById(R.id.btn_next_beer_name)
-//        flavorsFragment = FlavorsFragment()
-
-//        nextButton.setOnClickListener {
-//            // display flavor fragment
-//            val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
-//            transaction.replace(R.id.fragment_container_view, flavorsFragment)
-//            transaction.commit()
-//        }
+        binding.btnNextConclusion.setOnClickListener {
+            Log.d("BUTTON CLICK", "go to conclusion")
+        }
 
         return view
+    }
+
+    companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         */
+        fun newInstance(): DescriptionFragment {
+            return DescriptionFragment()
+        }
     }
 }

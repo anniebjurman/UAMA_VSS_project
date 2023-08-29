@@ -2,6 +2,7 @@ package se.umu.cs.id19abn.upg3
 
 import android.content.ClipData
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,37 +12,37 @@ import android.widget.LinearLayout
 import androidx.activity.addCallback
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
+import se.umu.cs.id19abn.upg3.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
-
-    private lateinit var beerButton: LinearLayout
-    private lateinit var beerNameFragment: Fragment
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // This callback is only called when MyFragment is at least started
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
-            // Handle the back button event
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
-        beerButton = view.findViewById(R.id.btn_beer)
+    ): View {
+        binding = FragmentHomeBinding.inflate(inflater)
 
-        beerNameFragment = BeerNameFragment()
-
-        beerButton.setOnClickListener {
-            // display beerNameFragment
-            val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
-            transaction.replace(R.id.fragment_container_view, beerNameFragment)
-            transaction.commit()
+        binding.btnBeer.setOnClickListener {
+            Log.d("BUTTON CLICK", "beer btn")
+            val action = HomeFragmentDirections.actionHomeFragmentToBeerNameFragment()
+            binding.root.findNavController().navigate(action)
         }
-        return view
+        return binding.root
+    }
+
+    companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         */
+        fun newInstance(): HomeFragment {
+            return HomeFragment()
+        }
     }
 }

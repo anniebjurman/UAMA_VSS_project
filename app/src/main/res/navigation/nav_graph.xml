@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/beerNameFragment"
+        android:name="se.umu.cs.id19abn.upg3.BeerNameFragment"
+        android:label="BeerNameFragment"
+        tools:layout="@layout/fragment_beer_name">
+        <action
+            android:id="@+id/action_beerNameFragment_to_flavorsFragment"
+            app:destination="@id/flavorsFragment" />
+        <action
+            android:id="@+id/action_beerNameFragment_to_cameraActivity"
+            app:destination="@id/cameraActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/flavorsFragment"
+        android:name="se.umu.cs.id19abn.upg3.FlavorsFragment"
+        android:label="FlavorsFragment"
+        tools:layout="@layout/fragment_flavors">
+        <action
+            android:id="@+id/action_flavorsFragment_to_serveFragment"
+            app:destination="@id/serveFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/serveFragment"
+        android:name="se.umu.cs.id19abn.upg3.ServeFragment"
+        android:label="ServeFragment"
+        tools:layout="@layout/fragment_serve">
+        <action
+            android:id="@+id/action_serveFragment_to_descriptionFragment"
+            app:destination="@id/descriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/descriptionFragment"
+        android:name="se.umu.cs.id19abn.upg3.DescriptionFragment"
+        android:label="DescriptionFragment"
+        tools:layout="@layout/fragment_description"/>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="se.umu.cs.id19abn.upg3.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_beerNameFragment"
+            app:destination="@id/beerNameFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/cameraActivity"
+        android:name="se.umu.cs.id19abn.upg3.CameraActivity"
+        android:label="CameraActivity"
+        tools:layout="@layout/activity_camera"/>
+</navigation>
