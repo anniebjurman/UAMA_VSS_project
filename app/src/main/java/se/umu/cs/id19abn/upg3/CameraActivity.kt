@@ -1,7 +1,5 @@
 package se.umu.cs.id19abn.upg3
 
-//import com.android.example.cameraxapp.databinding.ActivityMainBinding
-
 import android.Manifest
 import android.content.ContentValues
 import android.content.Intent
@@ -22,6 +20,8 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
+import androidx.navigation.findNavController
+import se.umu.cs.id19abn.upg3.databinding.ActivityCameraBinding
 import se.umu.cs.id19abn.upg3.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -32,8 +32,6 @@ import java.util.concurrent.Executors
 typealias LumaListener = (luma: Double) -> Unit
 
 class CameraActivity : AppCompatActivity() {
-    private lateinit var viewBinding: ActivityMainBinding
-
     private var imageCapture: ImageCapture? = null
 
     private lateinit var cameraExecutor: ExecutorService
@@ -62,6 +60,7 @@ class CameraActivity : AppCompatActivity() {
     }
 
     private fun takePhoto() {
+        Log.d("CLICK!", "take photo")
         // Get a stable reference of the modifiable image capture use case
         val imageCapture = imageCapture ?: return
         var imgPath: Uri
@@ -100,11 +99,8 @@ class CameraActivity : AppCompatActivity() {
                     val msg = "Photo capture succeeded: ${output.savedUri}"
                     Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     Log.d(TAG, msg)
-                    // show homeFragment in MainActivity
-                    val i = Intent(applicationContext, MainActivity::class.java)
-                    i.putExtra("frgToLoad", "beer_name_fragment")
-                    i.putExtra("imgPath", output.savedUri.toString())
-                    startActivity(i)
+                    val navController = findNavController(R.id.nav_host_fragment)
+                    navController.navigate(R.id.beerNameFragment)
                 }
             }
         )

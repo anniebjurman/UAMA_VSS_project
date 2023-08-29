@@ -24,14 +24,14 @@ class DescriptionFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDescriptionBinding.inflate(inflater)
 
         binding.btnNextConclusion.setOnClickListener {
             Log.d("BUTTON CLICK", "go to conclusion")
         }
 
-        return view
+        return binding.root
     }
 
     companion object {
