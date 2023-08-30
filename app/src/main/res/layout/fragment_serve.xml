@@ -127,7 +127,7 @@
                 android:background="@drawable/radish"
                 android:layout_marginEnd="35dp"/>
             <ImageButton
-                android:id="@+id/btn_glas"
+                android:id="@+id/btn_glass"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/glas"

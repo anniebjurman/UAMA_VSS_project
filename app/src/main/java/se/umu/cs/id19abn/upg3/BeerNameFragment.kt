@@ -48,7 +48,7 @@ class BeerNameFragment : Fragment() {
             Log.d("BEERNAMEFRAG updated", beerGameObj.toString())
 
             // navigate to next frag
-            val action = BeerNameFragmentDirections.actionBeerNameFragmentToFlavorsFragment()
+            val action = BeerNameFragmentDirections.actionBeerNameFragmentToFlavorsFragment(beerGameObj)
             binding.root.findNavController().navigate(action)
         }
 

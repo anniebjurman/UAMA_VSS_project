@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_flavorsFragment_to_serveFragment"
             app:destination="@id/serveFragment" />
+        <argument
+            android:name="beerGame"
+            app:argType="se.umu.cs.id19abn.upg3.BeerGame" />
     </fragment>
     <fragment
         android:id="@+id/serveFragment"
@@ -37,12 +40,19 @@
         <action
             android:id="@+id/action_serveFragment_to_descriptionFragment"
             app:destination="@id/descriptionFragment" />
+        <argument
+            android:name="beerGame"
+            app:argType="se.umu.cs.id19abn.upg3.BeerGame" />
     </fragment>
     <fragment
         android:id="@+id/descriptionFragment"
         android:name="se.umu.cs.id19abn.upg3.DescriptionFragment"
         android:label="DescriptionFragment"
-        tools:layout="@layout/fragment_description"/>
+        tools:layout="@layout/fragment_description">
+        <argument
+            android:name="beerGame"
+            app:argType="se.umu.cs.id19abn.upg3.BeerGame" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="se.umu.cs.id19abn.upg3.HomeFragment"

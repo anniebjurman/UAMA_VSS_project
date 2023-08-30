@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Flavours(
-    val bitter: Int = 0,
-    val fullness: Int = 0,
+    var bitter: Int = 0,
+    var fullness: Int = 0,
     var sweetness: Int = 0
 ) : Parcelable

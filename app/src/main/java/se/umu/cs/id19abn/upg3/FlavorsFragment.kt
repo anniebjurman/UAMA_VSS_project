@@ -19,42 +19,41 @@ import se.umu.cs.id19abn.upg3.databinding.FragmentFlavorsBinding
 class FlavorsFragment : Fragment() {
 
     private lateinit var binding: FragmentFlavorsBinding
-
-    private var bitterNum: Int = 0
-    private var fullnessNum: Int = 0
-    private var sweetnessNum: Int = 0
+    private lateinit var beerGameObj: BeerGame
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        beerGameObj = arguments?.let { BeerNameFragmentArgs.fromBundle(it).beerGame }!!
+        Log.d("BEERNAMEFRAG from nav", beerGameObj.toString())
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentFlavorsBinding.inflate(inflater)
 
         binding.bitterSlider.addOnChangeListener { _, _, _ ->
-                bitterNum = binding.bitterSlider.values[0].toInt()
-                Log.d("bitterNum", bitterNum.toString())
-            }
+            beerGameObj.flavours.bitter = binding.bitterSlider.values[0].toInt()
+//                Log.d("bitterNum", bitterNum.toString())
+        }
 
         binding.fullnessSlider.addOnChangeListener { _, _, _ ->
-            fullnessNum = binding.fullnessSlider.values[0].toInt()
-            Log.d("fullnessNum", fullnessNum.toString())
+            beerGameObj.flavours.fullness = binding.fullnessSlider.values[0].toInt()
+//            Log.d("fullnessNum", fullnessNum.toString())
         }
 
         binding.sweetnessSlider.addOnChangeListener { _, _, _ ->
-            sweetnessNum = binding.sweetnessSlider.values[0].toInt()
-            Log.d("sweetnessNum", sweetnessNum.toString())
+            beerGameObj.flavours.sweetness = binding.sweetnessSlider.values[0].toInt()
+//            Log.d("sweetnessNum", sweetnessNum.toString())
         }
 
         binding.btnNextFlavors.setOnClickListener {
             Log.d("BUTTON CLICK", "go to serve frag")
-            // send this as params
-            val sliderValues = intArrayOf(bitterNum, fullnessNum, sweetnessNum)
+            Log.d("BEERNAMEFRAG updated", beerGameObj.toString())
 
-            val action = FlavorsFragmentDirections.actionFlavorsFragmentToServeFragment()
+            val action = FlavorsFragmentDirections.actionFlavorsFragmentToServeFragment(beerGameObj)
             binding.root.findNavController().navigate(action)
         }
         return binding.root
