@@ -1,12 +1,15 @@
 package se.umu.cs.id19abn.upg3
 
+import android.R
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.fragment.app.Fragment
 import se.umu.cs.id19abn.upg3.databinding.FragmentSummaryBinding
+
 
 /**
  * A simple ...
@@ -36,8 +39,16 @@ class SummaryFragment : Fragment() {
         binding.bitterNum.text = beerGameObj.flavours.bitter.toString()
         binding.fullnessNum.text = beerGameObj.flavours.fullness.toString()
         binding.sweetnessNum.text = beerGameObj.flavours.sweetness.toString()
+
         // serve to
-        binding.serveToSum.text = beerGameObj.servedTo.toString()
+        for (i in beerGameObj.servedTo.getChosenItems()) {
+            val imageView = ImageView(this.context)
+            //setting image resource
+            imageView.setImageResource(beerGameObj.servedTo.getIcon(i))
+            //adding view to layout
+            binding.serveToIconLayout.addView(imageView)
+        }
+
         // description
         binding.sumDescription1.text = beerGameObj.describedAs[0]
         binding.sumDescription2.text = beerGameObj.describedAs[1]
