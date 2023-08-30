@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_beerNameFragment_to_cameraActivity"
             app:destination="@id/cameraActivity" />
+        <argument
+            android:name="beerGame"
+            app:argType="se.umu.cs.id19abn.upg3.BeerGame" />
     </fragment>
     <fragment
         android:id="@+id/flavorsFragment"

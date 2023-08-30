@@ -30,7 +30,8 @@ class HomeFragment : Fragment() {
 
         binding.btnBeer.setOnClickListener {
             Log.d("BUTTON CLICK", "beer btn")
-            val action = HomeFragmentDirections.actionHomeFragmentToBeerNameFragment()
+            val beerGame = BeerGame()
+            val action = HomeFragmentDirections.actionHomeFragmentToBeerNameFragment(beerGame)
             binding.root.findNavController().navigate(action)
         }
         return binding.root

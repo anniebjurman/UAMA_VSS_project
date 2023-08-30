@@ -18,9 +18,13 @@ import se.umu.cs.id19abn.upg3.databinding.FragmentBeerNameBinding
 
 class BeerNameFragment : Fragment() {
     private lateinit var binding: FragmentBeerNameBinding
+    private lateinit var beerGameObj: BeerGame
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        beerGameObj = arguments?.let { BeerNameFragmentArgs.fromBundle(it).beerGame }!!
+        Log.d("BEERNAMEFRAG from nav", beerGameObj.toString())
     }
 
     override fun onCreateView(
@@ -38,6 +42,12 @@ class BeerNameFragment : Fragment() {
 
         binding.btnNextBeerName.setOnClickListener {
             Log.d("BUTTON CLICK", "go to flavour frag")
+
+            // save input beer game to BeerGame obj
+            beerGameObj.beerName = binding.beerName.text.toString()
+            Log.d("BEERNAMEFRAG updated", beerGameObj.toString())
+
+            // navigate to next frag
             val action = BeerNameFragmentDirections.actionBeerNameFragmentToFlavorsFragment()
             binding.root.findNavController().navigate(action)
         }
