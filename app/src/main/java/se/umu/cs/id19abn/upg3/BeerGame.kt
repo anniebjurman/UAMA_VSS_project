@@ -10,4 +10,4 @@ data class BeerGame(
     var beerName: String? = null,
     var flavours: Flavours = Flavours(),
     var servedTo: ServedTo = ServedTo(),
-    var describedAs: ArrayList<String>? = null) : Parcelable
+    var describedAs: ArrayList<String> = ArrayList()) : Parcelable

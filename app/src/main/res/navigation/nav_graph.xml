@@ -52,6 +52,9 @@
         <argument
             android:name="beerGame"
             app:argType="se.umu.cs.id19abn.upg3.BeerGame" />
+        <action
+            android:id="@+id/action_descriptionFragment_to_summaryFragment"
+            app:destination="@id/summaryFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -67,4 +70,13 @@
         android:name="se.umu.cs.id19abn.upg3.CameraActivity"
         android:label="CameraActivity"
         tools:layout="@layout/activity_camera"/>
+    <fragment
+        android:id="@+id/summaryFragment"
+        android:name="se.umu.cs.id19abn.upg3.SummaryFragment"
+        android:label="fragment_summary"
+        tools:layout="@layout/fragment_summary" >
+        <argument
+            android:name="beerGame"
+            app:argType="se.umu.cs.id19abn.upg3.BeerGame" />
+    </fragment>
 </navigation>
