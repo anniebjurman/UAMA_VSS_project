@@ -46,6 +46,17 @@
     <string name="descr_3">3.</string>
     <string name="descr_4">4.</string>
     <string name="descr_5">5.</string>
+    <string name="to_summary">Till sammanfattning</string>
+
+    <!--    summary-->
+    <string name="summary">Sammanfattning</string>
+    <string name="sum_served_to">Serveras till:</string>
+    <string name="sum_described_as">Beskriven som:</string>
+    <string name="save_analysis">Spara analys</string>
+    <string name="num_placeholder">0</string>
+    <string name="beer_img_description">Image of analysed beer</string>
+    <string name="beer_name_PH">Ölens namn</string>
+    <string name="description_PH">Frisk</string>
 
     <!-- camera -->
     <string name="take_photo">Ta bild</string>

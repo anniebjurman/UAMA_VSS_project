@@ -184,11 +184,11 @@
 
     <Button
         android:id="@+id/btn_next_conclusion"
-        android:layout_width="140dp"
+        android:layout_width="200dp"
         android:layout_height="45dp"
         android:layout_gravity="end"
         android:background="@drawable/default_btn"
-        android:text="@string/next_step"
+        android:text="@string/to_summary"
         android:textColor="@color/white"/>
 
 </LinearLayout>

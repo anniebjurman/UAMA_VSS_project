@@ -30,6 +30,21 @@ class SummaryFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentSummaryBinding.inflate(inflater)
 
+        // display data
+        binding.sumBeerName.text = beerGameObj.beerName
+        // flavours
+        binding.bitterNum.text = beerGameObj.flavours.bitter.toString()
+        binding.fullnessNum.text = beerGameObj.flavours.fullness.toString()
+        binding.sweetnessNum.text = beerGameObj.flavours.sweetness.toString()
+        // serve to
+        binding.serveToSum.text = beerGameObj.servedTo.toString()
+        // description
+        binding.sumDescription1.text = beerGameObj.describedAs[0]
+        binding.sumDescription2.text = beerGameObj.describedAs[1]
+        binding.sumDescription3.text = beerGameObj.describedAs[2]
+        binding.sumDescription4.text = beerGameObj.describedAs[3]
+        binding.sumDescription5.text = beerGameObj.describedAs[4]
+
         return binding.root
     }
 
