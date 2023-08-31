@@ -1,7 +1,5 @@
 package se.umu.cs.id19abn.upg3
 
-import android.R
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -20,9 +18,11 @@ class SummaryFragment : Fragment() {
 
     private lateinit var binding: FragmentSummaryBinding
     private lateinit var beerGameObj: BeerGame
+    private lateinit var imageHelper: ImageHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        imageHelper = ImageHelper()
 
         beerGameObj = arguments?.let { BeerNameFragmentArgs.fromBundle(it).beerGame }!!
         Log.d("BEERNAMEFRAG from nav", beerGameObj.toString())
@@ -68,8 +68,9 @@ class SummaryFragment : Fragment() {
         val imgFile = beerGameObj.imgPath?.let { File(it) }
         if (imgFile != null) {
             if (imgFile.exists()) {
-                val myBitmap = BitmapFactory.decodeFile(imgFile.absolutePath)
-                binding.imgViewSum.setImageBitmap(myBitmap)
+                val rotatedBitmap = imageHelper.rotateImage(imgFile.absolutePath)
+//                val scaledBitmap = rotatedBitmap?.let { imageHelper.scaleBitmap(it, binding.imgPreview) }
+                binding.imgViewSum.setImageBitmap(rotatedBitmap)
             }
         }
     }

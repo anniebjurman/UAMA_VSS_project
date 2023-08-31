@@ -31,11 +31,11 @@
         <ImageView
             android:id="@+id/img_preview"
             android:layout_width="220dp"
-            android:layout_height="250dp"
+            android:layout_height="220dp"
             android:contentDescription="TODO"
             android:layout_gravity="center"
             android:background="@color/dim_green"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="10dp"/>
 
         <Button
             android:id="@+id/btn_open_camera"
