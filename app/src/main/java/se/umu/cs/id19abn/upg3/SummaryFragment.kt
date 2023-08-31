@@ -1,6 +1,7 @@
 package se.umu.cs.id19abn.upg3
 
 import android.R
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import se.umu.cs.id19abn.upg3.databinding.FragmentSummaryBinding
+import java.io.File
 
 
 /**
@@ -56,7 +58,20 @@ class SummaryFragment : Fragment() {
         binding.sumDescription4.text = beerGameObj.describedAs[3]
         binding.sumDescription5.text = beerGameObj.describedAs[4]
 
+        // display image
+        displayImage()
+
         return binding.root
+    }
+
+    private fun displayImage() {
+        val imgFile = beerGameObj.imgPath?.let { File(it) }
+        if (imgFile != null) {
+            if (imgFile.exists()) {
+                val myBitmap = BitmapFactory.decodeFile(imgFile.absolutePath)
+                binding.imgViewSum.setImageBitmap(myBitmap)
+            }
+        }
     }
 
     companion object {

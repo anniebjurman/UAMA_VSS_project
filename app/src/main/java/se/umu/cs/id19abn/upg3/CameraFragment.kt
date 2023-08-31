@@ -81,7 +81,6 @@ class CameraFragment : Fragment() {
         Log.d("CLICK!", "take photo")
         // Get a stable reference of the modifiable image capture use case
         val imageCapture = imageCapture ?: return
-        var imgPath: Uri
 
         // Create time stamped name and MediaStore entry.
         val name = SimpleDateFormat(FILENAME_FORMAT, Locale.US)
@@ -93,6 +92,8 @@ class CameraFragment : Fragment() {
                 put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/CameraX-Image")
             }
         }
+
+        val imagePath = "/storage/emulated/0/Pictures/CameraX-Image/$name.jpg"
 
         // Create output options object which contains file + metadata
         val outputOptions = activity?.applicationContext?.let {
@@ -121,7 +122,7 @@ class CameraFragment : Fragment() {
                         val msg = "Photo capture succeeded: ${output.savedUri}"
                         Toast.makeText(requireActivity().baseContext, msg, Toast.LENGTH_SHORT).show()
                         Log.d(TAG, msg)
-                        beerGameObj.imgPath = output.savedUri
+                        beerGameObj.imgPath = imagePath
 
                         val action = CameraFragmentDirections.actionCameraFragmentToBeerNameFragment(beerGameObj)
                         binding.root.findNavController().navigate(action)

@@ -28,15 +28,25 @@
         android:orientation="vertical"
         android:gravity="center_vertical">
 
-        <Button
-            android:id="@+id/btn_open_camera"
+        <ImageView
+            android:id="@+id/img_preview"
             android:layout_width="220dp"
             android:layout_height="250dp"
+            android:contentDescription="TODO"
+            android:layout_gravity="center"
+            android:background="@color/dim_green"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btn_open_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/img_beer"
             android:textColor="@color/green"
-            android:background="@color/dim_green"
+            android:background="@color/white"
             android:layout_gravity="center"
-            android:layout_marginBottom="50dp"/>
+            android:layout_marginBottom="50dp"
+            android:paddingHorizontal="10dp"/>
 
         <EditText
             android:id="@+id/beer_name"

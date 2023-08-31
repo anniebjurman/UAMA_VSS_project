@@ -1,20 +1,17 @@
 package se.umu.cs.id19abn.upg3
 
-import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import androidx.activity.addCallback
-import androidx.core.os.bundleOf
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.setFragmentResult
 import androidx.navigation.findNavController
 import se.umu.cs.id19abn.upg3.databinding.FragmentBeerNameBinding
+import java.io.File
+
 
 class BeerNameFragment : Fragment() {
     private lateinit var binding: FragmentBeerNameBinding
@@ -38,11 +35,16 @@ class BeerNameFragment : Fragment() {
             binding.beerName.setText(beerGameObj.beerName)
         }
 
+        if (beerGameObj.imgPath != null) {
+            displayImage()
+        }
+
         binding.btnOpenCamera.setOnClickListener {
             if (binding.beerName.text != null) {
                 beerGameObj.beerName = binding.beerName.text.toString()
             }
-            val action = BeerNameFragmentDirections.actionBeerNameFragmentToCameraFragment(beerGameObj)
+            val action =
+                BeerNameFragmentDirections.actionBeerNameFragmentToCameraFragment(beerGameObj)
             binding.root.findNavController().navigate(action)
         }
 
@@ -54,10 +56,21 @@ class BeerNameFragment : Fragment() {
             Log.d("BEERNAMEFRAG updated", beerGameObj.toString())
 
             // navigate to next frag
-            val action = BeerNameFragmentDirections.actionBeerNameFragmentToFlavorsFragment(beerGameObj)
+            val action =
+                BeerNameFragmentDirections.actionBeerNameFragmentToFlavorsFragment(beerGameObj)
             binding.root.findNavController().navigate(action)
         }
 
         return binding.root
+    }
+
+    private fun displayImage() {
+        val imgFile = beerGameObj.imgPath?.let { File(it) }
+        if (imgFile != null) {
+            if (imgFile.exists()) {
+                val myBitmap = BitmapFactory.decodeFile(imgFile.absolutePath)
+                binding.imgPreview.setImageBitmap(myBitmap)
+            }
+        }
     }
 }
