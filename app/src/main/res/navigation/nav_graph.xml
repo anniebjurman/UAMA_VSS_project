@@ -13,12 +13,12 @@
         <action
             android:id="@+id/action_beerNameFragment_to_flavorsFragment"
             app:destination="@id/flavorsFragment" />
-        <action
-            android:id="@+id/action_beerNameFragment_to_cameraActivity"
-            app:destination="@id/cameraActivity" />
         <argument
             android:name="beerGame"
             app:argType="se.umu.cs.id19abn.upg3.BeerGame" />
+        <action
+            android:id="@+id/action_beerNameFragment_to_cameraFragment"
+            app:destination="@id/cameraFragment" />
     </fragment>
     <fragment
         android:id="@+id/flavorsFragment"
@@ -65,11 +65,6 @@
             android:id="@+id/action_homeFragment_to_beerNameFragment"
             app:destination="@id/beerNameFragment" />
     </fragment>
-    <activity
-        android:id="@+id/cameraActivity"
-        android:name="se.umu.cs.id19abn.upg3.CameraActivity"
-        android:label="CameraActivity"
-        tools:layout="@layout/activity_camera"/>
     <fragment
         android:id="@+id/summaryFragment"
         android:name="se.umu.cs.id19abn.upg3.SummaryFragment"
@@ -78,5 +73,17 @@
         <argument
             android:name="beerGame"
             app:argType="se.umu.cs.id19abn.upg3.BeerGame" />
+    </fragment>
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="se.umu.cs.id19abn.upg3.CameraFragment"
+        android:label="CameraFragment"
+        tools:layout="@layout/fragment_camera">
+        <argument
+            android:name="beerGame"
+            app:argType="se.umu.cs.id19abn.upg3.BeerGame" />
+        <action
+            android:id="@+id/action_cameraFragment_to_beerNameFragment"
+            app:destination="@id/beerNameFragment" />
     </fragment>
 </navigation>

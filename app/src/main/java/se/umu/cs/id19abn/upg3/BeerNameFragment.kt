@@ -34,9 +34,15 @@ class BeerNameFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentBeerNameBinding.inflate(inflater)
 
+        if (beerGameObj.beerName != null) {
+            binding.beerName.setText(beerGameObj.beerName)
+        }
+
         binding.btnOpenCamera.setOnClickListener {
-            Log.d("BUTTON CLICK", "open camera")
-            val action = BeerNameFragmentDirections.actionBeerNameFragmentToCameraActivity()
+            if (binding.beerName.text != null) {
+                beerGameObj.beerName = binding.beerName.text.toString()
+            }
+            val action = BeerNameFragmentDirections.actionBeerNameFragmentToCameraFragment(beerGameObj)
             binding.root.findNavController().navigate(action)
         }
 

@@ -2,17 +2,20 @@ package se.umu.cs.id19abn.upg3
 
 import android.Manifest
 import android.content.ContentValues
-import android.content.Intent
+import android.content.Context
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -21,42 +24,57 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
-import se.umu.cs.id19abn.upg3.databinding.ActivityCameraBinding
-import se.umu.cs.id19abn.upg3.databinding.ActivityMainBinding
+import se.umu.cs.id19abn.upg3.databinding.FragmentCameraBinding
+import se.umu.cs.id19abn.upg3.databinding.FragmentDescriptionBinding
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
+/**
+ * A simple
+ */
+class CameraFragment : Fragment() {
+    private lateinit var binding: FragmentCameraBinding
+    private lateinit var beerGameObj: BeerGame
 
-typealias LumaListener = (luma: Double) -> Unit
-
-class CameraActivity : AppCompatActivity() {
     private var imageCapture: ImageCapture? = null
-
     private lateinit var cameraExecutor: ExecutorService
-    private lateinit var imageCaptureButton: Button
-    private lateinit var viewFinder: PreviewView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_camera)
+        binding = FragmentCameraBinding.inflate(layoutInflater)
 
-        imageCaptureButton = findViewById(R.id.image_capture_button)
-        viewFinder = findViewById(R.id.viewFinder)
-
+        beerGameObj = arguments?.let { CameraFragmentArgs.fromBundle(it).beerGame }!!
+        Log.d("BEERNAMEFRAG from nav", beerGameObj.toString())
 
         // Request camera permissions
         if (allPermissionsGranted()) {
+            Log.d("PERMISSIONS", "Granted")
             startCamera()
         } else {
+            Log.d("PERMISSIONS", "NOT Granted")
             requestPermissions()
         }
 
-        // Set up the listeners for take photo and video capture buttons
-        imageCaptureButton.setOnClickListener { takePhoto() }
-
         cameraExecutor = Executors.newSingleThreadExecutor()
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentCameraBinding.inflate(inflater)
+        binding.imgCaptureButton.setOnClickListener {
+            takePhoto()
+        }
+        return binding.root
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        cameraExecutor.shutdown()
     }
 
     private fun takePhoto() {
@@ -77,37 +95,45 @@ class CameraActivity : AppCompatActivity() {
         }
 
         // Create output options object which contains file + metadata
-        val outputOptions = ImageCapture.OutputFileOptions
-            .Builder(contentResolver,
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                contentValues)
-            .build()
+        val outputOptions = activity?.applicationContext?.let {
+            ImageCapture.OutputFileOptions
+                .Builder(
+                    it.contentResolver,
+                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                    contentValues)
+                .build()
+        }
 
         // Set up image capture listener, which is triggered after photo has
         // been taken
-        imageCapture.takePicture(
-            outputOptions,
-            ContextCompat.getMainExecutor(this),
-            object : ImageCapture.OnImageSavedCallback {
-                override fun onError(exc: ImageCaptureException) {
-                    Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
-                }
+        if (outputOptions != null) {
+            imageCapture.takePicture(
+                outputOptions,
+                ContextCompat.getMainExecutor(requireContext()),
+                object : ImageCapture.OnImageSavedCallback {
+                    override fun onError(exc: ImageCaptureException) {
+                        Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
+                    }
 
-                override fun
-                        onImageSaved(output: ImageCapture.OutputFileResults){
-                    // print success message
-                    val msg = "Photo capture succeeded: ${output.savedUri}"
-                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-                    Log.d(TAG, msg)
-                    val navController = findNavController(R.id.nav_host_fragment)
-                    navController.navigate(R.id.beerNameFragment)
+                    override fun
+                            onImageSaved(output: ImageCapture.OutputFileResults){
+                        // print success message
+                        val msg = "Photo capture succeeded: ${output.savedUri}"
+                        Toast.makeText(requireActivity().baseContext, msg, Toast.LENGTH_SHORT).show()
+                        Log.d(TAG, msg)
+                        beerGameObj.imgPath = output.savedUri
+
+                        val action = CameraFragmentDirections.actionCameraFragmentToBeerNameFragment(beerGameObj)
+                        binding.root.findNavController().navigate(action)
+                    }
                 }
-            }
-        )
+            )
+        }
     }
 
     private fun startCamera() {
-        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
+        Log.d("CAMERA", "Start camera")
+        val cameraProviderFuture = ProcessCameraProvider.getInstance(requireActivity())
 
         cameraProviderFuture.addListener({
             // Used to bind the lifecycle of cameras to the lifecycle owner
@@ -117,10 +143,13 @@ class CameraActivity : AppCompatActivity() {
             val preview = Preview.Builder()
                 .build()
                 .also {
-                    it.setSurfaceProvider(viewFinder.surfaceProvider)
+                    it.setSurfaceProvider(binding.viewFinder.surfaceProvider)
                 }
 
+            Log.d("PREVIEW", preview.toString())
+
             imageCapture = ImageCapture.Builder().build()
+            Log.d("IMAGECAPTURE", imageCapture.toString())
 
             // Select back camera as a default
             val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
@@ -137,7 +166,7 @@ class CameraActivity : AppCompatActivity() {
                 Log.e(TAG, "Use case binding failed", exc)
             }
 
-        }, ContextCompat.getMainExecutor(this))
+        }, ContextCompat.getMainExecutor(requireActivity()))
     }
 
     private fun requestPermissions() {
@@ -146,26 +175,7 @@ class CameraActivity : AppCompatActivity() {
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(
-            baseContext, it) == PackageManager.PERMISSION_GRANTED
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        cameraExecutor.shutdown()
-    }
-
-    companion object {
-        private const val TAG = "CameraXApp"
-        private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
-        private val REQUIRED_PERMISSIONS =
-            mutableListOf (
-                Manifest.permission.CAMERA,
-//                Manifest.permission.RECORD_AUDIO
-            ).apply {
-                if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
-                    add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                }
-            }.toTypedArray()
+            requireActivity().baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
 
     private val activityResultLauncher =
@@ -180,7 +190,7 @@ class CameraActivity : AppCompatActivity() {
                     permissionGranted = false
             }
             if (!permissionGranted) {
-                Toast.makeText(baseContext,
+                Toast.makeText(requireActivity().baseContext,
                     "Permission request denied",
                     Toast.LENGTH_SHORT).show()
             } else {
@@ -188,14 +198,16 @@ class CameraActivity : AppCompatActivity() {
             }
         }
 
-//    private fun displayImageInButton(path: String) {
-//
-//        val imgFile = File(path) //"/storage/emulated/0/DCIM/Camera/IMG_20151102_193132.jpg"
-//        if (imgFile.exists()) {
-//            val myBitmap = BitmapFactory.decodeFile(imgFile.absolutePath)
-//            val myImage = findViewById<View>(R.id.imageviewTest) as ImageView
-//            myImage.setImageBitmap(myBitmap)
-//        }
-//
-//    }
+    companion object {
+        const val TAG = "CameraXApp"
+        const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
+        val REQUIRED_PERMISSIONS =
+            mutableListOf (
+                Manifest.permission.CAMERA
+            ).apply {
+                if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+                    add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                }
+            }.toTypedArray()
+    }
 }
