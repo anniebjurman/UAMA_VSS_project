@@ -86,4 +86,9 @@
             android:id="@+id/action_cameraFragment_to_beerNameFragment"
             app:destination="@id/beerNameFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/savedAnalyzesFragment"
+        android:name="se.umu.cs.id19abn.upg3.SavedAnalyzesFragment"
+        android:label="SavedAnalyzesFragment"
+        tools:layout="@layout/fragment_saved_analyzes"/>
 </navigation>
