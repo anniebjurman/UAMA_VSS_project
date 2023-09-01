@@ -19,7 +19,7 @@ class ServeFragment : Fragment() {
 
     private lateinit var binding: FragmentServeBinding
     private lateinit var beerGameObj: BeerGame
-    private lateinit var serveButtons: ArrayList<ImageButton>
+    private var serveButtons: ArrayList<ImageButton> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +33,6 @@ class ServeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentServeBinding.inflate(inflater)
-        serveButtons = ArrayList()
         serveButtons.addAll(
             listOf(
                 binding.btnBbq,
@@ -53,6 +52,8 @@ class ServeFragment : Fragment() {
             )
         )
 
+        setExistingData()
+
         // Setup clickListeners
         for (s in serveButtons.indices) {
             // Click -> Mark that dice
@@ -70,6 +71,54 @@ class ServeFragment : Fragment() {
             binding.root.findNavController().navigate(action)
         }
         return binding.root
+    }
+
+    private fun setExistingData() {
+        val chosenItems: ArrayList<String> = beerGameObj.servedTo.getChosenItems()
+        chosenItems.forEach {item ->
+            if (item == "bbq") {
+                updateServeImageButton(0)
+            }
+            if (item == "bird") {
+                updateServeImageButton(1)
+            }
+            if (item == "cheese") {
+                updateServeImageButton(2)
+            }
+            if (item == "cow") {
+                updateServeImageButton(3)
+            }
+            if (item == "chili") {
+                updateServeImageButton(4)
+            }
+            if (item == "dessert") {
+                updateServeImageButton(5)
+            }
+            if (item == "fish") {
+                updateServeImageButton(6)
+            }
+            if (item == "glass") {
+                updateServeImageButton(7)
+            }
+            if (item == "radish") {
+                updateServeImageButton(8)
+            }
+            if (item == "temple") {
+                updateServeImageButton(9)
+            }
+            if (item == "pig") {
+                updateServeImageButton(10)
+            }
+            if (item == "moose") {
+                updateServeImageButton(11)
+            }
+            if (item == "shrimp") {
+                updateServeImageButton(12)
+            }
+            if (item == "sheep") {
+                updateServeImageButton(13)
+            }
+        }
     }
 
     private fun toggleServeButton(btnIndex: Int) {
