@@ -7,8 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.activity.addCallback
 import androidx.core.os.bundleOf
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.findNavController
@@ -18,6 +21,7 @@ class DescriptionFragment : Fragment() {
 
     private lateinit var binding: FragmentDescriptionBinding
     private lateinit var beerGameObj: BeerGame
+    private var textFieldViews: ArrayList<EditText> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,29 +35,40 @@ class DescriptionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDescriptionBinding.inflate(inflater)
+        textFieldViews.addAll(
+            listOf(
+                binding.description1,
+                binding.description2,
+                binding.description3,
+                binding.description4,
+                binding.description5
+            )
+        )
+
+        setExistingData()
+
+        textFieldViews.forEachIndexed{ index, entry ->
+            entry.addTextChangedListener {
+                beerGameObj.describedAs[index] = entry.text.toString()
+            }
+        }
 
         binding.btnNextConclusion.setOnClickListener {
-            Log.d("BUTTON CLICK", "go to summary")
-            beerGameObj.describedAs.addAll(listOf(
-                binding.description1.text.toString(),
-                binding.description2.text.toString(),
-                binding.description3.text.toString(),
-                binding.description4.text.toString(),
-                binding.description5.text.toString()
-            ))
-
-            val action = DescriptionFragmentDirections.actionDescriptionFragmentToSummaryFragment(beerGameObj)
+            val action =
+                DescriptionFragmentDirections.actionDescriptionFragmentToSummaryFragment(beerGameObj)
             binding.root.findNavController().navigate(action)
         }
 
         return binding.root
     }
 
+    private fun setExistingData() {
+        beerGameObj.describedAs.forEach { entry ->
+            textFieldViews[entry.key].setText(entry.value)
+        }
+    }
+
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         */
         fun newInstance(): DescriptionFragment {
             return DescriptionFragment()
         }

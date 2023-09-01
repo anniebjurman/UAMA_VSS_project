@@ -34,36 +34,34 @@ class FlavorsFragment : Fragment() {
     ): View {
         binding = FragmentFlavorsBinding.inflate(inflater)
 
+        setExistingData()
+
         binding.bitterSlider.addOnChangeListener { _, _, _ ->
             beerGameObj.flavours.bitter = binding.bitterSlider.values[0].toInt()
-//                Log.d("bitterNum", bitterNum.toString())
         }
 
         binding.fullnessSlider.addOnChangeListener { _, _, _ ->
             beerGameObj.flavours.fullness = binding.fullnessSlider.values[0].toInt()
-//            Log.d("fullnessNum", fullnessNum.toString())
         }
 
         binding.sweetnessSlider.addOnChangeListener { _, _, _ ->
             beerGameObj.flavours.sweetness = binding.sweetnessSlider.values[0].toInt()
-//            Log.d("sweetnessNum", sweetnessNum.toString())
         }
 
         binding.btnNextFlavors.setOnClickListener {
-            Log.d("BUTTON CLICK", "go to serve frag")
-            Log.d("BEERNAMEFRAG updated", beerGameObj.toString())
-
             val action = FlavorsFragmentDirections.actionFlavorsFragmentToServeFragment(beerGameObj)
             binding.root.findNavController().navigate(action)
         }
         return binding.root
     }
 
+    private fun setExistingData() {
+        binding.bitterSlider.setValues(beerGameObj.flavours.bitter.toFloat())
+        binding.fullnessSlider.setValues(beerGameObj.flavours.fullness.toFloat())
+        binding.sweetnessSlider.setValues(beerGameObj.flavours.sweetness.toFloat())
+    }
+
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         */
         fun newInstance(): FlavorsFragment {
             return FlavorsFragment()
         }

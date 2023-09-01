@@ -10,7 +10,6 @@ import androidx.navigation.findNavController
 import se.umu.cs.id19abn.upg3.databinding.FragmentBeerNameBinding
 import java.io.File
 
-
 class BeerNameFragment : Fragment() {
     private lateinit var binding: FragmentBeerNameBinding
     private lateinit var beerGameObj: BeerGame
@@ -31,13 +30,7 @@ class BeerNameFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentBeerNameBinding.inflate(inflater)
 
-        if (beerGameObj.beerName != null) {
-            binding.beerName.setText(beerGameObj.beerName)
-        }
-
-        if (beerGameObj.imgPath != null) {
-            displayImage()
-        }
+        setExistingData()
 
         binding.btnOpenCamera.setOnClickListener {
             if (binding.beerName.text != null) {
@@ -49,11 +42,8 @@ class BeerNameFragment : Fragment() {
         }
 
         binding.btnNextBeerName.setOnClickListener {
-            Log.d("BUTTON CLICK", "go to flavour frag")
-
             // save input beer game to BeerGame obj
             beerGameObj.beerName = binding.beerName.text.toString()
-            Log.d("BEERNAMEFRAG updated", beerGameObj.toString())
 
             // navigate to next frag
             val action =
@@ -62,6 +52,16 @@ class BeerNameFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun setExistingData() {
+        if (beerGameObj.beerName != null) {
+            binding.beerName.setText(beerGameObj.beerName)
+        }
+
+        if (beerGameObj.imgPath != null) {
+            displayImage()
+        }
     }
 
     private fun displayImage() {
