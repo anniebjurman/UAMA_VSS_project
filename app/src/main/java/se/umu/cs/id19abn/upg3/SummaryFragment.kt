@@ -1,5 +1,7 @@
 package se.umu.cs.id19abn.upg3
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,9 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import se.umu.cs.id19abn.upg3.databinding.FragmentSummaryBinding
 import java.io.File
+import java.util.EventListener
 
+interface OnDataPass {
+    fun onDataPass(data: BeerGame)
+}
 
 /**
  * A simple ...
@@ -19,6 +26,12 @@ class SummaryFragment : Fragment() {
     private lateinit var binding: FragmentSummaryBinding
     private lateinit var beerGameObj: BeerGame
     private lateinit var imageHelper: ImageHelper
+    private lateinit var dataPasser: OnDataPass
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        dataPasser = context as OnDataPass
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +47,13 @@ class SummaryFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentSummaryBinding.inflate(inflater)
+
+        binding.btnSaveAnalysis.setOnClickListener {
+            Log.d("CLICK", "save analysis")
+            passData(beerGameObj)
+            val action = SummaryFragmentDirections.actionSummaryFragmentToHomeFragment()
+            binding.root.findNavController().navigate(action)
+        }
 
         // display data
         binding.sumBeerName.text = beerGameObj.beerName
@@ -62,6 +82,10 @@ class SummaryFragment : Fragment() {
         displayImage()
 
         return binding.root
+    }
+
+    private fun passData(data: BeerGame){
+        dataPasser.onDataPass(data)
     }
 
     private fun displayImage() {

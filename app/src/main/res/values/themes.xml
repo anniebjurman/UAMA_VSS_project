@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.Upg3" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.Upg3" parent="android:Theme.Material.Light" />
 
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">15sp</item>
@@ -10,7 +10,7 @@
 
 
 <!--    slider-->
-    <style name="MyMaterialTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="MyMaterialTheme" parent="Theme.MaterialComponents.Light">
         <item name="colorPrimary">@color/green</item>
         <item name="sliderStyle">@style/Widget.App.Slider</item>
     </style>

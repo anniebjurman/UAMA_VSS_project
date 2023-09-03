@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/beerNameFragment"
         android:name="se.umu.cs.id19abn.upg3.BeerNameFragment"
-        android:label="BeerNameFragment"
+        android:label="@string/empty"
         tools:layout="@layout/fragment_beer_name">
         <action
             android:id="@+id/action_beerNameFragment_to_flavorsFragment"
@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/flavorsFragment"
         android:name="se.umu.cs.id19abn.upg3.FlavorsFragment"
-        android:label="FlavorsFragment"
+        android:label="@string/empty"
         tools:layout="@layout/fragment_flavors">
         <action
             android:id="@+id/action_flavorsFragment_to_serveFragment"
@@ -35,7 +35,7 @@
     <fragment
         android:id="@+id/serveFragment"
         android:name="se.umu.cs.id19abn.upg3.ServeFragment"
-        android:label="ServeFragment"
+        android:label="@string/empty"
         tools:layout="@layout/fragment_serve">
         <action
             android:id="@+id/action_serveFragment_to_descriptionFragment"
@@ -47,7 +47,7 @@
     <fragment
         android:id="@+id/descriptionFragment"
         android:name="se.umu.cs.id19abn.upg3.DescriptionFragment"
-        android:label="DescriptionFragment"
+        android:label="@string/empty"
         tools:layout="@layout/fragment_description">
         <argument
             android:name="beerGame"
@@ -59,25 +59,31 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="se.umu.cs.id19abn.upg3.HomeFragment"
-        android:label="HomeFragment"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_beerNameFragment"
             app:destination="@id/beerNameFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_savedAnalyzesFragment"
+            app:destination="@id/savedAnalyzesFragment" />
     </fragment>
     <fragment
         android:id="@+id/summaryFragment"
         android:name="se.umu.cs.id19abn.upg3.SummaryFragment"
-        android:label="fragment_summary"
+        android:label="@string/empty"
         tools:layout="@layout/fragment_summary" >
         <argument
             android:name="beerGame"
             app:argType="se.umu.cs.id19abn.upg3.BeerGame" />
+        <action
+            android:id="@+id/action_summaryFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/cameraFragment"
         android:name="se.umu.cs.id19abn.upg3.CameraFragment"
-        android:label="CameraFragment"
+        android:label="@string/empty"
         tools:layout="@layout/fragment_camera">
         <argument
             android:name="beerGame"
@@ -89,6 +95,6 @@
     <fragment
         android:id="@+id/savedAnalyzesFragment"
         android:name="se.umu.cs.id19abn.upg3.SavedAnalyzesFragment"
-        android:label="SavedAnalyzesFragment"
+        android:label="@string/empty"
         tools:layout="@layout/fragment_saved_analyzes"/>
 </navigation>
