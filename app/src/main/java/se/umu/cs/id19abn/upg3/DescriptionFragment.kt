@@ -26,7 +26,7 @@ class DescriptionFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        beerGameObj = arguments?.let { BeerNameFragmentArgs.fromBundle(it).beerGame }!!
+        beerGameObj = arguments?.let { DescriptionFragmentArgs.fromBundle(it).beerGame }!!
         Log.d("BEERNAMEFRAG from nav", beerGameObj.toString())
     }
 
@@ -55,7 +55,7 @@ class DescriptionFragment : Fragment() {
 
         binding.btnNextConclusion.setOnClickListener {
             val action =
-                DescriptionFragmentDirections.actionDescriptionFragmentToSummaryFragment(beerGameObj)
+                DescriptionFragmentDirections.actionDescriptionFragmentToSummaryFragment(beerGameObj, false)
             binding.root.findNavController().navigate(action)
         }
 

@@ -24,7 +24,7 @@ class ServeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        beerGameObj = arguments?.let { BeerNameFragmentArgs.fromBundle(it).beerGame }!!
+        beerGameObj = arguments?.let { ServeFragmentArgs.fromBundle(it).beerGame }!!
         Log.d("BEERNAMEFRAG from nav", beerGameObj.toString())
     }
 

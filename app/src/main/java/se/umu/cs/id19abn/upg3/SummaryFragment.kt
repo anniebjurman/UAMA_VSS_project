@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import se.umu.cs.id19abn.upg3.databinding.FragmentSummaryBinding
@@ -25,6 +26,7 @@ class SummaryFragment : Fragment() {
 
     private lateinit var binding: FragmentSummaryBinding
     private lateinit var beerGameObj: BeerGame
+    private var isSaved: Boolean = false
     private lateinit var imageHelper: ImageHelper
     private lateinit var dataPasser: OnDataPass
 
@@ -37,8 +39,11 @@ class SummaryFragment : Fragment() {
         super.onCreate(savedInstanceState)
         imageHelper = ImageHelper()
 
-        beerGameObj = arguments?.let { BeerNameFragmentArgs.fromBundle(it).beerGame }!!
+        beerGameObj = arguments?.let { SummaryFragmentArgs.fromBundle(it).beerGame }!!
+        isSaved = arguments?.let { SummaryFragmentArgs.fromBundle(it).isSaved }!!
         Log.d("BEERNAMEFRAG from nav", beerGameObj.toString())
+        Log.d("BEERNAMEFRAG from nav2", isSaved.toString())
+
     }
 
     override fun onCreateView(
@@ -80,6 +85,16 @@ class SummaryFragment : Fragment() {
 
         // display image
         displayImage()
+
+        // hide saved btn if is already saved
+        if (isSaved) {
+            binding.btnSaveAnalysis.visibility = View.GONE
+        }
+
+        // style img view
+        if (beerGameObj.imgPath == null) {
+            binding.imgViewSum.setBackgroundColor(resources.getColor(R.color.dim_green))
+        }
 
         return binding.root
     }

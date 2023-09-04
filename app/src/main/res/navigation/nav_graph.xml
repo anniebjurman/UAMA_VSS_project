@@ -79,6 +79,9 @@
         <action
             android:id="@+id/action_summaryFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument
+            android:name="isSaved"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/cameraFragment"
@@ -100,5 +103,8 @@
         <argument
             android:name="listBeerGame"
             app:argType="se.umu.cs.id19abn.upg3.ListBeerGame" />
+        <action
+            android:id="@+id/action_savedAnalyzesFragment_to_summaryFragment"
+            app:destination="@id/summaryFragment" />
     </fragment>
 </navigation>

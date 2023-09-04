@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import se.umu.cs.id19abn.upg3.databinding.FragmentSavedAnalyzesBinding
 import java.io.File
 
@@ -37,16 +38,28 @@ class SavedAnalyzesFragment : Fragment() {
 
         listBeerGame.beerGames.forEach { bg ->
             Log.d("LOOP", "in loop")
-            // this method inflates the single item layout
-            // inside the parent linear layout
-            val inf = LayoutInflater.from(activity).inflate(R.layout.beer_game_item, container, false)
+            // inflate beer_game_item inside the parent linear layout
+            val view = LayoutInflater.from(activity).inflate(R.layout.beer_game_item, container, false)
 
-            val beerNameView = inf.findViewById<TextView>(R.id.item_beer_name)
+            val beerNameView = view.findViewById<TextView>(R.id.item_beer_name)
             beerNameView.text = bg.beerName
 
-            val beerImgView = inf.findViewById<ImageView>(R.id.item_beer_img)
-            bg.imgPath?.let { displayImage(it, beerImgView) }
-            binding.parentLinearLayout.addView(inf, binding.parentLinearLayout.childCount)
+            val beerImgView = view.findViewById<ImageView>(R.id.item_beer_img)
+
+            if (bg.imgPath == null) {
+                beerImgView.setBackgroundColor(resources.getColor(R.color.dim_green))
+            } else {
+                displayImage(bg.imgPath!!, beerImgView)
+            }
+
+            binding.parentLinearLayout.addView(view, binding.parentLinearLayout.childCount)
+
+            // setup clickListeners
+            view.setOnClickListener {
+                Log.d("CLICK", "on analysed")
+                val action = SavedAnalyzesFragmentDirections.actionSavedAnalyzesFragmentToSummaryFragment(bg, true)
+                binding.root.findNavController().navigate(action)
+            }
         }
 
         return binding.root
@@ -56,7 +69,6 @@ class SavedAnalyzesFragment : Fragment() {
         val imgFile = File(imgPath)
         if (imgFile.exists()) {
             val rotatedBitmap = imageHelper.rotateImage(imgFile.absolutePath)
-//                val scaledBitmap = rotatedBitmap?.let { imageHelper.scaleBitmap(it, binding.imgPreview) }
             view.setImageBitmap(rotatedBitmap)
         }
     }
