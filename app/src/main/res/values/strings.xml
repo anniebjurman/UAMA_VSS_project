@@ -5,6 +5,7 @@
     <string name="action_settings">settings</string>
     <string name="next_step">Nästa steg</string>
     <string name="empty"> </string>
+    <string name="analysed_drinks">Analyserade drycker</string>
 
     <!--    HomeFragment-->
     <string name="app_name">Vad Säger Systemet?</string>
@@ -22,7 +23,7 @@
     <string name="name_beer">Vad heter ölen?</string>
     <string name="img_beer">Lägg till en bil på ölen.</string>
 
-    <!-- FlavorFragment -->
+    <!--    FlavorFragment -->
     <string name="second_state">2 / 4</string>
     <string name="flavors">Smaker</string>
     <string name="beer_flavors">Ölens smaker?</string>
@@ -59,7 +60,7 @@
     <string name="beer_name_PH">Ölens namn</string>
     <string name="description_PH">Frisk</string>
 
-    <!-- camera -->
+    <!--    camera -->
     <string name="take_photo">Ta bild</string>
     <string name="start_capture">Spela in</string>
     <string name="stop_capture">Sluta spela in</string>

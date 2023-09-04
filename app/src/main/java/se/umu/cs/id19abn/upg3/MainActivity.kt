@@ -18,19 +18,20 @@ class MainActivity: AppCompatActivity(), OnDataPass {
 
     private lateinit var navController: NavController
     private lateinit var navHostFragment: NavHostFragment
-    private lateinit var savedAnalyzes: ArrayList<BeerGame>
+    private lateinit var savedAnalyzes: ListBeerGame
 
     override fun onDataPass(data: BeerGame) {
         Log.d("DATA", data.toString())
-        savedAnalyzes.add(data)
+        savedAnalyzes.beerGames.add(data)
         Toast.makeText(applicationContext,"Analys sparad", Toast.LENGTH_SHORT).show()
+        Log.d("TOTAL DATA", savedAnalyzes.beerGames.toString())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // init arraylist for saved analyzes
-        savedAnalyzes = ArrayList()
+        savedAnalyzes = ListBeerGame()
 
         // set content view
         val binding = ActivityMainBinding.inflate(layoutInflater)
@@ -60,7 +61,7 @@ class MainActivity: AppCompatActivity(), OnDataPass {
 
             if (currentFrag is HomeFragment ) {
                 Log.d("MENU", "from home")
-                val action = HomeFragmentDirections.actionHomeFragmentToSavedAnalyzesFragment()
+                val action = HomeFragmentDirections.actionHomeFragmentToSavedAnalyzesFragment(savedAnalyzes)
                 navController.navigate(action)
                 true
             } else {

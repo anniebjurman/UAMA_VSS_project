@@ -96,5 +96,9 @@
         android:id="@+id/savedAnalyzesFragment"
         android:name="se.umu.cs.id19abn.upg3.SavedAnalyzesFragment"
         android:label="@string/empty"
-        tools:layout="@layout/fragment_saved_analyzes"/>
+        tools:layout="@layout/fragment_saved_analyzes">
+        <argument
+            android:name="listBeerGame"
+            app:argType="se.umu.cs.id19abn.upg3.ListBeerGame" />
+    </fragment>
 </navigation>
