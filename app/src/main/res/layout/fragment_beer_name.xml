@@ -42,8 +42,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/img_beer"
-            android:textColor="@color/green"
-            android:background="@color/white"
+            android:textColor="@color/white"
+            android:background="@drawable/default_btn"
             android:layout_gravity="center"
             android:layout_marginBottom="50dp"
             android:paddingHorizontal="10dp"/>

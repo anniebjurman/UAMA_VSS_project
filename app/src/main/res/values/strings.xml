@@ -6,6 +6,17 @@
     <string name="next_step">Nästa steg</string>
     <string name="empty"> </string>
     <string name="analysed_drinks">Analyserade drycker</string>
+    <string name="instructions">
+        “Vad Säger Systemet?” går ut på att samlas ett gäng personer och analysera och dricka god dryck tillsammans, samtidigt som man även kan göra det till en tävling. Det går ut på att svara på frågor inom 4 olika kategorier och matcha sina svar i hur drycken är beskriven på Systembolagets hemsida. Systembolaget är facit!
+        \n\n
+        OBS! Endast öl är än så länge implementerat.
+        \n\n
+        1. Börja med att ta fram den öl du tänker testa.\n
+        2. Klicka på “öl” och fyll i svar på frågorna.\n
+        3. Spara ner analysen.\n
+        4. Skanna sedan ölens sträckkod i systembolagets app och jämför dina svar med systembolagets beskrivning.\n
+        5. Räkna ihop antal rätt!
+    </string>
 
     <!--    HomeFragment-->
     <string name="app_name">Vad Säger Systemet?</string>
