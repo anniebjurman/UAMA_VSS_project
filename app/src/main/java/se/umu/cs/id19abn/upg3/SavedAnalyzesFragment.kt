@@ -1,7 +1,6 @@
 package se.umu.cs.id19abn.upg3
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +24,6 @@ class SavedAnalyzesFragment : Fragment() {
         imageHelper = ImageHelper()
 
         listBeerGame = arguments?.let { SavedAnalyzesFragmentArgs.fromBundle(it).listBeerGame }!!
-        Log.d("LISTBEERGAME from nav", listBeerGame.beerGames.toString())
 
     }
 
@@ -37,7 +35,6 @@ class SavedAnalyzesFragment : Fragment() {
         binding = FragmentSavedAnalyzesBinding.inflate(inflater)
 
         listBeerGame.beerGames.forEach { bg ->
-            Log.d("LOOP", "in loop")
             // inflate beer_game_item inside the parent linear layout
             val view = LayoutInflater.from(activity).inflate(R.layout.beer_game_item, container, false)
 
@@ -56,7 +53,6 @@ class SavedAnalyzesFragment : Fragment() {
 
             // setup clickListeners
             view.setOnClickListener {
-                Log.d("CLICK", "on analysed")
                 val action = SavedAnalyzesFragmentDirections.actionSavedAnalyzesFragmentToSummaryFragment(bg, true)
                 binding.root.findNavController().navigate(action)
             }

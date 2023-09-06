@@ -1,6 +1,5 @@
 package se.umu.cs.id19abn.upg3
 
-import android.net.Uri
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 

@@ -1,17 +1,13 @@
 package se.umu.cs.id19abn.upg3
 
-import android.R
 import android.annotation.SuppressLint
-import android.content.Context.LAYOUT_INFLATER_SERVICE
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.PopupWindow
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import se.umu.cs.id19abn.upg3.databinding.FragmentHomeBinding
@@ -32,7 +28,6 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater)
 
         binding.btnBeer.setOnClickListener {
-            Log.d("BUTTON CLICK", "beer btn")
             val beerGame = BeerGame()
             val action = HomeFragmentDirections.actionHomeFragmentToBeerNameFragment(beerGame)
             binding.root.findNavController().navigate(action)

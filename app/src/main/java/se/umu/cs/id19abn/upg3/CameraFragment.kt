@@ -12,7 +12,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
@@ -23,6 +22,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import se.umu.cs.id19abn.upg3.databinding.FragmentCameraBinding
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.concurrent.ExecutorService
@@ -44,14 +44,11 @@ class CameraFragment : Fragment() {
         binding = FragmentCameraBinding.inflate(layoutInflater)
 
         beerGameObj = arguments?.let { CameraFragmentArgs.fromBundle(it).beerGame }!!
-        Log.d("BEERNAMEFRAG from nav", beerGameObj.toString())
 
         // Request camera permissions
         if (allPermissionsGranted()) {
-            Log.d("PERMISSIONS", "Granted")
             startCamera()
         } else {
-            Log.d("PERMISSIONS", "NOT Granted")
             requestPermissions()
         }
 
@@ -85,7 +82,6 @@ class CameraFragment : Fragment() {
     }
 
     private fun takePhoto() {
-        Log.d("CLICK!", "take photo")
         // Get a stable reference of the modifiable image capture use case
         val imageCapture = imageCapture ?: return
 
@@ -95,12 +91,13 @@ class CameraFragment : Fragment() {
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, name)
             put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
-            if(Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
-                put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/CameraX-Image")
-            }
+            put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/Vad-Sager-Systemet")
+
+//            if(Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
+//            }
         }
 
-        val imagePath = "/storage/emulated/0/Pictures/CameraX-Image/$name.jpg"
+        val imagePath = "/storage/emulated/0/Pictures/Vad-Sager-Systemet/$name.jpg"
 
         // Create output options object which contains file + metadata
         val outputOptions = activity?.applicationContext?.let {
@@ -129,6 +126,12 @@ class CameraFragment : Fragment() {
 //                        val msg = "Photo capture succeeded: ${output.savedUri}"
 //                        Toast.makeText(requireActivity().baseContext, msg, Toast.LENGTH_SHORT).show()
 //                        Log.d(TAG, msg)
+                        val file = output.savedUri?.path?.let { File(it) }
+                        val split = file?.path?.split(":")
+                        val path = split?.get(0)
+                        Log.d("IMAGE PATH 1", path.toString() )
+                        Log.d("IMAGE PATH 2", imagePath )
+
                         beerGameObj.imgPath = imagePath
 
                         val action = CameraFragmentDirections.actionCameraFragmentToBeerNameFragment(beerGameObj)
@@ -140,7 +143,6 @@ class CameraFragment : Fragment() {
     }
 
     private fun startCamera() {
-        Log.d("CAMERA", "Start camera")
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireActivity())
 
         cameraProviderFuture.addListener({
@@ -154,11 +156,7 @@ class CameraFragment : Fragment() {
                     it.setSurfaceProvider(binding.viewFinder.surfaceProvider)
                 }
 
-            Log.d("PREVIEW", preview.toString())
-
             imageCapture = ImageCapture.Builder().build()
-            Log.d("IMAGECAPTURE", imageCapture.toString())
-
             // Select back camera as a default
             val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 
@@ -191,7 +189,6 @@ class CameraFragment : Fragment() {
             ActivityResultContracts.RequestMultiplePermissions())
         { permissions ->
             // Handle Permission granted/rejected
-            Log.d("PERMISSIONS CAMERA", permissions.toString())
             var permissionGranted = true
             permissions.entries.forEach {
                 if (it.key in REQUIRED_PERMISSIONS && !it.value)

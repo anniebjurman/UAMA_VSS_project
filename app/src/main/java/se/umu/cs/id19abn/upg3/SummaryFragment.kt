@@ -1,19 +1,15 @@
 package se.umu.cs.id19abn.upg3
 
-import android.app.Activity
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import se.umu.cs.id19abn.upg3.databinding.FragmentSummaryBinding
 import java.io.File
-import java.util.EventListener
 
 interface OnDataPass {
     fun onDataPass(data: BeerGame)
@@ -41,8 +37,6 @@ class SummaryFragment : Fragment() {
 
         beerGameObj = arguments?.let { SummaryFragmentArgs.fromBundle(it).beerGame }!!
         isSaved = arguments?.let { SummaryFragmentArgs.fromBundle(it).isSaved }!!
-        Log.d("BEERNAMEFRAG from nav", beerGameObj.toString())
-        Log.d("BEERNAMEFRAG from nav2", isSaved.toString())
 
     }
 
@@ -54,7 +48,6 @@ class SummaryFragment : Fragment() {
         binding = FragmentSummaryBinding.inflate(inflater)
 
         binding.btnSaveAnalysis.setOnClickListener {
-            Log.d("CLICK", "save analysis")
             passData(beerGameObj)
             val action = SummaryFragmentDirections.actionSummaryFragmentToHomeFragment()
             binding.root.findNavController().navigate(action)

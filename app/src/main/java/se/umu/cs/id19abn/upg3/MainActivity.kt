@@ -1,9 +1,6 @@
 package se.umu.cs.id19abn.upg3
 
-
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -21,10 +18,8 @@ class MainActivity: AppCompatActivity(), OnDataPass {
     private lateinit var savedAnalyzes: ListBeerGame
 
     override fun onDataPass(data: BeerGame) {
-        Log.d("DATA", data.toString())
         savedAnalyzes.beerGames.add(data)
         Toast.makeText(applicationContext,"Analys sparad", Toast.LENGTH_SHORT).show()
-        Log.d("TOTAL DATA", savedAnalyzes.beerGames.toString())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,15 +52,12 @@ class MainActivity: AppCompatActivity(), OnDataPass {
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_saved_analyses -> {
             val currentFrag = navHostFragment.childFragmentManager.fragments[0]
-            Log.d("CURRENT FRAG", currentFrag.toString())
 
             if (currentFrag is HomeFragment ) {
-                Log.d("MENU", "from home")
                 val action = HomeFragmentDirections.actionHomeFragmentToSavedAnalyzesFragment(savedAnalyzes)
                 navController.navigate(action)
                 true
             } else {
-                Log.d("MENU", "from other")
                 true
             }
         }

@@ -1,7 +1,6 @@
 package se.umu.cs.id19abn.upg3
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +19,6 @@ class BeerNameFragment : Fragment() {
 
         imageHelper = ImageHelper()
         beerGameObj = arguments?.let { BeerNameFragmentArgs.fromBundle(it).beerGame }!!
-        Log.d("BEERNAMEFRAG from nav", beerGameObj.toString())
     }
 
     override fun onCreateView(

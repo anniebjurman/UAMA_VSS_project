@@ -2,15 +2,11 @@ package se.umu.cs.id19abn.upg3
 
 import android.content.res.ColorStateList
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
-import androidx.activity.addCallback
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import se.umu.cs.id19abn.upg3.databinding.FragmentServeBinding
 
@@ -25,7 +21,6 @@ class ServeFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         beerGameObj = arguments?.let { ServeFragmentArgs.fromBundle(it).beerGame }!!
-        Log.d("BEERNAMEFRAG from nav", beerGameObj.toString())
     }
 
     override fun onCreateView(
@@ -64,8 +59,6 @@ class ServeFragment : Fragment() {
         }
 
         binding.btnNextServe.setOnClickListener {
-            Log.d("BUTTON CLICK", "go to description frag")
-            Log.d("BEERNAMEFRAG updated", beerGameObj.toString())
             val action =
                 ServeFragmentDirections.actionServeFragmentToDescriptionFragment(beerGameObj)
             binding.root.findNavController().navigate(action)
