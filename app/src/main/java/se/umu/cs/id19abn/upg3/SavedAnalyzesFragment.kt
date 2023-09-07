@@ -12,7 +12,8 @@ import se.umu.cs.id19abn.upg3.databinding.FragmentSavedAnalyzesBinding
 import java.io.File
 
 /**
- * A simple
+ * A fragment for displaying a list
+ * of saved analyses of drinks.
  */
 class SavedAnalyzesFragment : Fragment() {
     private lateinit var binding: FragmentSavedAnalyzesBinding
@@ -21,8 +22,9 @@ class SavedAnalyzesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Initialize an ImageHelper instance for image-related operations
         imageHelper = ImageHelper()
-
+        // Get the 'listBeerGame' data passed from the previous fragment
         listBeerGame = arguments?.let { SavedAnalyzesFragmentArgs.fromBundle(it).listBeerGame }!!
 
     }
@@ -34,37 +36,52 @@ class SavedAnalyzesFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentSavedAnalyzesBinding.inflate(inflater)
 
+        // Iterate through the 'beerGames' list in 'listBeerGame'
         listBeerGame.beerGames.forEach { bg ->
-            // inflate beer_game_item inside the parent linear layout
+            // Inflate the 'beer_game_item' layout inside the parent linear layout
             val view = LayoutInflater.from(activity).inflate(R.layout.beer_game_item, container, false)
 
+            // Find the TextView for displaying beer names and set its text
             val beerNameView = view.findViewById<TextView>(R.id.item_beer_name)
             beerNameView.text = bg.beerName
 
+            // Find the ImageView for displaying beer images
             val beerImgView = view.findViewById<ImageView>(R.id.item_beer_img)
 
+            // Check if the image path is null
             if (bg.imgPath == null) {
+                // Set the background color to dim green if there is no image
                 beerImgView.setBackgroundColor(resources.getColor(R.color.dim_green))
             } else {
+                // Display the image using the 'displayImage' function
                 displayImage(bg.imgPath!!, beerImgView)
             }
 
+            // Add the inflated view to the parent linear layout
             binding.parentLinearLayout.addView(view, binding.parentLinearLayout.childCount)
 
-            // setup clickListeners
+            // Setup click listeners for each beer item
             view.setOnClickListener {
+                // Create a navigation action to go to the SummaryFragment with the selected beer data
                 val action = SavedAnalyzesFragmentDirections.actionSavedAnalyzesFragmentToSummaryFragment(bg, true)
+
+                // Navigate to the SummaryFragment
                 binding.root.findNavController().navigate(action)
             }
         }
-
         return binding.root
     }
 
     private fun displayImage(imgPath: String, view: ImageView) {
+        // Create a File object using the provided image path
         val imgFile = File(imgPath)
+
+        // Check if the image file exists on the device
         if (imgFile.exists()) {
+            // Rotate the image if needed using the 'rotateImage' function from 'imageHelper'
             val rotatedBitmap = imageHelper.rotateImage(imgFile.absolutePath)
+
+            // Set the rotated bitmap as the image source for the provided ImageView
             view.setImageBitmap(rotatedBitmap)
         }
     }

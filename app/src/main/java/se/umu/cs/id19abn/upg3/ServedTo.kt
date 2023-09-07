@@ -3,6 +3,10 @@ package se.umu.cs.id19abn.upg3
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
+/**
+ * A class to save the state of/ manage the
+ * "served to" icons.
+ */
 @Parcelize
 class ServedTo(
     var bbq: Boolean = false,
@@ -22,8 +26,10 @@ class ServedTo(
 ) : Parcelable {
 
     fun getChosenItems(): ArrayList<String> {
+        // Create an ArrayList to store the chosen items
         val chosen = ArrayList<String>()
 
+        // Check each item and add it to 'chosen' if it is selected
         if (bbq) chosen.add("bbq")
         if (bird) chosen.add("bird")
         if (cheese) chosen.add("cheese")
@@ -43,6 +49,7 @@ class ServedTo(
     }
 
     fun getIcon(icon: String): Int {
+        // Return the corresponding drawable resource ID based on the provided 'icon' string
         return when (icon) {
             "bbq" -> R.drawable.bbq
             "bird" -> R.drawable.bird
@@ -58,7 +65,7 @@ class ServedTo(
             "sheep" -> R.drawable.sheep
             "shrimp" -> R.drawable.shrimp
             "temple" -> R.drawable.temple
-            else -> R.drawable.beer
+            else -> R.drawable.beer // Return a default drawable if no matching icon is found
         }
     }
 

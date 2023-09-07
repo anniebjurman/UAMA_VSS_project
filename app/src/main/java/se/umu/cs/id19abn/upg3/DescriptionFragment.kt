@@ -10,15 +10,19 @@ import androidx.core.widget.addTextChangedListener
 import androidx.navigation.findNavController
 import se.umu.cs.id19abn.upg3.databinding.FragmentDescriptionBinding
 
+/**
+ * A fragment for displaying input fields for
+ * the user to send in information about
+ * how a beer is described.
+ */
 class DescriptionFragment : Fragment() {
-
     private lateinit var binding: FragmentDescriptionBinding
     private lateinit var beerGameObj: BeerGame
     private var textFieldViews: ArrayList<EditText> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        // get beerName object from previous fragment
         beerGameObj = arguments?.let { DescriptionFragmentArgs.fromBundle(it).beerGame }!!
     }
 
@@ -26,7 +30,10 @@ class DescriptionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        // Inflate the layout for this fragment using the provided inflater
         binding = FragmentDescriptionBinding.inflate(inflater)
+
+        // Add the text field views to the textFieldViews list for easy access
         textFieldViews.addAll(
             listOf(
                 binding.description1,
@@ -37,25 +44,30 @@ class DescriptionFragment : Fragment() {
             )
         )
 
+        // Set existing data in the text field views
         setExistingData()
 
+        // Add a text changed listener to each text field view to update the beerGameObj
         textFieldViews.forEachIndexed{ index, entry ->
             entry.addTextChangedListener {
                 beerGameObj.describedAs[index] = entry.text.toString()
             }
         }
-
+        // Set a click listener for the "Next" button to navigate to the SummaryFragment
         binding.btnNextConclusion.setOnClickListener {
             val action =
                 DescriptionFragmentDirections.actionDescriptionFragmentToSummaryFragment(beerGameObj, false)
             binding.root.findNavController().navigate(action)
         }
-
+        // Return the root view of the inflated layout
         return binding.root
     }
 
     private fun setExistingData() {
+        // Iterate through the 'describedAs' entries in 'beerGameObj'
         beerGameObj.describedAs.forEach { entry ->
+            // Use the key (index) to access the corresponding text field view in 'textFieldViews'
+            // and set its text to the value from the 'describedAs' entry
             textFieldViews[entry.key].setText(entry.value)
         }
     }
