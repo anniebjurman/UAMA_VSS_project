@@ -34,15 +34,17 @@ class DescriptionFragment : Fragment() {
         binding = FragmentDescriptionBinding.inflate(inflater)
 
         // Add the text field views to the textFieldViews list for easy access
-        textFieldViews.addAll(
-            listOf(
-                binding.description1,
-                binding.description2,
-                binding.description3,
-                binding.description4,
-                binding.description5
+        if (textFieldViews.isEmpty()) {
+            textFieldViews.addAll(
+                listOf(
+                    binding.description1,
+                    binding.description2,
+                    binding.description3,
+                    binding.description4,
+                    binding.description5
+                )
             )
-        )
+        }
 
         // Set existing data in the text field views
         setExistingData()
