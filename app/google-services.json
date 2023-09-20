@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "426383275017",
+    "project_id": "vad-sager-systemet",
+    "storage_bucket": "vad-sager-systemet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:426383275017:android:5b3043f9619dcdcc0174d8",
+        "android_client_info": {
+          "package_name": "se.umu.cs.id19abn.upg3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsBQImPRcANbryLlqwbJJzC_gtOAvEu_8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
