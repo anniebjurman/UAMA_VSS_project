@@ -1,6 +1,7 @@
 package se.umu.cs.id19abn.upg3
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -8,6 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+//import com.google.firebase.ktx.Firebase
 import se.umu.cs.id19abn.upg3.databinding.ActivityMainBinding
 
 /**
@@ -16,6 +21,7 @@ import se.umu.cs.id19abn.upg3.databinding.ActivityMainBinding
  */
 class MainActivity: AppCompatActivity(), OnDataPass {
 
+    private lateinit var databaseRef: DatabaseReference
     private lateinit var navController: NavController
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var savedAnalyzes: ListBeerGame
@@ -23,6 +29,7 @@ class MainActivity: AppCompatActivity(), OnDataPass {
     override fun onDataPass(data: BeerGame) {
         // Add the received 'data' (BeerGame object) to the 'beerGames' list in 'savedAnalyzes'
         savedAnalyzes.beerGames.add(data)
+        databaseRef.setValue(data.toString())
 
         // Display a short toast message indicating that the analysis is saved
         Toast.makeText(applicationContext,"Analys sparad", Toast.LENGTH_SHORT).show()
@@ -30,6 +37,10 @@ class MainActivity: AppCompatActivity(), OnDataPass {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val db = Firebase.database("https://vad-sager-systemet-default-rtdb.europe-west1.firebasedatabase.app/")
+        databaseRef = db.reference
+        Log.d("DATABASE REF", databaseRef.toString())
 
         // Initialize an ArrayList named 'savedAnalyzes' to store saved analyses
         savedAnalyzes = ListBeerGame()

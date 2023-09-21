@@ -10,6 +10,8 @@ import android.widget.LinearLayout
 import android.widget.PopupWindow
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import se.umu.cs.id19abn.upg3.databinding.FragmentHomeBinding
 
 /**
