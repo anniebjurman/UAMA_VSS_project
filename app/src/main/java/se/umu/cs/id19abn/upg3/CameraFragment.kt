@@ -35,7 +35,7 @@ import java.util.concurrent.Executors
  */
 class CameraFragment : Fragment() {
     private lateinit var binding: FragmentCameraBinding
-    private lateinit var beerGameObj: BeerGame
+    private lateinit var session: Session
     private var imageCapture: ImageCapture? = null
     private lateinit var cameraExecutor: ExecutorService
 
@@ -43,7 +43,7 @@ class CameraFragment : Fragment() {
         super.onCreate(savedInstanceState)
         binding = FragmentCameraBinding.inflate(layoutInflater)
 
-        beerGameObj = arguments?.let { CameraFragmentArgs.fromBundle(it).beerGame }!!
+        session = arguments?.let { CameraFragmentArgs.fromBundle(it).session }!!
 
         // Request camera permissions
         if (allPermissionsGranted()) {
@@ -130,10 +130,10 @@ class CameraFragment : Fragment() {
                     override fun onImageSaved(output: ImageCapture.OutputFileResults){
                         // When the image is successfully saved, update the image path in beerGameObj
                         val imagePath = "/storage/emulated/0/Pictures/Vad-Sager-Systemet/$name.jpg"
-                        beerGameObj.imgPath = imagePath
+                        session.currentGame?.imgPath = imagePath
 
                         // Create a navigation action to go to the BeerNameFragment with the updated beerGameObj
-                        val action = CameraFragmentDirections.actionCameraFragmentToBeerNameFragment(beerGameObj)
+                        val action = CameraFragmentDirections.actionCameraFragmentToBeerNameFragment(session)
                         // Navigate to the BeerNameFragment
                         binding.root.findNavController().navigate(action)
                     }

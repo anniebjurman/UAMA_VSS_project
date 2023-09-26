@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/signInFragment">
 
     <fragment
         android:id="@+id/beerNameFragment"
@@ -12,13 +12,21 @@
         tools:layout="@layout/fragment_beer_name">
         <action
             android:id="@+id/action_beerNameFragment_to_flavorsFragment"
-            app:destination="@id/flavorsFragment" />
-        <argument
-            android:name="beerGame"
-            app:argType="se.umu.cs.id19abn.upg3.BeerGame" />
+            app:destination="@id/flavorsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim"/>
         <action
             android:id="@+id/action_beerNameFragment_to_cameraFragment"
-            app:destination="@id/cameraFragment" />
+            app:destination="@id/cameraFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim"/>
+        <argument
+            android:name="session"
+            app:argType="se.umu.cs.id19abn.upg3.Session" />
     </fragment>
     <fragment
         android:id="@+id/flavorsFragment"
@@ -27,10 +35,14 @@
         tools:layout="@layout/fragment_flavors">
         <action
             android:id="@+id/action_flavorsFragment_to_serveFragment"
-            app:destination="@id/serveFragment" />
+            app:destination="@id/serveFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim"/>
         <argument
-            android:name="beerGame"
-            app:argType="se.umu.cs.id19abn.upg3.BeerGame" />
+            android:name="session"
+            app:argType="se.umu.cs.id19abn.upg3.Session" />
     </fragment>
     <fragment
         android:id="@+id/serveFragment"
@@ -39,22 +51,30 @@
         tools:layout="@layout/fragment_serve">
         <action
             android:id="@+id/action_serveFragment_to_descriptionFragment"
-            app:destination="@id/descriptionFragment" />
+            app:destination="@id/descriptionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim"/>
         <argument
-            android:name="beerGame"
-            app:argType="se.umu.cs.id19abn.upg3.BeerGame" />
+            android:name="session"
+            app:argType="se.umu.cs.id19abn.upg3.Session" />
     </fragment>
     <fragment
         android:id="@+id/descriptionFragment"
         android:name="se.umu.cs.id19abn.upg3.DescriptionFragment"
         android:label="@string/empty"
         tools:layout="@layout/fragment_description">
-        <argument
-            android:name="beerGame"
-            app:argType="se.umu.cs.id19abn.upg3.BeerGame" />
         <action
             android:id="@+id/action_descriptionFragment_to_summaryFragment"
-            app:destination="@id/summaryFragment" />
+            app:destination="@id/summaryFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim"/>
+        <argument
+            android:name="session"
+            app:argType="se.umu.cs.id19abn.upg3.Session" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -63,37 +83,56 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_beerNameFragment"
-            app:destination="@id/beerNameFragment" />
+            app:destination="@id/beerNameFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim"/>
         <action
             android:id="@+id/action_homeFragment_to_savedAnalyzesFragment"
-            app:destination="@id/savedAnalyzesFragment" />
+            app:destination="@id/savedAnalyzesFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim"/>
+        <argument
+            android:name="session"
+            app:argType="se.umu.cs.id19abn.upg3.Session" />
     </fragment>
     <fragment
         android:id="@+id/summaryFragment"
         android:name="se.umu.cs.id19abn.upg3.SummaryFragment"
         android:label="@string/empty"
         tools:layout="@layout/fragment_summary" >
-        <argument
-            android:name="beerGame"
-            app:argType="se.umu.cs.id19abn.upg3.BeerGame" />
         <action
             android:id="@+id/action_summaryFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim"/>
         <argument
             android:name="isSaved"
             app:argType="boolean" />
+        <argument
+            android:name="session"
+            app:argType="se.umu.cs.id19abn.upg3.Session" />
     </fragment>
     <fragment
         android:id="@+id/cameraFragment"
         android:name="se.umu.cs.id19abn.upg3.CameraFragment"
         android:label="@string/empty"
         tools:layout="@layout/fragment_camera">
-        <argument
-            android:name="beerGame"
-            app:argType="se.umu.cs.id19abn.upg3.BeerGame" />
         <action
             android:id="@+id/action_cameraFragment_to_beerNameFragment"
-            app:destination="@id/beerNameFragment" />
+            app:destination="@id/beerNameFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim"/>
+        <argument
+            android:name="session"
+            app:argType="se.umu.cs.id19abn.upg3.Session" />
     </fragment>
     <fragment
         android:id="@+id/savedAnalyzesFragment"
@@ -105,6 +144,23 @@
             app:argType="se.umu.cs.id19abn.upg3.ListBeerGame" />
         <action
             android:id="@+id/action_savedAnalyzesFragment_to_summaryFragment"
-            app:destination="@id/summaryFragment" />
+            app:destination="@id/summaryFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim"/>
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="se.umu.cs.id19abn.upg3.SignInFragment"
+        android:label="SignInFragment"
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/action_signInFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
     </fragment>
 </navigation>

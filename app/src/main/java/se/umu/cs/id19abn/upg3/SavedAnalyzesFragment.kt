@@ -63,7 +63,8 @@ class SavedAnalyzesFragment : Fragment() {
             // Setup click listeners for each beer item
             view.setOnClickListener {
                 // Create a navigation action to go to the SummaryFragment with the selected beer data
-                val action = SavedAnalyzesFragmentDirections.actionSavedAnalyzesFragmentToSummaryFragment(bg, true)
+                val session = Session("hej", bg)
+                val action = SavedAnalyzesFragmentDirections.actionSavedAnalyzesFragmentToSummaryFragment(true, session)
 
                 // Navigate to the SummaryFragment
                 binding.root.findNavController().navigate(action)

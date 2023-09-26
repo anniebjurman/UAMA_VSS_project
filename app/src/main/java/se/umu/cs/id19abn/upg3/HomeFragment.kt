@@ -21,9 +21,13 @@ import se.umu.cs.id19abn.upg3.databinding.FragmentHomeBinding
  */
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
+    private lateinit var session: Session
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // get session obj from previous fragment
+        session = arguments?.let { HomeFragmentArgs.fromBundle(it).session }!!
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -37,10 +41,10 @@ class HomeFragment : Fragment() {
         // Set a click listener for the "Beer" button to navigate to the BeerNameFragment
         binding.btnBeer.setOnClickListener {
             // Create a new BeerGame object
-            val beerGame = BeerGame()
+            session.currentGame = BeerGame()
 
             // Create a navigation action to go to the BeerNameFragment with the new BeerGame object
-            val action = HomeFragmentDirections.actionHomeFragmentToBeerNameFragment(beerGame)
+            val action = HomeFragmentDirections.actionHomeFragmentToBeerNameFragment(session)
 
             // Navigate to the BeerNameFragment
             binding.root.findNavController().navigate(action)

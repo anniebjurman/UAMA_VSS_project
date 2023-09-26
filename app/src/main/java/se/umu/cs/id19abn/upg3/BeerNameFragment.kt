@@ -18,15 +18,15 @@ import java.io.File
  */
 class BeerNameFragment : Fragment() {
     private lateinit var binding: FragmentBeerNameBinding
-    private lateinit var beerGameObj: BeerGame
+    private lateinit var session: Session
     private lateinit var imageHelper: ImageHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         imageHelper = ImageHelper()
-        // get beerName object from previous fragment
-        beerGameObj = arguments?.let { BeerNameFragmentArgs.fromBundle(it).beerGame }!!
+        // get session obj from previous fragment
+        session = arguments?.let { BeerNameFragmentArgs.fromBundle(it).session }!!
     }
 
     override fun onCreateView(
@@ -42,11 +42,11 @@ class BeerNameFragment : Fragment() {
         binding.btnOpenCamera.setOnClickListener {
             if (binding.beerName.text != null) {
                 // save beer name input text if that is entered before taking av img of the beer.
-                beerGameObj.beerName = binding.beerName.text.toString()
+                session.currentGame?.beerName = binding.beerName.text.toString()
             }
             // navigate to camera fragment
             val action =
-                BeerNameFragmentDirections.actionBeerNameFragmentToCameraFragment(beerGameObj)
+                BeerNameFragmentDirections.actionBeerNameFragmentToCameraFragment(session)
 
             // Return the root view of the inflated layout
             binding.root.findNavController().navigate(action)
@@ -54,11 +54,11 @@ class BeerNameFragment : Fragment() {
 
         binding.btnNextBeerName.setOnClickListener {
             // save input beer game to BeerGame obj
-            beerGameObj.beerName = binding.beerName.text.toString()
+            session.currentGame?.beerName = binding.beerName.text.toString()
 
             // navigate to next fragment
             val action =
-                BeerNameFragmentDirections.actionBeerNameFragmentToFlavorsFragment(beerGameObj)
+                BeerNameFragmentDirections.actionBeerNameFragmentToFlavorsFragment(session)
             binding.root.findNavController().navigate(action)
         }
         return binding.root
@@ -66,12 +66,12 @@ class BeerNameFragment : Fragment() {
 
     private fun setExistingData() {
         // Check if the beerName property of beerGameObj is not null
-        if (beerGameObj.beerName != null) {
+        if (session.currentGame?.beerName != null) {
             // Set the text of the beerName EditText to the value of beerName
-            binding.beerName.setText(beerGameObj.beerName)
+            binding.beerName.setText(session.currentGame!!.beerName)
         }
         // Check if the imgPath property of beerGameObj is not null
-        if (beerGameObj.imgPath != null) {
+        if (session.currentGame?.imgPath != null) {
             // Call the displayImage() function to display the image
             displayImage()
         }
@@ -79,7 +79,7 @@ class BeerNameFragment : Fragment() {
 
     private fun displayImage() {
         // Check if the imgPath property of beerGameObj is not null
-        val imgFile = beerGameObj.imgPath?.let { File(it) }
+        val imgFile = session.currentGame?.imgPath?.let { File(it) }
         // Check if the imgFile is not null and if the file actually exists
         if (imgFile != null && imgFile.exists()) {
             // Rotate the image if needed using the imageHelper

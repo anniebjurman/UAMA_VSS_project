@@ -12,21 +12,13 @@ import se.umu.cs.id19abn.upg3.databinding.FragmentSummaryBinding
 import java.io.File
 
 /**
- * An interface to use to send data from
- * an fragment to and activity.
- */
-interface OnDataPass {
-    fun onDataPass(data: BeerGame)
-}
-
-/**
  * A fragment for displaying a summary of the
  * data about a drink, that the user entered.
  */
 class SummaryFragment : Fragment() {
 
     private lateinit var binding: FragmentSummaryBinding
-    private lateinit var beerGameObj: BeerGame
+    private lateinit var session: Session
     private var isSaved: Boolean = false
     private lateinit var imageHelper: ImageHelper
     private lateinit var dataPasser: OnDataPass
@@ -47,8 +39,8 @@ class SummaryFragment : Fragment() {
         // Initialize the imageHelper for image-related operations
         imageHelper = ImageHelper()
 
-        // Retrieve the 'beerGameObj' object from the arguments bundle passed from the previous fragment
-        beerGameObj = arguments?.let { SummaryFragmentArgs.fromBundle(it).beerGame }!!
+        // Retrieve the 'session' object from the arguments bundle passed from the previous fragment
+        session = arguments?.let { SummaryFragmentArgs.fromBundle(it).session }!!
 
         // Retrieve the 'isSaved' boolean flag from the arguments bundle
         // to determine whether the data is saved or not
@@ -66,36 +58,37 @@ class SummaryFragment : Fragment() {
         // Define an OnClickListener for the "Save Analysis" button
         binding.btnSaveAnalysis.setOnClickListener {
             // Pass the 'beerGameObj' data to the hosting activity using the 'passData' function
-            passData(beerGameObj)
+            session.currentGame?.let { it1 -> passData(it1) }
 
             // Navigate back to the HomeFragment after saving the analysis
-            val action = SummaryFragmentDirections.actionSummaryFragmentToHomeFragment()
+            val session = Session() // remove later!!!!
+            val action = SummaryFragmentDirections.actionSummaryFragmentToHomeFragment(session)
             binding.root.findNavController().navigate(action)
         }
 
         // Display the beer name
-        binding.sumBeerName.text = beerGameObj.beerName
+        binding.sumBeerName.text = session.currentGame?.beerName
 
         // Display flavor data
-        binding.bitterNum.text = beerGameObj.flavours.bitter.toString()
-        binding.fullnessNum.text = beerGameObj.flavours.fullness.toString()
-        binding.sweetnessNum.text = beerGameObj.flavours.sweetness.toString()
+        binding.bitterNum.text = session.currentGame?.flavours?.bitter.toString()
+        binding.fullnessNum.text = session.currentGame?.flavours?.fullness.toString()
+        binding.sweetnessNum.text = session.currentGame?.flavours?.sweetness.toString()
 
         // Display icons for items served to
-        for (i in beerGameObj.servedTo.getChosenItems()) {
+        for (i in session.currentGame?.servedTo?.getChosenItems()!!) {
             val imageView = ImageView(this.context)
             // Set the image resource based on the chosen item
-            imageView.setImageResource(beerGameObj.servedTo.getIcon(i))
+            imageView.setImageResource(session.currentGame!!.servedTo.getIcon(i))
             // Add the image view to the layout
             binding.serveToIconLayout.addView(imageView)
         }
 
         // Display description data
-        binding.sumDescription1.text = beerGameObj.describedAs[0]
-        binding.sumDescription2.text = beerGameObj.describedAs[1]
-        binding.sumDescription3.text = beerGameObj.describedAs[2]
-        binding.sumDescription4.text = beerGameObj.describedAs[3]
-        binding.sumDescription5.text = beerGameObj.describedAs[4]
+        binding.sumDescription1.text = session.currentGame!!.describedAs[0]
+        binding.sumDescription2.text = session.currentGame!!.describedAs[1]
+        binding.sumDescription3.text = session.currentGame!!.describedAs[2]
+        binding.sumDescription4.text = session.currentGame!!.describedAs[3]
+        binding.sumDescription5.text = session.currentGame!!.describedAs[4]
 
         // Display the selected image or set the background color if no image is selected
         displayImage()
@@ -106,7 +99,7 @@ class SummaryFragment : Fragment() {
         }
 
         // Style the image view based on whether an image is available or not
-        if (beerGameObj.imgPath == null) {
+        if (session.currentGame!!.imgPath == null) {
             binding.imgViewSum.setBackgroundColor(resources.getColor(R.color.dim_green))
         }
 
@@ -120,7 +113,7 @@ class SummaryFragment : Fragment() {
 
     private fun displayImage() {
         // Check if the image file path exists in 'beerGameObj'
-        val imgFile = beerGameObj.imgPath?.let { File(it) }
+        val imgFile = session.currentGame?.imgPath?.let { File(it) }
         if (imgFile != null) {
             // Check if the image file itself exists on the device
             if (imgFile.exists()) {

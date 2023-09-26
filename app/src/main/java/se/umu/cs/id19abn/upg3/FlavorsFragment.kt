@@ -16,12 +16,12 @@ import se.umu.cs.id19abn.upg3.databinding.FragmentFlavorsBinding
 class FlavorsFragment : Fragment() {
 
     private lateinit var binding: FragmentFlavorsBinding
-    private lateinit var beerGameObj: BeerGame
+    private lateinit var session: Session
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // get beerName object from previous fragment
-        beerGameObj = arguments?.let { FlavorsFragmentArgs.fromBundle(it).beerGame }!!
+        session = arguments?.let { FlavorsFragmentArgs.fromBundle(it).session }!!
 
     }
 
@@ -37,22 +37,22 @@ class FlavorsFragment : Fragment() {
 
         // Add a change listener to the bitter slider to update 'beerGameObj' when the value changes
         binding.bitterSlider.addOnChangeListener { _, _, _ ->
-            beerGameObj.flavours.bitter = binding.bitterSlider.values[0].toInt()
+            session.currentGame?.flavours?.bitter = binding.bitterSlider.values[0].toInt()
         }
 
         // Add a change listener to the fullness slider to update 'beerGameObj' when the value changes
         binding.fullnessSlider.addOnChangeListener { _, _, _ ->
-            beerGameObj.flavours.fullness = binding.fullnessSlider.values[0].toInt()
+            session.currentGame?.flavours?.fullness = binding.fullnessSlider.values[0].toInt()
         }
 
         // Add a change listener to the sweetness slider to update 'beerGameObj' when the value changes
         binding.sweetnessSlider.addOnChangeListener { _, _, _ ->
-            beerGameObj.flavours.sweetness = binding.sweetnessSlider.values[0].toInt()
+            session.currentGame?.flavours?.sweetness = binding.sweetnessSlider.values[0].toInt()
         }
 
         // Set a click listener for the "Next" button to navigate to the ServeFragment
         binding.btnNextFlavors.setOnClickListener {
-            val action = FlavorsFragmentDirections.actionFlavorsFragmentToServeFragment(beerGameObj)
+            val action = FlavorsFragmentDirections.actionFlavorsFragmentToServeFragment(session)
             binding.root.findNavController().navigate(action)
         }
 
@@ -62,9 +62,9 @@ class FlavorsFragment : Fragment() {
 
     private fun setExistingData() {
         // Set the initial slider values based on existing data from 'beerGameObj'
-        binding.bitterSlider.setValues(beerGameObj.flavours.bitter.toFloat())
-        binding.fullnessSlider.setValues(beerGameObj.flavours.fullness.toFloat())
-        binding.sweetnessSlider.setValues(beerGameObj.flavours.sweetness.toFloat())
+        binding.bitterSlider.setValues(session.currentGame?.flavours?.bitter?.toFloat())
+        binding.fullnessSlider.setValues(session.currentGame?.flavours?.fullness?.toFloat())
+        binding.sweetnessSlider.setValues(session.currentGame?.flavours?.sweetness?.toFloat())
     }
 
     companion object {
