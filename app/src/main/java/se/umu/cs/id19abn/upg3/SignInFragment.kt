@@ -1,5 +1,6 @@
 package se.umu.cs.id19abn.upg3
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -32,6 +33,15 @@ import se.umu.cs.id19abn.upg3.databinding.FragmentSignInBinding
 class SignInFragment : Fragment() {
 
     private lateinit var binding: FragmentSignInBinding
+    private lateinit var dataPasser: OnDataPass
+
+    override fun onAttach(context: Context) {
+        // Called when the fragment is attached to the activity
+        super.onAttach(context)
+        // Ensure that the hosting activity implements the OnDataPass interface
+        // and assign it to the dataPasser variable for communication
+        dataPasser = context as OnDataPass
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,8 +51,12 @@ class SignInFragment : Fragment() {
             Log.d("LOGIN NAME", binding.loginName.text.toString())
             val userName = binding.loginName.text
 
-            if (userName.length > 3) {
+            if (userName.length >= 3) {
+                // create a session object
                 val session = Session(userName.toString())
+
+                // pass session to main activity
+                passData(session)
 
                 // navigate to home fragment
                 val action =
@@ -54,6 +68,11 @@ class SignInFragment : Fragment() {
                 Toast.makeText(requireActivity().applicationContext,"Användarnamnet måste innehålla minst 3 tecken", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+     //Function to pass data to the hosting activity
+    private fun passData(session: Session){
+        dataPasser.onDataPass(session)
     }
 
     override fun onCreateView(

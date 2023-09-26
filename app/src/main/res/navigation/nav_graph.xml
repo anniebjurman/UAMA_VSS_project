@@ -139,9 +139,6 @@
         android:name="se.umu.cs.id19abn.upg3.SavedAnalyzesFragment"
         android:label="@string/empty"
         tools:layout="@layout/fragment_saved_analyzes">
-        <argument
-            android:name="listBeerGame"
-            app:argType="se.umu.cs.id19abn.upg3.ListBeerGame" />
         <action
             android:id="@+id/action_savedAnalyzesFragment_to_summaryFragment"
             app:destination="@id/summaryFragment"
@@ -149,6 +146,9 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_enter_anim"
             app:popExitAnim="@anim/nav_default_exit_anim"/>
+        <argument
+            android:name="session"
+            app:argType="se.umu.cs.id19abn.upg3.Session" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"

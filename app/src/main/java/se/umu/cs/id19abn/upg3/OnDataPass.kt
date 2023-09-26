@@ -5,5 +5,5 @@ package se.umu.cs.id19abn.upg3
  * an fragment to and activity.
  */
 interface OnDataPass {
-    fun onDataPass(data: BeerGame)
+    fun onDataPass(session: Session)
 }

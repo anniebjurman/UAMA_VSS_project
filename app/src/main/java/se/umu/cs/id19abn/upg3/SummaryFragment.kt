@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import se.umu.cs.id19abn.upg3.databinding.FragmentSummaryBinding
@@ -21,15 +22,6 @@ class SummaryFragment : Fragment() {
     private lateinit var session: Session
     private var isSaved: Boolean = false
     private lateinit var imageHelper: ImageHelper
-    private lateinit var dataPasser: OnDataPass
-
-    override fun onAttach(context: Context) {
-        // Called when the fragment is attached to the activity
-        super.onAttach(context)
-        // Ensure that the hosting activity implements the OnDataPass interface
-        // and assign it to the dataPasser variable for communication
-        dataPasser = context as OnDataPass
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Called when the fragment is created
@@ -58,12 +50,19 @@ class SummaryFragment : Fragment() {
         // Define an OnClickListener for the "Save Analysis" button
         binding.btnSaveAnalysis.setOnClickListener {
             // Pass the 'beerGameObj' data to the hosting activity using the 'passData' function
-            session.currentGame?.let { it1 -> passData(it1) }
+//            session.currentGame?.let { it1 -> passData(it1) }
+
+            // save data in DB
+
+            // clear session game
+            session.currentGame = null
 
             // Navigate back to the HomeFragment after saving the analysis
-            val session = Session() // remove later!!!!
             val action = SummaryFragmentDirections.actionSummaryFragmentToHomeFragment(session)
             binding.root.findNavController().navigate(action)
+
+            // Display a short toast message indicating that the analysis is saved
+            Toast.makeText(requireActivity().applicationContext,"Analys sparad", Toast.LENGTH_SHORT).show()
         }
 
         // Display the beer name
@@ -104,11 +103,6 @@ class SummaryFragment : Fragment() {
         }
 
         return binding.root
-    }
-
-    // Function to pass data to the hosting activity
-    private fun passData(data: BeerGame){
-        dataPasser.onDataPass(data)
     }
 
     private fun displayImage() {

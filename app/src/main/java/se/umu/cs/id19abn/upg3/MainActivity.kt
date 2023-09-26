@@ -25,14 +25,12 @@ class MainActivity: AppCompatActivity(), OnDataPass {
     private lateinit var navController: NavController
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var savedAnalyzes: ListBeerGame
+    private lateinit var currentSession: Session
 
-    override fun onDataPass(data: BeerGame) {
-        // Add the received 'data' (BeerGame object) to the 'beerGames' list in 'savedAnalyzes'
-        savedAnalyzes.beerGames.add(data)
-        databaseRef.setValue(data.toString())
-
-        // Display a short toast message indicating that the analysis is saved
-        Toast.makeText(applicationContext,"Analys sparad", Toast.LENGTH_SHORT).show()
+    override fun onDataPass(session: Session) {
+        // Add the current session to local variable
+        currentSession = session
+        Log.d("SESSION FROM MAIN", currentSession.user.toString())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +39,19 @@ class MainActivity: AppCompatActivity(), OnDataPass {
         val db = Firebase.database("https://vad-sager-systemet-default-rtdb.europe-west1.firebasedatabase.app/")
         databaseRef = db.reference
         Log.d("DATABASE REF", databaseRef.toString())
+
+        databaseRef.child("games").get().addOnSuccessListener {
+            Log.i("DATA!!!", "Got value ${it.value}")
+            val obj: HashMap<String, Any> = it.value as HashMap<String, Any>
+
+            for ((key, value) in obj) {
+                Log.d("LOOP key:", key)
+                Log.d("LOOP value:", value.toString())
+            }
+
+        }.addOnFailureListener{
+            Log.e("DATA!!!", "Error getting data", it)
+        }
 
         // Initialize an ArrayList named 'savedAnalyzes' to store saved analyses
         savedAnalyzes = ListBeerGame()
@@ -75,7 +86,7 @@ class MainActivity: AppCompatActivity(), OnDataPass {
             // Check if the current fragment is HomeFragment
             if (currentFrag is HomeFragment ) {
                 // Create a navigation action to go to the SavedAnalyzesFragment with 'savedAnalyzes' data
-                val action = HomeFragmentDirections.actionHomeFragmentToSavedAnalyzesFragment(savedAnalyzes)
+                val action = HomeFragmentDirections.actionHomeFragmentToSavedAnalyzesFragment(currentSession)
 
                 // Navigate to the SavedAnalyzesFragment
                 navController.navigate(action)
