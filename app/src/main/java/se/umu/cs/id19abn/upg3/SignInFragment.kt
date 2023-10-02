@@ -21,6 +21,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import se.umu.cs.id19abn.upg3.databinding.FragmentSignInBinding
 
@@ -34,6 +35,7 @@ class SignInFragment : Fragment() {
 
     private lateinit var binding: FragmentSignInBinding
     private lateinit var dataPasser: OnDataPass
+    private var users: ArrayList<String> = ArrayList()
 
     override fun onAttach(context: Context) {
         // Called when the fragment is attached to the activity
@@ -47,13 +49,15 @@ class SignInFragment : Fragment() {
         super.onCreate(savedInstanceState)
         binding = FragmentSignInBinding.inflate(layoutInflater)
 
+        setUsers()
+
         binding.btnLogin.setOnClickListener {
             Log.d("LOGIN NAME", binding.loginName.text.toString())
-            val userName = binding.loginName.text
+            val userName = binding.loginName.text.toString()
 
-            if (userName.length >= 3) {
+            if (users.contains(userName)) {
                 // create a session object
-                val session = Session(userName.toString())
+                val session = Session(DbHelper(userName), userName)
 
                 // pass session to main activity
                 passData(session)
@@ -65,7 +69,18 @@ class SignInFragment : Fragment() {
                 binding.root.findNavController().navigate(action)
             } else {
                 // Display a short toast message indicating that the username is to short
-                Toast.makeText(requireActivity().applicationContext,"Användarnamnet måste innehålla minst 3 tecken", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireActivity().applicationContext,"Användarnamnet är inte registererat'", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun setUsers() {
+        val db = Firebase.database("https://vad-sager-systemet-default-rtdb.europe-west1.firebasedatabase.app/")
+        db.reference.child("users").get().addOnSuccessListener {
+            val tmp = it.value as HashMap<*, *>
+
+            for ((key, value ) in tmp) {
+                users.add(key.toString())
             }
         }
     }

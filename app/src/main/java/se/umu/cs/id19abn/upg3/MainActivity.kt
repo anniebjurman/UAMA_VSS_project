@@ -36,23 +36,6 @@ class MainActivity: AppCompatActivity(), OnDataPass {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val db = Firebase.database("https://vad-sager-systemet-default-rtdb.europe-west1.firebasedatabase.app/")
-        databaseRef = db.reference
-        Log.d("DATABASE REF", databaseRef.toString())
-
-        databaseRef.child("games").get().addOnSuccessListener {
-            Log.i("DATA!!!", "Got value ${it.value}")
-            val obj: HashMap<String, Any> = it.value as HashMap<String, Any>
-
-            for ((key, value) in obj) {
-                Log.d("LOOP key:", key)
-                Log.d("LOOP value:", value.toString())
-            }
-
-        }.addOnFailureListener{
-            Log.e("DATA!!!", "Error getting data", it)
-        }
-
         // Initialize an ArrayList named 'savedAnalyzes' to store saved analyses
         savedAnalyzes = ListBeerGame()
 

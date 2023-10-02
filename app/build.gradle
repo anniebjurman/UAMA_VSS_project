@@ -123,4 +123,6 @@ dependencies {
     // Add the dependency for the Firebase Authentication library
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.android.gms:play-services-auth:20.7.0")
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1'
 }

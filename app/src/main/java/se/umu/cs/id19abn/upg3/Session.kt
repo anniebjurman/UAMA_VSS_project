@@ -9,6 +9,7 @@ import kotlinx.android.parcel.Parcelize
  */
 @Parcelize
 class Session(
+    var dbHelper: DbHelper? = null,
     var user: String? = null,
     var currentGame: BeerGame? = null
 ): Parcelable {
