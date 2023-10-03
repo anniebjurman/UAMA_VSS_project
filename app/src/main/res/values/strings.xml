@@ -84,9 +84,11 @@
     <!--    Login-->
     <string name="nickname">Ange användarnamn</string>
     <string name="login">Logga in</string>
+    <string name="log_out">Logga ut</string>
 
     <!--    sign up-->
     <string name="new_sign_up">Registrera ny användare</string>
     <string name="sign_up">Registrera</string>
     <string name="email">Ange e-mail</string>
+
 </resources>

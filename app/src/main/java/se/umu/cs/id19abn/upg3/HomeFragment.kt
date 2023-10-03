@@ -73,6 +73,14 @@ class HomeFragment : Fragment() {
             }
         }
 
+        binding.btnLogOut.setOnClickListener {
+            // Create a navigation action to go to the SignInFragment
+            val action = HomeFragmentDirections.actionHomeFragmentToSignInFragment()
+
+            // Navigate to the SignInFragment
+            binding.root.findNavController().navigate(action)
+        }
+
         // Return the root view of the inflated layout
         return binding.root
     }

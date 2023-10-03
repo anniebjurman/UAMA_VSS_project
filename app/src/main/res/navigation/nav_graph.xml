@@ -98,6 +98,9 @@
         <argument
             android:name="session"
             app:argType="se.umu.cs.id19abn.upg3.Session" />
+        <action
+            android:id="@+id/action_homeFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
     </fragment>
     <fragment
         android:id="@+id/summaryFragment"

@@ -160,4 +160,13 @@
         android:textColor="@color/red"
         android:textAllCaps="false"/>
 
+    <Button
+        android:id="@+id/btn_log_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/log_out"
+        android:background="@drawable/default_btn"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"/>
+
 </LinearLayout>

@@ -48,16 +48,16 @@
             android:id="@+id/btn_login"
             android:layout_width="140dp"
             android:layout_height="45dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/default_btn"
             android:text="@string/login"
             android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/btn_go_sign_up"
-            android:layout_width="250dp"
+            android:layout_width="150dp"
             android:layout_height="45dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="100dp"
             android:background="@drawable/default_btn"
             android:text="@string/new_sign_up"
             android:textColor="@color/white"/>
