@@ -1,6 +1,7 @@
 package se.umu.cs.id19abn.upg3
 
 import android.os.Parcelable
+import android.util.Log
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -66,6 +67,28 @@ class ServedTo(
             "shrimp" -> R.drawable.shrimp
             "temple" -> R.drawable.temple
             else -> R.drawable.beer // Return a default drawable if no matching icon is found
+        }
+    }
+
+    fun toggleChosenIcon(icon: String) {
+        when (icon) {
+            "bbq" -> bbq = !bbq
+            "bird" -> bird = !bird
+            "cheese" -> cheese = !cheese
+            "chili" -> chili = !chili
+            "cow" -> cow = !cow
+            "dessert" -> dessert = !dessert
+            "fish" -> fish = !fish
+            "glass" -> glass = !glass
+            "moose" -> moose = !moose
+            "pig" -> pig = !pig
+            "radish" -> radish = !radish
+            "sheep" -> sheep = !sheep
+            "shrimp" -> shrimp = !shrimp
+            "temple" -> temple = !temple
+            else -> {
+                Log.e("ServedTo.kt", "chosen icon does not exist")
+            }
         }
     }
 

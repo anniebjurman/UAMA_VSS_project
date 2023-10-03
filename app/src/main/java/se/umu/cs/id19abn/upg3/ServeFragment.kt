@@ -97,25 +97,29 @@ class ServeFragment : Fragment() {
 
     private fun toggleServeButton(btnIndex: Int) {
         // Toggle properties in 'servedTo' of 'beerGameObj'
+        var iconToToggle: String? = null
         when (btnIndex) {
-            0 -> session.currentGame?.servedTo?.bbq = !session.currentGame?.servedTo?.bbq!!
-            1 -> session.currentGame?.servedTo?.bird = !session.currentGame?.servedTo?.bird!!
-            2 -> session.currentGame?.servedTo?.cheese = !session.currentGame?.servedTo?.cheese!!
-            3 -> session.currentGame?.servedTo?.cow = !session.currentGame?.servedTo?.cow!!
-            4 -> session.currentGame?.servedTo?.chili = !session.currentGame?.servedTo?.chili!!
-            5 -> session.currentGame?.servedTo?.dessert = !session.currentGame?.servedTo?.dessert!!
-            6 -> session.currentGame?.servedTo?.fish = !session.currentGame?.servedTo?.fish!!
-            7 -> session.currentGame?.servedTo?.glass = !session.currentGame?.servedTo?.glass!!
-            8 -> session.currentGame?.servedTo?.radish = !session.currentGame?.servedTo?.radish!!
-            9 -> session.currentGame?.servedTo?.temple = !session.currentGame?.servedTo?.temple!!
-            10 -> session.currentGame?.servedTo?.pig = !session.currentGame?.servedTo?.pig!!
-            11 -> session.currentGame?.servedTo?.moose = !session.currentGame?.servedTo?.moose!!
-            12 -> session.currentGame?.servedTo?.shrimp = !session.currentGame?.servedTo?.shrimp!!
-            13 -> session.currentGame?.servedTo?.sheep = !session.currentGame?.servedTo?.sheep!!
+            0 -> iconToToggle = "bbq"
+            1 -> iconToToggle = "bird"
+            2 -> iconToToggle = "cheese"
+            3 -> iconToToggle = "cow"
+            4 -> iconToToggle = "chili"
+            5 -> iconToToggle = "dessert"
+            6 -> iconToToggle = "fish"
+            7 -> iconToToggle = "glass"
+            8 -> iconToToggle = "radish"
+            9 -> iconToToggle = "temple"
+            10 -> iconToToggle = "pig"
+            11 -> iconToToggle = "moose"
+            12 -> iconToToggle = "shrimp"
+            13 -> iconToToggle = "sheep"
             else -> {
                 // Handle the case where 'btnIndex' is out of expected range
                 print("Error")
             }
+        }
+        if (iconToToggle != null) {
+            session.currentGame?.servedTo?.toggleChosenIcon(iconToToggle)
         }
     }
 

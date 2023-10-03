@@ -62,6 +62,12 @@ class DbHelper(var user: String) : Parcelable {
                         gameObj.flavours.fullness = (flavours["fullness"] as Long).toInt()
                         gameObj.flavours.sweetness = (flavours["sweetness"] as Long).toInt()
 
+                        val servedTo = gameData["served_to"] as ArrayList<*>
+                        for (icon in servedTo) {
+                            Log.d("ICON", icon.toString())
+                            gameObj.servedTo.toggleChosenIcon(icon.toString())
+                        }
+
                         // save BeerGame in ListBeerGame
                         userGameObjects.beerGames.add(gameObj)
                         Log.d("OBJ ADD", userGameObjects.beerGames.toString())
