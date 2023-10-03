@@ -78,10 +78,15 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-<!--    Google API-->
+    <!--    Google API-->
     <string name="web_client_id">649260000154-06p3eb46bjn97s9r35fmc314me5djlm1.apps.googleusercontent.com</string>
 
-<!--    Login-->
+    <!--    Login-->
     <string name="nickname">Ange användarnamn</string>
     <string name="login">Logga in</string>
+
+    <!--    sign up-->
+    <string name="new_sign_up">Registrera ny användare</string>
+    <string name="sign_up">Registrera</string>
+    <string name="email">Ange e-mail</string>
 </resources>

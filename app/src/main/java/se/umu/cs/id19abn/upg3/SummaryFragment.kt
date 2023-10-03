@@ -53,6 +53,7 @@ class SummaryFragment : Fragment() {
 //            session.currentGame?.let { it1 -> passData(it1) }
 
             // save data in DB
+            session.currentGame?.let { it1 -> session.dbHelper?.addResult("hej", it1) }
 
             // clear session game
             session.currentGame = null

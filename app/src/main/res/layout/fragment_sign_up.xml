@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/login"
+        android:text="@string/new_sign_up"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/gray_text"/>
@@ -36,7 +36,24 @@
             android:layout_gravity="start"/>
 
         <EditText
-            android:id="@+id/login_name"
+            android:id="@+id/sign_up_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/edit_text_border"
+            android:textColor="@color/gray_text"
+            android:textSize="15sp"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:textColor="@color/green"
+            android:layout_gravity="start"/>
+
+        <EditText
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@drawable/edit_text_border"
@@ -45,21 +62,12 @@
             android:padding="10dp"/>
 
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_sign_up"
             android:layout_width="140dp"
             android:layout_height="45dp"
             android:layout_marginTop="50dp"
             android:background="@drawable/default_btn"
-            android:text="@string/login"
-            android:textColor="@color/white"/>
-
-        <Button
-            android:id="@+id/btn_go_sign_up"
-            android:layout_width="250dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/default_btn"
-            android:text="@string/new_sign_up"
+            android:text="@string/sign_up"
             android:textColor="@color/white"/>
 
     </LinearLayout>

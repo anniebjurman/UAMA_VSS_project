@@ -72,6 +72,11 @@ class SignInFragment : Fragment() {
                 Toast.makeText(requireActivity().applicationContext,"Användarnamnet är inte registererat'", Toast.LENGTH_SHORT).show()
             }
         }
+
+        binding.btnGoSignUp.setOnClickListener {
+            val action = SignInFragmentDirections.actionSignInFragmentToSignUpFragment()
+            binding.root.findNavController().navigate(action)
+        }
     }
 
     private fun setUsers() {
