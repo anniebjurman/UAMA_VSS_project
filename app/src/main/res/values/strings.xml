@@ -91,4 +91,18 @@
     <string name="sign_up">Registrera</string>
     <string name="email">Ange e-mail</string>
 
+    <!--    choose type game-->
+    <string name="choose_game">Välj spel att starta</string>
+    <string name="single">Singelspel</string>
+    <string name="join">Anslut till befintligt spel</string>
+    <string name="create">Skapa spel för flera deltagare</string>
+    <string name="join_word">Anslut</string>
+    <string name="join_code">Anslutningskod</string>
+    <string name="game_name">Namn på spelet</string>
+    <string name="create_word">Skapa</string>
+    <string name="start_game">Starta spelet</string>
+    <string name="connected_players">Anslutna spelare</string>
+    <string name="default_code">03482673</string>
+    <string name="default_user">text123</string>
+
 </resources>

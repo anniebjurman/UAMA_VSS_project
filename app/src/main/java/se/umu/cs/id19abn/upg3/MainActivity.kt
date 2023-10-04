@@ -20,8 +20,6 @@ import se.umu.cs.id19abn.upg3.databinding.ActivityMainBinding
  * hosts all other fragments, and initiate the navController.
  */
 class MainActivity: AppCompatActivity(), OnDataPass {
-
-    private lateinit var databaseRef: DatabaseReference
     private lateinit var navController: NavController
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var savedAnalyzes: ListBeerGame

@@ -41,10 +41,11 @@ class HomeFragment : Fragment() {
         // Set a click listener for the "Beer" button to navigate to the BeerNameFragment
         binding.btnBeer.setOnClickListener {
             // Create a new BeerGame object
-            session.currentGame = BeerGame()
+//            session.currentGame = BeerGame()
 
             // Create a navigation action to go to the BeerNameFragment with the new BeerGame object
-            val action = HomeFragmentDirections.actionHomeFragmentToBeerNameFragment(session)
+//            val action = HomeFragmentDirections.actionHomeFragmentToBeerNameFragment(session)
+            val action = HomeFragmentDirections.actionHomeFragmentToChooseTypeGameFragment(session)
 
             // Navigate to the BeerNameFragment
             binding.root.findNavController().navigate(action)

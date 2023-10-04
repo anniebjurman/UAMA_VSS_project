@@ -90,6 +90,22 @@ class DbHelper(val user: String? = null) : Parcelable {
         dbReference.child("users").child(userName).child("name").setValue("NAME")
     }
 
+    fun addGame(gameName: String, gameCode: String) {
+        dbReference.child("games").child(gameCode).child("name").setValue(gameName)
+    }
+
+    fun addCurrentUserToGame(gameCode: String) {
+        dbReference.child("games").child(gameCode).child("members").push().setValue(userName)
+        // TODO add game to 'users' as well
+    }
+
+    fun getRandomGameCode(): String {
+        val allowedChars = ('A'..'N') + ('P'..'Z') + ('1'..'9')
+        return (1..8)
+            .map { allowedChars.random() }
+            .joinToString("")
+    }
+
     fun addResult(gameName: String, bg: BeerGame) {
         val desc: ArrayList<String> = ArrayList()
         for ((key, value) in bg.describedAs) {
@@ -131,55 +147,55 @@ class DbHelper(val user: String? = null) : Parcelable {
         dbReference.child("users").child(userName).child("games").push().setValue(gameName)
     }
 
-    private fun getDbReference(): DatabaseReference {
+    fun getDbReference(): DatabaseReference {
         val db = Firebase.database("https://vad-sager-systemet-default-rtdb.europe-west1.firebasedatabase.app/")
         return db.reference
     }
 
-    fun getUserGameNames() : ArrayList<String> {
-        return userGameNames as ArrayList<String>
-    }
-
+//    fun getUserGameNames() : ArrayList<String> {
+//        return userGameNames as ArrayList<String>
+//    }
+//
     fun getUserGameObjects(): ListBeerGame {
         return userGameObjects
     }
 
-    fun getUserGameNames(user: String): ArrayList<String>? {
-        var gameNames: ArrayList<String>? = null
-
-        dbReference.child("users").get().addOnSuccessListener {
-            val tmp = it.value as HashMap<*, *>
-
-            for ((key, value ) in tmp) {
-                if (key == user) {
-                    value as HashMap<*, *>
-                    gameNames = value["games"] as ArrayList<String>
-                }
-            }
-        }
-        return gameNames
-    }
-
-    fun getUserGameObjects(user: String): ListBeerGame {
-        val gameNames = getUserGameNames(user)
-        Log.d("GAME NAMES", gameNames.toString())
-        val gameObjects = ListBeerGame()
-
-        dbReference.child("games").get().addOnSuccessListener {
-            val obj: HashMap<*, *> = it.value as HashMap<*, *>
-
-            for ((key, value ) in obj) {
-
-                if (gameNames?.contains(key) == true) {
-                    value as HashMap<*, *>
-                    val results = value["results"]
-
-                    results as HashMap<*, *>
-                    val gameObj = results[user]
-                }
-            }
-        }
-        return gameObjects
-    }
+//    fun getUserGameNames(user: String): ArrayList<String>? {
+//        var gameNames: ArrayList<String>? = null
+//
+//        dbReference.child("users").get().addOnSuccessListener {
+//            val tmp = it.value as HashMap<*, *>
+//
+//            for ((key, value ) in tmp) {
+//                if (key == user) {
+//                    value as HashMap<*, *>
+//                    gameNames = value["games"] as ArrayList<String>
+//                }
+//            }
+//        }
+//        return gameNames
+//    }
+//
+//    fun getUserGameObjects(user: String): ListBeerGame {
+//        val gameNames = getUserGameNames(user)
+//        Log.d("GAME NAMES", gameNames.toString())
+//        val gameObjects = ListBeerGame()
+//
+//        dbReference.child("games").get().addOnSuccessListener {
+//            val obj: HashMap<*, *> = it.value as HashMap<*, *>
+//
+//            for ((key, value ) in obj) {
+//
+//                if (gameNames?.contains(key) == true) {
+//                    value as HashMap<*, *>
+//                    val results = value["results"]
+//
+//                    results as HashMap<*, *>
+//                    val gameObj = results[user]
+//                }
+//            }
+//        }
+//        return gameObjects
+//    }
 
 }

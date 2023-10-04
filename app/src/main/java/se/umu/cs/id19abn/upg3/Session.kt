@@ -11,8 +11,11 @@ import kotlinx.android.parcel.Parcelize
 class Session(
     var dbHelper: DbHelper? = null,
     var user: String? = null,
-    var currentGame: BeerGame? = null
-): Parcelable {
+    var currentGame: BeerGame? = null,
+    var gameType: GameType? = null,
+    var gameCode: String? = null
+): Parcelable
 
-
+enum class GameType {
+    SINGLE, MULTIPLAYER
 }

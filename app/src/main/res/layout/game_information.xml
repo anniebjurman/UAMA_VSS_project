@@ -11,7 +11,7 @@
         android:layout_centerInParent="true"
         android:layout_margin="30dp"
         android:textSize="12sp"
-        android:textColor="@color/red"
+        android:textColor="@color/green"
         android:text="@string/instructions"/>
 
 </RelativeLayout>

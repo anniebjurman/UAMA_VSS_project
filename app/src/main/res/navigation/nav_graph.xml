@@ -101,6 +101,9 @@
         <action
             android:id="@+id/action_homeFragment_to_signInFragment"
             app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_chooseTypeGameFragment"
+            app:destination="@id/chooseTypeGameFragment" />
     </fragment>
     <fragment
         android:id="@+id/summaryFragment"
@@ -185,5 +188,56 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_enter_anim"
             app:popExitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseTypeGameFragment"
+        android:name="se.umu.cs.id19abn.upg3.ChooseTypeGameFragment"
+        android:label="ChooseTypeGameFragment"
+        tools:layout="@layout/fragment_choose_type_game">
+        <action
+            android:id="@+id/action_chooseTypeGameFragment_to_createGameFragment"
+            app:destination="@id/createGameFragment" />
+        <action
+            android:id="@+id/action_chooseTypeGameFragment_to_joinFragment"
+            app:destination="@id/joinFragment" />
+        <argument
+            android:name="session"
+            app:argType="se.umu.cs.id19abn.upg3.Session" />
+        <action
+            android:id="@+id/action_chooseTypeGameFragment_to_beerNameFragment"
+            app:destination="@id/beerNameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createGameFragment"
+        android:name="se.umu.cs.id19abn.upg3.CreateGameFragment"
+        android:label="CreateGameFragment"
+        tools:layout="@layout/fragment_create_game">
+        <action
+            android:id="@+id/action_createGameFragment_to_startGameFragment"
+            app:destination="@id/startGameFragment" />
+        <argument
+            android:name="session"
+            app:argType="se.umu.cs.id19abn.upg3.Session" />
+    </fragment>
+    <fragment
+        android:id="@+id/joinFragment"
+        android:name="se.umu.cs.id19abn.upg3.JoinFragment"
+        android:label="JoinFragment"
+        tools:layout="@layout/fragment_join">
+        <argument
+            android:name="session"
+            app:argType="se.umu.cs.id19abn.upg3.Session" />
+    </fragment>
+    <fragment
+        android:id="@+id/startGameFragment"
+        android:name="se.umu.cs.id19abn.upg3.StartGameFragment"
+        android:label="StartGameFragment"
+        tools:layout="@layout/fragment_start_game">
+        <action
+            android:id="@+id/action_startGameFragment_to_beerNameFragment"
+            app:destination="@id/beerNameFragment" />
+        <argument
+            android:name="session"
+            app:argType="se.umu.cs.id19abn.upg3.Session" />
     </fragment>
 </navigation>
