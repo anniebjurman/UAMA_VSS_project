@@ -105,7 +105,7 @@ class DbHelper(val user: String? = null) : Parcelable {
 
     fun addCurrentUserToGame(gameCode: String) {
         dbReference.child("games").child(gameCode).child("members").push().setValue(userName)
-        // TODO add game to 'users' as well
+        dbReference.child("users").child(userName).child("games").push().setValue(gameCode)
     }
 
     fun getRandomGameCode(): String {

@@ -53,14 +53,15 @@ class SummaryFragment : Fragment() {
 //            session.currentGame?.let { it1 -> passData(it1) }
 
             if (session.gameCode != null) {
-                // save data in DB
+                // save data in DB, multiplayer game
                 session.currentGame?.let { it1 -> session.dbHelper?.addResult(session.gameCode!!, it1) }
             } else {
+                // save data in DB, single game
                 val gc = session.dbHelper?.getRandomGameCode()
-                // save data in DB
                 session.currentGame?.let { it1 ->
                     if (gc != null) {
                         session.dbHelper?.addResult(gc, it1)
+                        session.dbHelper?.addCurrentUserToGame(gc)
                     }
                 }
             }
