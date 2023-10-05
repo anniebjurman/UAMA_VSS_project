@@ -10,6 +10,10 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.parcel.Parcelize
 
+enum class GameStatus() {
+    PENDING, STARTED, DONE
+}
+
 class BeerGameDB(bg: BeerGame) {
     var described_as: ArrayList<String> = ArrayList(bg.describedAs.values)
     var flavours: Flavours = bg.flavours
@@ -127,6 +131,11 @@ class DbHelper(val user: String? = null) : Parcelable {
 
     fun getUserGameObjects(): ListBeerGame {
         return userGameObjects
+    }
+
+    fun updateGameStatus(gameCode: String, status: GameStatus) {
+        dbReference.child("games").child(gameCode).child("status")
+            .setValue(status)
     }
 
 }

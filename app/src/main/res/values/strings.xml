@@ -105,4 +105,7 @@
     <string name="default_code">03482673</string>
     <string name="default_user">text123</string>
 
+    <!--    wait join-->
+    <string name="wait">Väntar</string>
+    <string name="wait_join">Vänta på att spelet ska starta …</string>
 </resources>

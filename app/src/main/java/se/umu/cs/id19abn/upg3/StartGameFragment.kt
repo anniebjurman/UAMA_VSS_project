@@ -35,6 +35,7 @@ class StartGameFragment : Fragment() {
     ): View {
 
         binding.gameCode.text = session.gameCode
+        binding.gameNameContainer.text = session.gameName
 
         val db =
             session.gameCode?.let { session.dbHelper?.getDbReference()?.child("games")?.child(it)?.child("members") }
@@ -62,6 +63,7 @@ class StartGameFragment : Fragment() {
 
         binding.btnStartGame.setOnClickListener {
             session.currentGame = BeerGame()
+            session.gameCode?.let { it1 -> session.dbHelper?.updateGameStatus(it1, GameStatus.STARTED) }
 
             val action = StartGameFragmentDirections.actionStartGameFragmentToBeerNameFragment(session)
             binding.root.findNavController().navigate(action)

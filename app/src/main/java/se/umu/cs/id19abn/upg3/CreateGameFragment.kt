@@ -33,10 +33,12 @@ class CreateGameFragment : Fragment() {
             val gameName = binding.gameName.text.toString()
 
             if (gameName.length >= 3) {
+                session.gameName = gameName
                 val gameCode = session.dbHelper?.getRandomGameCode()
                 if (gameCode != null) {
                     session.dbHelper?.addGame(gameName, gameCode)
                     session.dbHelper?.addCurrentUserToGame(gameCode)
+                    session.dbHelper?.updateGameStatus(gameCode, GameStatus.PENDING)
                     session.gameCode = gameCode
 
                     val action = CreateGameFragmentDirections.actionCreateGameFragmentToStartGameFragment(session)

@@ -52,10 +52,10 @@ class SummaryFragment : Fragment() {
             // Pass the 'beerGameObj' data to the hosting activity using the 'passData' function
 //            session.currentGame?.let { it1 -> passData(it1) }
 
-            if (session.gameCode != null) {
+            if (session.gameType == GameType.MULTIPLAYER) {
                 // save data in DB, multiplayer game
                 session.currentGame?.let { it1 -> session.dbHelper?.addResult(session.gameCode!!, it1) }
-            } else {
+            } else if (session.gameType == GameType.SINGLE){
                 // save data in DB, single game
                 val gc = session.dbHelper?.getRandomGameCode()
                 session.currentGame?.let { it1 ->

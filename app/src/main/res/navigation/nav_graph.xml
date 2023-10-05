@@ -227,6 +227,9 @@
         <argument
             android:name="session"
             app:argType="se.umu.cs.id19abn.upg3.Session" />
+        <action
+            android:id="@+id/action_joinFragment_to_waitJoinFragment"
+            app:destination="@id/waitJoinFragment" />
     </fragment>
     <fragment
         android:id="@+id/startGameFragment"
@@ -239,5 +242,17 @@
         <argument
             android:name="session"
             app:argType="se.umu.cs.id19abn.upg3.Session" />
+    </fragment>
+    <fragment
+        android:id="@+id/waitJoinFragment"
+        android:name="se.umu.cs.id19abn.upg3.WaitJoinFragment"
+        android:label="WaitJoinFragment"
+        tools:layout="@layout/fragment_wait_join">
+        <argument
+            android:name="session"
+            app:argType="se.umu.cs.id19abn.upg3.Session" />
+        <action
+            android:id="@+id/action_waitJoinFragment_to_beerNameFragment"
+            app:destination="@id/beerNameFragment" />
     </fragment>
 </navigation>

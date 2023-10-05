@@ -13,7 +13,8 @@ class Session(
     var user: String? = null,
     var currentGame: BeerGame? = null,
     var gameType: GameType? = null,
-    var gameCode: String? = null
+    var gameCode: String? = null,
+    var gameName: String? = null
 ): Parcelable
 
 enum class GameType {
