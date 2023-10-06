@@ -123,6 +123,9 @@
         <argument
             android:name="session"
             app:argType="se.umu.cs.id19abn.upg3.Session" />
+        <action
+            android:id="@+id/action_summaryFragment_to_waitDoneFragment"
+            app:destination="@id/waitDoneFragment" />
     </fragment>
     <fragment
         android:id="@+id/cameraFragment"
@@ -254,5 +257,14 @@
         <action
             android:id="@+id/action_waitJoinFragment_to_beerNameFragment"
             app:destination="@id/beerNameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/waitDoneFragment"
+        android:name="se.umu.cs.id19abn.upg3.WaitDoneFragment"
+        android:label="WaitDoneFragment"
+        tools:layout="@layout/fragment_wait_done">
+        <argument
+            android:name="session"
+            app:argType="se.umu.cs.id19abn.upg3.Session" />
     </fragment>
 </navigation>

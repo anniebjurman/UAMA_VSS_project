@@ -36,6 +36,8 @@ class BeerNameFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentBeerNameBinding.inflate(inflater)
 
+        binding.gameNameCont.text = session.gameName
+
         // if data exists in current beerGame object, show the data in view
         setExistingData()
 

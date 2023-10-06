@@ -25,6 +25,7 @@ class SignUpFragment : Fragment() {
         binding.btnSignUp.setOnClickListener {
             Log.d("CLICK", "sign up")
             val userName = binding.signUpName.text.toString()
+            val fullName = binding.signUpFullName.text.toString()
             val email = binding.email.text.toString()
             var correct = true
 
@@ -34,16 +35,17 @@ class SignUpFragment : Fragment() {
             } else if (userName.length < 4) {
                 correct = false
                 Toast.makeText(requireActivity().applicationContext,"Användarnamnet måste innehålla minst 3 tecken", Toast.LENGTH_SHORT).show()
-            }
-
-            if (email.isEmpty()) {
+            } else if (fullName.isEmpty()) {
+                correct = false
+                Toast.makeText(requireActivity().applicationContext,"Förnamn eller efernamn saknas", Toast.LENGTH_SHORT).show()
+            } else if (email.isEmpty()) {
                 correct = false
                 Toast.makeText(requireActivity().applicationContext,"E-mail saknas", Toast.LENGTH_SHORT).show()
             }
 
             if (correct) {
                 Log.d("SIGN UP", "correct")
-                dbHelper.addUser(userName, email)
+                dbHelper.addUser(userName, fullName, email)
 
                 val action = SignUpFragmentDirections.actionSignUpFragmentToSignInFragment()
                 binding.root.findNavController().navigate(action)

@@ -47,6 +47,8 @@ class SummaryFragment : Fragment() {
         // Inflate the layout for this fragment using the FragmentSummaryBinding
         binding = FragmentSummaryBinding.inflate(inflater)
 
+        binding.gameNameCont.text = session.gameName
+
         // Define an OnClickListener for the "Save Analysis" button
         binding.btnSaveAnalysis.setOnClickListener {
             // Pass the 'beerGameObj' data to the hosting activity using the 'passData' function
@@ -55,6 +57,10 @@ class SummaryFragment : Fragment() {
             if (session.gameType == GameType.MULTIPLAYER) {
                 // save data in DB, multiplayer game
                 session.currentGame?.let { it1 -> session.dbHelper?.addResult(session.gameCode!!, it1) }
+                // nav to waiting frag
+                val action = SummaryFragmentDirections.actionSummaryFragmentToWaitDoneFragment(session)
+                binding.root.findNavController().navigate(action)
+
             } else if (session.gameType == GameType.SINGLE){
                 // save data in DB, single game
                 val gc = session.dbHelper?.getRandomGameCode()
@@ -64,17 +70,19 @@ class SummaryFragment : Fragment() {
                         session.dbHelper?.addCurrentUserToGame(gc)
                     }
                 }
+
+                // clear session game
+                session.currentGame = null
+
+                // TODO clear all info connected to the game
+
+                // Navigate back to the HomeFragment after saving the analysis
+                val action = SummaryFragmentDirections.actionSummaryFragmentToHomeFragment(session)
+                binding.root.findNavController().navigate(action)
+
+                // Display a short toast message indicating that the analysis is saved
+                Toast.makeText(requireActivity().applicationContext,"Analys sparad", Toast.LENGTH_SHORT).show()
             }
-
-            // clear session game
-            session.currentGame = null
-
-            // Navigate back to the HomeFragment after saving the analysis
-            val action = SummaryFragmentDirections.actionSummaryFragmentToHomeFragment(session)
-            binding.root.findNavController().navigate(action)
-
-            // Display a short toast message indicating that the analysis is saved
-            Toast.makeText(requireActivity().applicationContext,"Analys sparad", Toast.LENGTH_SHORT).show()
         }
 
         // Display the beer name

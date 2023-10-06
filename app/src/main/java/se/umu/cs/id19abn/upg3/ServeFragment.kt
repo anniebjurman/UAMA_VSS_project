@@ -34,6 +34,8 @@ class ServeFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentServeBinding.inflate(inflater)
 
+        binding.gameNameCont.text = session.gameName
+
         // Create a list of serve buttons and add them to 'serveButtons'
         serveButtons.addAll(
             listOf(

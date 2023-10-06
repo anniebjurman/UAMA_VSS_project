@@ -33,6 +33,8 @@ class DescriptionFragment : Fragment() {
         // Inflate the layout for this fragment using the provided inflater
         binding = FragmentDescriptionBinding.inflate(inflater)
 
+        binding.gameNameCont.text = session.gameName
+
         // Add the text field views to the textFieldViews list for easy access
         if (textFieldViews.isEmpty()) {
             textFieldViews.addAll(

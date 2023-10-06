@@ -8,11 +8,24 @@
     android:paddingStart="20dp"
     android:paddingEnd="20dp">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/first_state"
-        android:textColor="@color/gray_text"/>
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/first_state"
+            android:textColor="@color/gray_text"
+            android:layout_marginEnd="15dp"/>
+        <TextView
+            android:id="@+id/game_name_cont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_user"
+            android:textColor="@color/gray_text"/>
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"

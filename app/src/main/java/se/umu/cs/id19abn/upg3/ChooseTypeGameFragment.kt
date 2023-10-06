@@ -31,6 +31,7 @@ class ChooseTypeGameFragment : Fragment() {
 
         binding.btnSingle.setOnClickListener {
             session.gameType = GameType.SINGLE
+            session.gameName = ""
             session.currentGame = BeerGame()
 
             val action = ChooseTypeGameFragmentDirections.actionChooseTypeGameFragmentToBeerNameFragment(session)

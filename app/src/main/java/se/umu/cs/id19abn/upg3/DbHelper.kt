@@ -23,8 +23,8 @@ class BeerGameDB(bg: BeerGame) {
     var type: String = "beer"
 }
 
-class User(userName: String, mail: String) {
-    var name: String = userName
+class User(fullName: String, mail: String) {
+    var name: String = fullName
     var email: String = mail
 }
 
@@ -99,8 +99,8 @@ class DbHelper(val user: String? = null) : Parcelable {
         })
     }
 
-    fun addUser(userName: String, email: String) {
-        dbReference.child("users").child(userName).setValue(User("NAME", email))
+    fun addUser(userName: String, fullName: String, email: String) {
+        dbReference.child("users").child(userName).setValue(User(fullName, email))
     }
 
     fun addGame(gameName: String, gameCode: String) {
@@ -122,6 +122,10 @@ class DbHelper(val user: String? = null) : Parcelable {
     fun addResult(gameName: String, bg: BeerGame) {
         dbReference.child("games").child(gameName).child("results")
             .child(userName).setValue(BeerGameDB(bg))
+    }
+
+    fun getGameMembers(gameCode: String) {
+
     }
 
     fun getDbReference(): DatabaseReference {

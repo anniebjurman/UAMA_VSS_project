@@ -32,6 +32,8 @@ class FlavorsFragment : Fragment() {
         // Inflate the layout for this fragment using the provided inflater
         binding = FragmentFlavorsBinding.inflate(inflater)
 
+        binding.gameNameCont.text = session.gameName
+
         // Set existing data for the sliders
         setExistingData()
 

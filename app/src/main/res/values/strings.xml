@@ -32,7 +32,7 @@
     <string name="first_state">1 / 4</string>
     <string name="which_beer">Vilken öl?</string>
     <string name="name_beer">Vad heter ölen?</string>
-    <string name="img_beer">Lägg till en bil på ölen.</string>
+    <string name="img_beer">Lägg till en bild på ölen.</string>
 
     <!--    FlavorFragment -->
     <string name="second_state">2 / 4</string>
@@ -82,14 +82,15 @@
     <string name="web_client_id">649260000154-06p3eb46bjn97s9r35fmc314me5djlm1.apps.googleusercontent.com</string>
 
     <!--    Login-->
-    <string name="nickname">Ange användarnamn</string>
+    <string name="nickname">Användarnamn</string>
     <string name="login">Logga in</string>
     <string name="log_out">Logga ut</string>
 
     <!--    sign up-->
     <string name="new_sign_up">Registrera ny användare</string>
     <string name="sign_up">Registrera</string>
-    <string name="email">Ange e-mail</string>
+    <string name="email">E-mail</string>
+    <string name="full_name">Förnamn &amp; efternamn</string>
 
     <!--    choose type game-->
     <string name="choose_game">Välj spel att starta</string>
@@ -105,7 +106,8 @@
     <string name="default_code">03482673</string>
     <string name="default_user">text123</string>
 
-    <!--    wait join-->
+    <!--    wait    -->
     <string name="wait">Väntar</string>
-    <string name="wait_join">Vänta på att spelet ska starta …</string>
+    <string name="wait_join">Väntar på att spelet ska starta …</string>
+    <string name="waiting_for">Väntar på:</string>
 </resources>
