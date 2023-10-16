@@ -266,5 +266,17 @@
         <argument
             android:name="session"
             app:argType="se.umu.cs.id19abn.upg3.Session" />
+        <action
+            android:id="@+id/action_waitDoneFragment_to_doneGameFragment"
+            app:destination="@id/doneGameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/doneGameFragment"
+        android:name="se.umu.cs.id19abn.upg3.DoneGameFragment"
+        android:label="DoneGameFragment"
+        tools:layout="@layout/fragment_done_game">
+        <argument
+            android:name="session"
+            app:argType="se.umu.cs.id19abn.upg3.Session" />
     </fragment>
 </navigation>

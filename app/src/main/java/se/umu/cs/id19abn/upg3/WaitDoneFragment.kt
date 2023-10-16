@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -60,6 +61,11 @@ class WaitDoneFragment : Fragment() {
 
                     val notDoneMembers = members.filterNot { doneMembers.contains(it) }
                     Log.d("NOT DONE MEMBERS", notDoneMembers.toString())
+
+                    if (notDoneMembers.isEmpty()) {
+                        val action = WaitDoneFragmentDirections.actionWaitDoneFragmentToDoneGameFragment(session)
+                        binding.root.findNavController().navigate(action)
+                    }
 
                     var uiString = ""
                     for (n in notDoneMembers) {

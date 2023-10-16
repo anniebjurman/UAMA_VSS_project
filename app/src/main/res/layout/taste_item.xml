@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:gravity="center_vertical"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/default_user"
+            android:textColor="@color/gray_text"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="55dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/drink_button"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/bitter"
+                android:textColor="@color/green"
+                android:textSize="11sp"/>
+
+            <TextView
+                android:id="@+id/bitter_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/num_placeholder"
+                android:textColor="@color/green"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="55dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/drink_button"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/fullness"
+                android:textColor="@color/green"
+                android:textSize="11sp"/>
+
+            <TextView
+                android:id="@+id/fullness_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/num_placeholder"
+                android:textColor="@color/green"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="55dp"
+            android:layout_height="80dp"
+            android:background="@drawable/drink_button"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/sweetness"
+                android:textColor="@color/green"
+                android:textSize="11sp"/>
+
+            <TextView
+                android:id="@+id/sweetness_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/num_placeholder"
+                android:textColor="@color/green"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
