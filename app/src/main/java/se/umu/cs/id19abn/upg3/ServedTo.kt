@@ -26,6 +26,27 @@ class ServedTo(
     var temple: Boolean = false
 ) : Parcelable {
 
+    fun oneItemChosen(): Boolean {
+        var yes = false
+
+        if (bbq) yes = true
+        if (bird) yes = true
+        if (cheese) yes = true
+        if (chili) yes = true
+        if (cow) yes = true
+        if (dessert) yes = true
+        if (fish) yes = true
+        if (glass) yes = true
+        if (moose) yes = true
+        if (pig) yes = true
+        if (radish) yes = true
+        if (sheep) yes = true
+        if (shrimp) yes = true
+        if (temple) yes = true
+
+        return yes
+    }
+
     fun getChosenItems(): ArrayList<String> {
         // Create an ArrayList to store the chosen items
         val chosen = ArrayList<String>()

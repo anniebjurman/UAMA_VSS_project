@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.google.firebase.analytics.ktx.analytics
@@ -56,12 +57,16 @@ class BeerNameFragment : Fragment() {
 
         binding.btnNextBeerName.setOnClickListener {
             // save input beer game to BeerGame obj
-            session.currentGame?.beerName = binding.beerName.text.toString()
+            if (binding.beerName.text.isEmpty()) {
+                Toast.makeText(requireActivity().applicationContext,"Ange namn på ölen", Toast.LENGTH_SHORT).show()
+            } else {
+                session.currentGame?.beerName = binding.beerName.text.toString()
 
-            // navigate to next fragment
-            val action =
-                BeerNameFragmentDirections.actionBeerNameFragmentToFlavorsFragment(session)
-            binding.root.findNavController().navigate(action)
+                // navigate to next fragment
+                val action =
+                    BeerNameFragmentDirections.actionBeerNameFragmentToFlavorsFragment(session)
+                binding.root.findNavController().navigate(action)
+            }
         }
         return binding.root
     }

@@ -63,6 +63,7 @@ class WaitDoneFragment : Fragment() {
                     Log.d("NOT DONE MEMBERS", notDoneMembers.toString())
 
                     if (notDoneMembers.isEmpty()) {
+                        session.dbHelper?.updateGameStatus(session.gameCode.toString(), GameStatus.DONE)
                         val action = WaitDoneFragmentDirections.actionWaitDoneFragmentToDoneGameFragment(session)
                         binding.root.findNavController().navigate(action)
                     }

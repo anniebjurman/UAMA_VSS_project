@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.navigation.findNavController
 import se.umu.cs.id19abn.upg3.databinding.FragmentServeBinding
 
@@ -70,9 +71,13 @@ class ServeFragment : Fragment() {
 
         // Set a click listener for the "Next" button to navigate to the DescriptionFragment
         binding.btnNextServe.setOnClickListener {
-            val action =
-                ServeFragmentDirections.actionServeFragmentToDescriptionFragment(session)
-            binding.root.findNavController().navigate(action)
+            if (session.currentGame?.servedTo?.oneItemChosen() == true) {
+                val action =
+                    ServeFragmentDirections.actionServeFragmentToDescriptionFragment(session)
+                binding.root.findNavController().navigate(action)
+            } else {
+                Toast.makeText(requireActivity().applicationContext,"Välj minst en ikon", Toast.LENGTH_SHORT).show()
+            }
         }
 
         // Return the root view of the inflated layout

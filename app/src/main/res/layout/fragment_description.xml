@@ -65,7 +65,7 @@
 
             <EditText
                 android:id="@+id/description_1"
-                android:layout_width="300dp"
+                android:layout_width="200dp"
                 android:layout_height="40dp"
                 android:inputType="text"
                 android:hint="@string/descr_word_1"
@@ -94,7 +94,7 @@
 
             <EditText
                 android:id="@+id/description_2"
-                android:layout_width="300dp"
+                android:layout_width="200dp"
                 android:layout_height="40dp"
                 android:inputType="text"
                 android:hint="@string/descr_word_other"
@@ -123,7 +123,7 @@
 
             <EditText
                 android:id="@+id/description_3"
-                android:layout_width="300dp"
+                android:layout_width="200dp"
                 android:layout_height="40dp"
                 android:inputType="text"
                 android:hint="@string/descr_word_other"
@@ -152,7 +152,7 @@
 
             <EditText
                 android:id="@+id/description_4"
-                android:layout_width="300dp"
+                android:layout_width="200dp"
                 android:layout_height="40dp"
                 android:inputType="text"
                 android:hint="@string/descr_word_other"
@@ -181,7 +181,7 @@
 
             <EditText
                 android:id="@+id/description_5"
-                android:layout_width="300dp"
+                android:layout_width="200dp"
                 android:layout_height="40dp"
                 android:inputType="text"
                 android:hint="@string/descr_word_last"

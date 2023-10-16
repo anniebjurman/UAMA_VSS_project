@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.findNavController
 import se.umu.cs.id19abn.upg3.databinding.FragmentDescriptionBinding
@@ -59,9 +60,14 @@ class DescriptionFragment : Fragment() {
         }
         // Set a click listener for the "Next" button to navigate to the SummaryFragment
         binding.btnNextConclusion.setOnClickListener {
-            val action =
-                DescriptionFragmentDirections.actionDescriptionFragmentToSummaryFragment(false, session)
-            binding.root.findNavController().navigate(action)
+            if (session.currentGame?.describedAs?.size == 5) {
+                val action =
+                    DescriptionFragmentDirections.actionDescriptionFragmentToSummaryFragment(false, session)
+                binding.root.findNavController().navigate(action)
+            } else {
+                Toast.makeText(requireActivity().applicationContext,"Alla 5 fält måste fyllas i", Toast.LENGTH_SHORT).show()
+            }
+
         }
         // Return the root view of the inflated layout
         return binding.root

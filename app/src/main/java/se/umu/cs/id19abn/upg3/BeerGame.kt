@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
  */
 @Parcelize
 data class BeerGame(
-    var imgPath: String? = null,
+    var imgPath: String? = " ",
     var beerName: String? = null,
     var flavours: Flavours = Flavours(),
     var servedTo: ServedTo = ServedTo(),

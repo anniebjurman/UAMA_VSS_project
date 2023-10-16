@@ -35,8 +35,8 @@
 
         <Button
             android:id="@+id/btn_beer"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
             android:background="@drawable/default_btn"
             android:text="@string/btn_beer"
             android:textColor="@color/white"
@@ -45,9 +45,9 @@
 
         <Button
             android:id="@+id/btn_wine"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="@drawable/default_btn"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:background="@drawable/inactive_button"
             android:text="@string/btn_wine"
             android:textColor="@color/white"
             style="?android:attr/buttonBarButtonStyle" />
@@ -62,9 +62,9 @@
 
         <Button
             android:id="@+id/btn_liquor"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="@drawable/default_btn"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:background="@drawable/inactive_button"
             android:text="@string/btn_liquor"
             android:textColor="@color/white"
             android:layout_marginEnd="10dp"
@@ -72,45 +72,59 @@
 
         <Button
             android:id="@+id/btn_other"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="@drawable/default_btn"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:background="@drawable/inactive_button"
             android:text="@string/btn_other"
             android:textColor="@color/white"
             style="?android:attr/buttonBarButtonStyle" />
     </LinearLayout>
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/home_how"
-        android:textColor="@color/green"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="10dp"
-        android:layout_gravity="start"/>
+        android:layout_marginTop="40dp">
 
-    <Button
-        android:id="@+id/btn_info"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="30dp"
-        android:background="@drawable/information_circle"
-        android:text="@string/btn_info"
-        android:textSize="20sp"
-        android:textColor="@color/green"
-        android:textAllCaps="false"
-        android:layout_gravity="start"/>
+        <Button
+            android:id="@+id/btn_log_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/log_out"
+            android:background="@drawable/default_btn"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="start"
+            android:textSize="11sp"
+            android:layout_marginEnd="70dp"/>
 
-    <Button
-        android:id="@+id/btn_log_out"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/log_out"
-        android:background="@drawable/default_btn"
-        android:textColor="@color/white"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="start"
-        android:textSize="11sp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_how"
+                android:textColor="@color/green"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="start"/>
+
+            <Button
+                android:id="@+id/btn_info"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="30dp"
+                android:background="@drawable/information_circle"
+                android:text="@string/btn_info"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:layout_gravity="start"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     </LinearLayout>
 
