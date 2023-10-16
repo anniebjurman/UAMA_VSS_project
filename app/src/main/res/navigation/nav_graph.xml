@@ -100,10 +100,18 @@
             app:argType="se.umu.cs.id19abn.upg3.Session" />
         <action
             android:id="@+id/action_homeFragment_to_signInFragment"
-            app:destination="@id/signInFragment" />
+            app:destination="@id/signInFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
         <action
             android:id="@+id/action_homeFragment_to_chooseTypeGameFragment"
-            app:destination="@id/chooseTypeGameFragment" />
+            app:destination="@id/chooseTypeGameFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/summaryFragment"
@@ -125,7 +133,11 @@
             app:argType="se.umu.cs.id19abn.upg3.Session" />
         <action
             android:id="@+id/action_summaryFragment_to_waitDoneFragment"
-            app:destination="@id/waitDoneFragment" />
+            app:destination="@id/waitDoneFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/cameraFragment"
@@ -199,16 +211,28 @@
         tools:layout="@layout/fragment_choose_type_game">
         <action
             android:id="@+id/action_chooseTypeGameFragment_to_createGameFragment"
-            app:destination="@id/createGameFragment" />
+            app:destination="@id/createGameFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
         <action
             android:id="@+id/action_chooseTypeGameFragment_to_joinFragment"
-            app:destination="@id/joinFragment" />
+            app:destination="@id/joinFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
         <argument
             android:name="session"
             app:argType="se.umu.cs.id19abn.upg3.Session" />
         <action
             android:id="@+id/action_chooseTypeGameFragment_to_beerNameFragment"
-            app:destination="@id/beerNameFragment" />
+            app:destination="@id/beerNameFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/createGameFragment"
@@ -217,7 +241,11 @@
         tools:layout="@layout/fragment_create_game">
         <action
             android:id="@+id/action_createGameFragment_to_startGameFragment"
-            app:destination="@id/startGameFragment" />
+            app:destination="@id/startGameFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
         <argument
             android:name="session"
             app:argType="se.umu.cs.id19abn.upg3.Session" />
@@ -232,7 +260,11 @@
             app:argType="se.umu.cs.id19abn.upg3.Session" />
         <action
             android:id="@+id/action_joinFragment_to_waitJoinFragment"
-            app:destination="@id/waitJoinFragment" />
+            app:destination="@id/waitJoinFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/startGameFragment"
@@ -241,7 +273,11 @@
         tools:layout="@layout/fragment_start_game">
         <action
             android:id="@+id/action_startGameFragment_to_beerNameFragment"
-            app:destination="@id/beerNameFragment" />
+            app:destination="@id/beerNameFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
         <argument
             android:name="session"
             app:argType="se.umu.cs.id19abn.upg3.Session" />
@@ -256,7 +292,11 @@
             app:argType="se.umu.cs.id19abn.upg3.Session" />
         <action
             android:id="@+id/action_waitJoinFragment_to_beerNameFragment"
-            app:destination="@id/beerNameFragment" />
+            app:destination="@id/beerNameFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/waitDoneFragment"
@@ -268,7 +308,11 @@
             app:argType="se.umu.cs.id19abn.upg3.Session" />
         <action
             android:id="@+id/action_waitDoneFragment_to_doneGameFragment"
-            app:destination="@id/doneGameFragment" />
+            app:destination="@id/doneGameFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/doneGameFragment"
@@ -278,5 +322,12 @@
         <argument
             android:name="session"
             app:argType="se.umu.cs.id19abn.upg3.Session" />
+        <action
+            android:id="@+id/action_doneGameFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
     </fragment>
 </navigation>

@@ -110,5 +110,6 @@
     <string name="wait">Väntar</string>
     <string name="wait_join">Väntar på att spelet ska starta …</string>
     <string name="waiting_for">Väntar på:</string>
+    <string name="done">Klar</string>
 
 </resources>

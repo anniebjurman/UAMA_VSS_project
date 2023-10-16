@@ -15,7 +15,14 @@ class Session(
     var gameType: GameType? = null,
     var gameCode: String? = null,
     var gameName: String? = null
-): Parcelable
+): Parcelable {
+    fun resetGameData() {
+        currentGame = null
+        gameType = null
+        gameCode = null
+        gameName = null
+    }
+}
 
 enum class GameType {
     SINGLE, MULTIPLAYER

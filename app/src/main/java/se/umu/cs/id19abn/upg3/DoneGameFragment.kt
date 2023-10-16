@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.navigation.findNavController
 import com.google.firebase.database.DataSnapshot
@@ -31,10 +33,10 @@ class DoneGameFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        binding.gameName.text = session.gameName
 
-        val testGameCode = "FRNRJEUX"
         val dbPath =
-            testGameCode?.let { session.dbHelper?.getDbReference()?.child("games")
+            session.gameCode?.let { session.dbHelper?.getDbReference()?.child("games")
                 ?.child(it)?.child("results")}
 
         dbPath?.addValueEventListener(object : ValueEventListener {
@@ -58,15 +60,34 @@ class DoneGameFragment : Fragment() {
                     binding.tasteBody.addView(tasteView, binding.tasteBody.childCount)
 
                     //serve
-
                     val serve = v["served_to"] as ArrayList<*>
+                    val servedTo = ServedTo()
+
+                    val serveView = LayoutInflater.from(activity).inflate(R.layout.serve_item, container, false)
+                    val userView = serveView.findViewById<TextView>(R.id.username)
+                    userView.text = k.toString()
+
+                    val serveBody = serveView.findViewById<LinearLayout>(R.id.body)
+
+                    for (i in serve) {
+                        val imageView = ImageView(context)
+                        imageView.setImageResource(servedTo.getIcon(i.toString()))
+                        serveBody.addView(imageView)
+                    }
+                    binding.serveBody.addView(serveView, binding.serveBody.childCount)
 
                     //description
-
                     val desc = v["described_as"] as ArrayList<*>
-                    desc.forEachIndexed { index, element ->
+                    val descView = LayoutInflater.from(activity).inflate(R.layout.description_item, container, false)
 
-                    }
+                    descView.findViewById<TextView>(R.id.username).text = k.toString()
+                    descView.findViewById<TextView>(R.id.desc_1).text = desc[0].toString()
+                    descView.findViewById<TextView>(R.id.desc_2).text = desc[1].toString()
+                    descView.findViewById<TextView>(R.id.desc_3).text = desc[2].toString()
+                    descView.findViewById<TextView>(R.id.desc_4).text = desc[3].toString()
+                    descView.findViewById<TextView>(R.id.desc_5).text = desc[4].toString()
+
+                    binding.descriptionBody.addView(descView, binding.descriptionBody.childCount)
                 }
 
 
@@ -76,6 +97,12 @@ class DoneGameFragment : Fragment() {
                 Log.w("DB", "Failed to read value.", error.toException())
             }
         })
+
+        binding.btnDone.setOnClickListener {
+            session.resetGameData()
+            val action = DoneGameFragmentDirections.actionDoneGameFragmentToHomeFragment(session)
+            binding.root.findNavController().navigate(action)
+        }
 
         // Inflate the layout for this fragment
         return binding.root
