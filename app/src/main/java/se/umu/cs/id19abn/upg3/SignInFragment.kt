@@ -69,7 +69,7 @@ class SignInFragment : Fragment() {
                 binding.root.findNavController().navigate(action)
             } else {
                 // Display a short toast message indicating that the username is to short
-                Toast.makeText(requireActivity().applicationContext,"Användarnamnet är inte registererat'", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireActivity().applicationContext,"Användarnamnet är inte registererat", Toast.LENGTH_SHORT).show()
             }
         }
 

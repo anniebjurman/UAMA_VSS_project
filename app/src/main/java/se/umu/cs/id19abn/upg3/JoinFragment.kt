@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.compose.ui.text.toUpperCase
 import androidx.navigation.findNavController
 import com.google.firebase.database.DataSnapshot
@@ -33,17 +34,58 @@ class JoinFragment : Fragment() {
     ): View {
 
         binding.btnJoin.setOnClickListener {
-            session.currentGame = BeerGame()
+            val gameCode = binding.joinCode.text.toString().uppercase()
 
-            val gameCode = binding.joinCode.text.toString()
-            session.gameCode = gameCode.uppercase()
-            session.dbHelper?.addCurrentUserToGame(gameCode.uppercase())
+            if (gameCode != "") {
+                val db = session.dbHelper?.getDbReference()?.child("games")?.get()
 
-            val action = JoinFragmentDirections.actionJoinFragmentToWaitJoinFragment(session)
-            binding.root.findNavController().navigate(action)
+                db?.addOnSuccessListener {
+                        val games = it.value as HashMap<*, *>
+
+                        if (games.keys.contains(gameCode)) {
+                            val res = games[gameCode] as HashMap<*, *>
+                            val status = res["status"]
+
+                            if (status == GameStatus.PENDING.toString()) {
+                                session.currentGame = BeerGame()
+                                session.gameCode = gameCode
+                                session.dbHelper?.addCurrentUserToGame(gameCode)
+                                navigateToWaitJoinFragment()
+
+                            } else {
+                                Toast.makeText(
+                                    requireActivity().applicationContext,
+                                    "Felaktig spelkod (status)",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        } else {
+                            Toast.makeText(
+                                requireActivity().applicationContext,
+                                "Felaktig spelkod (no game)",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                }
+            } else {
+                Toast.makeText(
+                    requireActivity().applicationContext,
+                    "Ange en spelkod",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
         }
 
         // Inflate the layout for this fragment
         return binding.root
+    }
+
+    private fun navigateToWaitJoinFragment() {
+        val action =
+            JoinFragmentDirections.actionJoinFragmentToWaitJoinFragment(
+                session
+            )
+        binding.root.findNavController().navigate(action)
     }
 }
