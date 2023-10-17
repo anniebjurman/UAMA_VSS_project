@@ -85,10 +85,12 @@
     <string name="nickname">Användarnamn</string>
     <string name="login">Logga in</string>
     <string name="log_out">Logga ut</string>
+    <string name="no_account">Ingen användare?</string>
 
     <!--    sign up-->
     <string name="new_sign_up">Registrera ny användare</string>
     <string name="sign_up">Registrera</string>
+    <string name="sign_you_up">Registrera dig!</string>
     <string name="email">E-mail</string>
     <string name="full_name">Förnamn &amp; efternamn</string>
 

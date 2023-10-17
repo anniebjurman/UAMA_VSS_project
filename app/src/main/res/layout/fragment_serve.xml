@@ -60,25 +60,25 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/cheese"
-                android:layout_marginEnd="35dp"/>
+                android:layout_marginEnd="30dp"/>
             <ImageButton
                 android:id="@+id/btn_bbq"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/bbq"
-                android:layout_marginEnd="35dp"/>
+                android:layout_marginEnd="30dp"/>
             <ImageButton
                 android:id="@+id/btn_temple"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/temple"
-                android:layout_marginEnd="35dp"/>
+                android:layout_marginEnd="30dp"/>
             <ImageButton
                 android:id="@+id/btn_dessert"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/dessert"
-                android:layout_marginEnd="35dp"/>
+                android:layout_marginEnd="30dp"/>
             <ImageButton
                 android:id="@+id/btn_chili"
                 android:layout_width="30dp"
@@ -98,25 +98,25 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/sheep"
-                android:layout_marginEnd="35dp"/>
+                android:layout_marginEnd="30dp"/>
             <ImageButton
                 android:id="@+id/btn_cow"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/cow"
-                android:layout_marginEnd="35dp"/>
+                android:layout_marginEnd="30dp"/>
             <ImageButton
                 android:id="@+id/btn_shrimp"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/shrimp"
-                android:layout_marginEnd="35dp"/>
+                android:layout_marginEnd="30dp"/>
             <ImageButton
                 android:id="@+id/btn_moose"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/moose"
-                android:layout_marginEnd="35dp"/>
+                android:layout_marginEnd="30dp"/>
             <ImageButton
                 android:id="@+id/btn_bird"
                 android:layout_width="30dp"
@@ -137,19 +137,19 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/radish"
-                android:layout_marginEnd="35dp"/>
+                android:layout_marginEnd="50dp"/>
             <ImageButton
                 android:id="@+id/btn_glass"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/glas"
-                android:layout_marginEnd="35dp"/>
+                android:layout_marginEnd="50dp"/>
             <ImageButton
                 android:id="@+id/btn_pig"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/pig"
-                android:layout_marginEnd="35dp"/>
+                android:layout_marginEnd="50dp"/>
             <ImageButton
                 android:id="@+id/btn_fish"
                 android:layout_width="30dp"
