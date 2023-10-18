@@ -11,12 +11,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textColor="@color/gray_text"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="@string/join"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -48,7 +42,8 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/default_btn"
             android:text="@string/join_word"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textAllCaps="false"/>
 
     </LinearLayout>
 

@@ -2,9 +2,16 @@ package se.umu.cs.id19abn.upg3
 
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.WindowManager
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -22,24 +29,21 @@ import se.umu.cs.id19abn.upg3.databinding.ActivityMainBinding
 class MainActivity: AppCompatActivity(), OnDataPass {
     private lateinit var navController: NavController
     private lateinit var navHostFragment: NavHostFragment
-    private lateinit var savedAnalyzes: ListBeerGame
     private lateinit var currentSession: Session
 
     override fun onDataPass(session: Session) {
         // Add the current session to local variable
         currentSession = session
-        Log.d("SESSION FROM MAIN", currentSession.user.toString())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Initialize an ArrayList named 'savedAnalyzes' to store saved analyses
-        savedAnalyzes = ListBeerGame()
-
         // Set the content view for this activity using data binding
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+//        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         // Find the navigation host fragment from the layout
         navHostFragment = supportFragmentManager
@@ -50,6 +54,24 @@ class MainActivity: AppCompatActivity(), OnDataPass {
 
         // Ensure that actions in the ActionBar are connected to the NavController
         setupActionBarWithNavController(navController)
+//
+        val bar = supportActionBar
+        if( bar != null ){
+            val tv = TextView(applicationContext)
+            val lp = RelativeLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, // Width of TextView
+                LinearLayout.LayoutParams.WRAP_CONTENT) // Height of TextView
+            tv.layoutParams = lp
+            tv.text = getString(R.string.app_name)
+            tv.setPadding(20, 0, 0, 0)
+            tv.setTextColor( resources.getColor(R.color.black));
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14F);
+            bar.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM;
+            bar.setDisplayShowHomeEnabled(true)
+            bar.setIcon(R.drawable.logo)
+            bar.customView = tv;
+            bar.elevation = 0F
+        }
 
     }
 

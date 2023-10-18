@@ -24,7 +24,8 @@
         android:text="@string/take_photo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/vertical_centerline"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textAllCaps="false"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/vertical_centerline"

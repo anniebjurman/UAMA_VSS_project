@@ -54,7 +54,7 @@ class HomeFragment : Fragment() {
         // Set a click listener for the "Info" button to display a popup window
         binding.btnInfo.setOnClickListener {
             // Inflate the game information layout for the popup
-            val popupView = LayoutInflater.from(activity).inflate(se.umu.cs.id19abn.upg3.R.layout.game_information, container, false)
+            val popupView = LayoutInflater.from(activity).inflate(R.layout.game_information, container, false)
 
             // Define popup window parameters
             val width = LinearLayout.LayoutParams.WRAP_CONTENT

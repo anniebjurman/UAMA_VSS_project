@@ -21,7 +21,6 @@ class ChooseTypeGameFragment : Fragment() {
         session = arguments?.let { ChooseTypeGameFragmentArgs.fromBundle(it).session }!!
 
         binding = FragmentChooseTypeGameBinding.inflate(layoutInflater)
-//        session = arguments?.let { .fromBundle(it).session }!!
     }
 
     override fun onCreateView(

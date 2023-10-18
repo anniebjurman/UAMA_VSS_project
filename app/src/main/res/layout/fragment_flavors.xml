@@ -136,6 +136,7 @@
         android:layout_gravity="end"
         android:background="@drawable/default_btn"
         android:text="@string/next_step"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:textAllCaps="false"/>
 
 </LinearLayout>
