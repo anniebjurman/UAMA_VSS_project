@@ -1,5 +1,6 @@
 package se.umu.cs.id19abn.upg3
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
@@ -68,9 +69,10 @@ class MainActivity: AppCompatActivity(), OnDataPass {
             tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14F);
             bar.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM;
             bar.setDisplayShowHomeEnabled(true)
-            bar.setIcon(R.drawable.logo)
+            bar.setIcon(R.drawable.logo2)
             bar.customView = tv;
             bar.elevation = 0F
+            bar.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.light_gray)))
         }
 
     }
