@@ -35,7 +35,6 @@ class DbHelper(val user: String? = null) : Parcelable {
     private lateinit var userName: String
 
     init {
-        Log.d("DB HELPER", "init")
         dbReference = getDbReference()
 
         if (user != null) {
@@ -49,7 +48,6 @@ class DbHelper(val user: String? = null) : Parcelable {
 
         dbPath.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot){
-                Log.d("SET GAME LISTENER", "change in games (db)")
                 userGameObjects.beerGames.clear()
 
                 for (game in dataSnapshot.children) {
@@ -65,7 +63,6 @@ class DbHelper(val user: String? = null) : Parcelable {
 
                                 // save data in BeerGame object
                                 bgData as HashMap<*, *>
-                                Log.d("BG DATA", bgData.toString())
                                 gameObj.beerName = bgData["name"] as String
                                 gameObj.imgPath = bgData["img_path"] as String
 
@@ -124,10 +121,6 @@ class DbHelper(val user: String? = null) : Parcelable {
             .child(userName).setValue(BeerGameDB(bg))
     }
 
-    fun getGameMembers(gameCode: String) {
-
-    }
-
     fun getDbReference(): DatabaseReference {
         val db = Firebase.database("https://vad-sager-systemet-default-rtdb.europe-west1.firebasedatabase.app/")
         return db.reference
@@ -141,5 +134,4 @@ class DbHelper(val user: String? = null) : Parcelable {
         dbReference.child("games").child(gameCode).child("status")
             .setValue(status)
     }
-
 }

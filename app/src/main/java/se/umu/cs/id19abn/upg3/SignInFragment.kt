@@ -27,9 +27,7 @@ import se.umu.cs.id19abn.upg3.databinding.FragmentSignInBinding
 
 
 /**
- * A simple [Fragment] subclass.
- * Use the [SignInFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * A fragment for signing in to the app
  */
 class SignInFragment : Fragment() {
 

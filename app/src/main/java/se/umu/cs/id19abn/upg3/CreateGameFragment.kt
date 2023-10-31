@@ -11,7 +11,7 @@ import androidx.navigation.findNavController
 import se.umu.cs.id19abn.upg3.databinding.FragmentCreateGameBinding
 
 /**
- * A simple [Fragment] subclass.
+ * A fragment for creating a multiplayer game.
  */
 class CreateGameFragment : Fragment() {
     private lateinit var binding: FragmentCreateGameBinding
@@ -20,6 +20,7 @@ class CreateGameFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // get session obj from previous fragment
         session = arguments?.let { ChooseTypeGameFragmentArgs.fromBundle(it).session }!!
         binding = FragmentCreateGameBinding.inflate(layoutInflater)
     }
@@ -32,8 +33,10 @@ class CreateGameFragment : Fragment() {
         binding.btnCreateGame.setOnClickListener {
             val gameName = binding.gameName.text.toString()
 
+            // check gem name
             if (gameName.length >= 3) {
                 session.gameName = gameName
+                // generate game code
                 val gameCode = session.dbHelper?.getRandomGameCode()
                 if (gameCode != null) {
                     session.dbHelper?.addGame(gameName, gameCode)

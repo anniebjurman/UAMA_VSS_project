@@ -9,7 +9,7 @@ import androidx.navigation.findNavController
 import se.umu.cs.id19abn.upg3.databinding.FragmentChooseTypeGameBinding
 
 /**
- * A simple [Fragment] subclass.
+ * A fragment for choosing game type (single, multi).
  */
 class ChooseTypeGameFragment : Fragment() {
     private lateinit var binding: FragmentChooseTypeGameBinding
@@ -18,6 +18,7 @@ class ChooseTypeGameFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // get session obj from previous fragment
         session = arguments?.let { ChooseTypeGameFragmentArgs.fromBundle(it).session }!!
 
         binding = FragmentChooseTypeGameBinding.inflate(layoutInflater)
@@ -28,6 +29,7 @@ class ChooseTypeGameFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
+        // set click listeners for the three buttons
         binding.btnSingle.setOnClickListener {
             session.gameType = GameType.SINGLE
             session.gameName = ""

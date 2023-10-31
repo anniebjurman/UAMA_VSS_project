@@ -16,7 +16,7 @@ import com.google.firebase.database.ValueEventListener
 import se.umu.cs.id19abn.upg3.databinding.FragmentDoneGameBinding
 
 /**
- * A simple [Fragment] subclass.
+ * A fragment for displaying all players results.
  */
 class DoneGameFragment : Fragment() {
     private lateinit var binding: FragmentDoneGameBinding
@@ -33,24 +33,27 @@ class DoneGameFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        // display game name
         binding.gameName.text = session.gameName
 
+        // path to results in db
         val dbPath =
             session.gameCode?.let { session.dbHelper?.getDbReference()?.child("games")
                 ?.child(it)?.child("results")}
 
+        // listener for added values
         dbPath?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot){
                 val results = dataSnapshot.value as HashMap<*, *>
-                Log.d("RESULTS", results.toString())
 
                 for ((k, v) in results) {
                     v as HashMap<*, *>
-                    //taste
+                    // set taste information
                     val tasteView = LayoutInflater.from(activity).inflate(R.layout.taste_item, container, false)
                     val usernameView = tasteView.findViewById<TextView>(R.id.username)
                     usernameView.text = k.toString()
 
+                    // set flavour information
                     val flavours = v["flavours"]
                     flavours as HashMap<*, *>
                     tasteView.findViewById<TextView>(R.id.bitter_num).text = flavours["bitter"].toString()
@@ -59,7 +62,7 @@ class DoneGameFragment : Fragment() {
 
                     binding.tasteBody.addView(tasteView, binding.tasteBody.childCount)
 
-                    //serve
+                    // set serve information
                     val serve = v["served_to"] as ArrayList<*>
                     val servedTo = ServedTo()
 
@@ -76,7 +79,7 @@ class DoneGameFragment : Fragment() {
                     }
                     binding.serveBody.addView(serveView, binding.serveBody.childCount)
 
-                    //description
+                    // set description information
                     val desc = v["described_as"] as ArrayList<*>
                     val descView = LayoutInflater.from(activity).inflate(R.layout.description_item, container, false)
 

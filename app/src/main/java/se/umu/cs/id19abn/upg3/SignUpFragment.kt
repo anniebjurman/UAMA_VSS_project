@@ -11,7 +11,7 @@ import androidx.navigation.findNavController
 import se.umu.cs.id19abn.upg3.databinding.FragmentSignUpBinding
 
 /**
- * A simple [Fragment] subclass.
+ * A fragment for signing up for the app
  */
 class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignUpBinding
@@ -23,7 +23,6 @@ class SignUpFragment : Fragment() {
         dbHelper = DbHelper()
 
         binding.btnSignUp.setOnClickListener {
-            Log.d("CLICK", "sign up")
             val userName = binding.signUpName.text.toString()
             val fullName = binding.signUpFullName.text.toString()
             val email = binding.email.text.toString()
@@ -32,12 +31,12 @@ class SignUpFragment : Fragment() {
             if (userName.isEmpty()) {
                 correct = false
                 Toast.makeText(requireActivity().applicationContext,"Användarnamn saknas", Toast.LENGTH_SHORT).show()
-            } else if (userName.length < 4) {
+            } else if (userName.length < 3) {
                 correct = false
                 Toast.makeText(requireActivity().applicationContext,"Användarnamnet måste innehålla minst 3 tecken", Toast.LENGTH_SHORT).show()
             } else if (fullName.isEmpty()) {
                 correct = false
-                Toast.makeText(requireActivity().applicationContext,"Förnamn eller efernamn saknas", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireActivity().applicationContext,"Förnamn eller efternamn saknas", Toast.LENGTH_SHORT).show()
             } else if (email.isEmpty()) {
                 correct = false
                 Toast.makeText(requireActivity().applicationContext,"E-mail saknas", Toast.LENGTH_SHORT).show()

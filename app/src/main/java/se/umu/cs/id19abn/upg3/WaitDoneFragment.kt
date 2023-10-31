@@ -13,7 +13,8 @@ import com.google.firebase.database.ValueEventListener
 import se.umu.cs.id19abn.upg3.databinding.FragmentWaitDoneBinding
 
 /**
- * A simple [Fragment] subclass.
+ * A fragment for showing a waiting page
+ * and deciding when the waiting is done.
  */
 class WaitDoneFragment : Fragment() {
     private lateinit var binding: FragmentWaitDoneBinding

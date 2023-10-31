@@ -14,7 +14,8 @@ import se.umu.cs.id19abn.upg3.databinding.FragmentWaitJoinBinding
 
 
 /**
- * A simple [Fragment] subclass.
+ * A fragment for showing a waiting page
+ * and deciding when the waiting is done.
  */
 class WaitJoinFragment : Fragment() {
     private lateinit var binding: FragmentWaitJoinBinding
@@ -30,8 +31,6 @@ class WaitJoinFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        Log.d("GAMECODE IN WAITJOIN", session.gameCode.toString())
 
         val db =
             session.gameCode?.let { session.dbHelper?.getDbReference()?.child("games")

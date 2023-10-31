@@ -16,7 +16,7 @@ import se.umu.cs.id19abn.upg3.databinding.FragmentSignUpBinding
 import se.umu.cs.id19abn.upg3.databinding.FragmentStartGameBinding
 
 /**
- * A simple [Fragment] subclass.
+ * A fragment for knowing when the game is started
  */
 class StartGameFragment : Fragment() {
     private lateinit var binding: FragmentStartGameBinding
